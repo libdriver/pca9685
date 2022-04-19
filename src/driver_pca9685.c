@@ -175,7 +175,7 @@ uint8_t pca9685_set_active(pca9685_handle_t *handle, pca9685_bool_t enable)
         return 3;                                                    /* return error */
     }
     
-    if (handle->oe_gpio_write(!enable))                              /* gpio write */
+    if (handle->oe_gpio_write(!enable) != 0)                         /* gpio write */
     {
         handle->debug_print("pcf8591: gpio write failed.\n");        /* gpio writer failed */
         
@@ -198,8 +198,8 @@ uint8_t pca9685_set_active(pca9685_handle_t *handle, pca9685_bool_t enable)
  */
 uint8_t pca9685_set_restart(pca9685_handle_t *handle, pca9685_bool_t enable)
 {
-    volatile uint8_t res;
-    volatile uint8_t prev;
+    uint8_t res;
+    uint8_t prev;
     
     if (handle == NULL)                                                                      /* check handle */
     {
@@ -211,7 +211,7 @@ uint8_t pca9685_set_restart(pca9685_handle_t *handle, pca9685_bool_t enable)
     }
     
     res = handle->iic_read(handle->iic_addr, PCA9685_REG_MODE1, (uint8_t *)&prev, 1);        /* read mode 1 register */
-    if (res)                                                                                 /* check result */
+    if (res != 0)                                                                            /* check result */
     {
         handle->debug_print("pcf8591: read mode 1 register failed.\n");                      /* read mode 1 register failed */
         
@@ -220,7 +220,7 @@ uint8_t pca9685_set_restart(pca9685_handle_t *handle, pca9685_bool_t enable)
     prev &= ~(1 << 7);                                                                       /* clear conf */
     prev |= enable << 7;                                                                     /* set conf */
     res = handle->iic_write(handle->iic_addr, PCA9685_REG_MODE1, (uint8_t *)&prev, 1);       /* write mode 1 register */
-    if (res)                                                                                 /* check result */
+    if (res != 0)                                                                            /* check result */
     {
         handle->debug_print("pcf8591: write mode 1 register failed.\n");                     /* write mode 1 register failed */
         
@@ -243,8 +243,8 @@ uint8_t pca9685_set_restart(pca9685_handle_t *handle, pca9685_bool_t enable)
  */
 uint8_t pca9685_get_restart(pca9685_handle_t *handle, pca9685_bool_t *enable)
 {
-    volatile uint8_t res;
-    volatile uint8_t prev;
+    uint8_t res;
+    uint8_t prev;
     
     if (handle == NULL)                                                                      /* check handle */
     {
@@ -256,7 +256,7 @@ uint8_t pca9685_get_restart(pca9685_handle_t *handle, pca9685_bool_t *enable)
     }
     
     res = handle->iic_read(handle->iic_addr, PCA9685_REG_MODE1, (uint8_t *)&prev, 1);        /* read mode 1 register */
-    if (res)                                                                                 /* check result */
+    if (res != 0)                                                                            /* check result */
     {
         handle->debug_print("pcf8591: read mode 1 register failed.\n");                      /* read mode 1 register failed */
         
@@ -280,8 +280,8 @@ uint8_t pca9685_get_restart(pca9685_handle_t *handle, pca9685_bool_t *enable)
  */
 uint8_t pca9685_set_external_clock_pin(pca9685_handle_t *handle, pca9685_bool_t enable)
 {
-    volatile uint8_t res;
-    volatile uint8_t prev;
+    uint8_t res;
+    uint8_t prev;
     
     if (handle == NULL)                                                                      /* check handle */
     {
@@ -293,7 +293,7 @@ uint8_t pca9685_set_external_clock_pin(pca9685_handle_t *handle, pca9685_bool_t 
     }
     
     res = handle->iic_read(handle->iic_addr, PCA9685_REG_MODE1, (uint8_t *)&prev, 1);        /* read mode 1 register */
-    if (res)                                                                                 /* check result */
+    if (res != 0)                                                                            /* check result */
     {
         handle->debug_print("pcf8591: read mode 1 register failed.\n");                      /* read mode 1 register failed */
         
@@ -302,7 +302,7 @@ uint8_t pca9685_set_external_clock_pin(pca9685_handle_t *handle, pca9685_bool_t 
     prev &= ~(1 << 6);                                                                       /* clear conf */
     prev |= enable << 6;                                                                     /* set conf */
     res = handle->iic_write(handle->iic_addr, PCA9685_REG_MODE1, (uint8_t *)&prev, 1);       /* write mode 1 register */
-    if (res)                                                                                 /* check result */
+    if (res != 0)                                                                            /* check result */
     {
         handle->debug_print("pcf8591: write mode 1 register failed.\n");                     /* write mode 1 register failed */
         
@@ -325,8 +325,8 @@ uint8_t pca9685_set_external_clock_pin(pca9685_handle_t *handle, pca9685_bool_t 
  */
 uint8_t pca9685_get_external_clock_pin(pca9685_handle_t *handle, pca9685_bool_t *enable)
 {
-    volatile uint8_t res;
-    volatile uint8_t prev;
+    uint8_t res;
+    uint8_t prev;
     
     if (handle == NULL)                                                                      /* check handle */
     {
@@ -338,7 +338,7 @@ uint8_t pca9685_get_external_clock_pin(pca9685_handle_t *handle, pca9685_bool_t 
     }
     
     res = handle->iic_read(handle->iic_addr, PCA9685_REG_MODE1, (uint8_t *)&prev, 1);        /* read mode 1 register */
-    if (res)                                                                                 /* check result */
+    if (res != 0)                                                                            /* check result */
     {
         handle->debug_print("pcf8591: read mode 1 register failed.\n");                      /* read mode 1 register failed */
         
@@ -362,8 +362,8 @@ uint8_t pca9685_get_external_clock_pin(pca9685_handle_t *handle, pca9685_bool_t 
  */
 uint8_t pca9685_set_register_auto_increment(pca9685_handle_t *handle, pca9685_bool_t enable)
 {
-    volatile uint8_t res;
-    volatile uint8_t prev;
+    uint8_t res;
+    uint8_t prev;
     
     if (handle == NULL)                                                                      /* check handle */
     {
@@ -375,7 +375,7 @@ uint8_t pca9685_set_register_auto_increment(pca9685_handle_t *handle, pca9685_bo
     }
     
     res = handle->iic_read(handle->iic_addr, PCA9685_REG_MODE1, (uint8_t *)&prev, 1);        /* read mode 1 register */
-    if (res)                                                                                 /* check result */
+    if (res != 0)                                                                            /* check result */
     {
         handle->debug_print("pcf8591: read mode 1 register failed.\n");                      /* read mode 1 register failed */
         
@@ -384,7 +384,7 @@ uint8_t pca9685_set_register_auto_increment(pca9685_handle_t *handle, pca9685_bo
     prev &= ~(1 << 5);                                                                       /* clear conf */
     prev |= enable << 5;                                                                     /* set conf */
     res = handle->iic_write(handle->iic_addr, PCA9685_REG_MODE1, (uint8_t *)&prev, 1);       /* write mode 1 register */
-    if (res)                                                                                 /* check result */
+    if (res != 0)                                                                            /* check result */
     {
         handle->debug_print("pcf8591: write mode 1 register failed.\n");                     /* write mode 1 register failed */
         
@@ -407,8 +407,8 @@ uint8_t pca9685_set_register_auto_increment(pca9685_handle_t *handle, pca9685_bo
  */
 uint8_t pca9685_get_register_auto_increment(pca9685_handle_t *handle, pca9685_bool_t *enable)
 {
-    volatile uint8_t res;
-    volatile uint8_t prev;
+    uint8_t res;
+    uint8_t prev;
     
     if (handle == NULL)                                                                      /* check handle */
     {
@@ -420,7 +420,7 @@ uint8_t pca9685_get_register_auto_increment(pca9685_handle_t *handle, pca9685_bo
     }
     
     res = handle->iic_read(handle->iic_addr, PCA9685_REG_MODE1, (uint8_t *)&prev, 1);        /* read mode 1 register */
-    if (res)                                                                                 /* check result */
+    if (res != 0)                                                                            /* check result */
     {
         handle->debug_print("pcf8591: read mode 1 register failed.\n");                      /* read mode 1 register failed */
         
@@ -444,8 +444,8 @@ uint8_t pca9685_get_register_auto_increment(pca9685_handle_t *handle, pca9685_bo
  */
 uint8_t pca9685_set_sleep_mode(pca9685_handle_t *handle, pca9685_bool_t enable)
 {
-    volatile uint8_t res;
-    volatile uint8_t prev;
+    uint8_t res;
+    uint8_t prev;
     
     if (handle == NULL)                                                                      /* check handle */
     {
@@ -457,7 +457,7 @@ uint8_t pca9685_set_sleep_mode(pca9685_handle_t *handle, pca9685_bool_t enable)
     }
     
     res = handle->iic_read(handle->iic_addr, PCA9685_REG_MODE1, (uint8_t *)&prev, 1);        /* read mode 1 register */
-    if (res)                                                                                 /* check result */
+    if (res != 0)                                                                            /* check result */
     {
         handle->debug_print("pcf8591: read mode 1 register failed.\n");                      /* read mode 1 register failed */
         
@@ -466,7 +466,7 @@ uint8_t pca9685_set_sleep_mode(pca9685_handle_t *handle, pca9685_bool_t enable)
     prev &= ~(1 << 4);                                                                       /* clear conf */
     prev |= enable << 4;                                                                     /* set conf */
     res = handle->iic_write(handle->iic_addr, PCA9685_REG_MODE1, (uint8_t *)&prev, 1);       /* write mode 1 register */
-    if (res)                                                                                 /* check result */
+    if (res != 0)                                                                            /* check result */
     {
         handle->debug_print("pcf8591: write mode 1 register failed.\n");                     /* write mode 1 register failed */
         
@@ -489,8 +489,8 @@ uint8_t pca9685_set_sleep_mode(pca9685_handle_t *handle, pca9685_bool_t enable)
  */
 uint8_t pca9685_get_sleep_mode(pca9685_handle_t *handle, pca9685_bool_t *enable)
 {
-    volatile uint8_t res;
-    volatile uint8_t prev;
+    uint8_t res;
+    uint8_t prev;
     
     if (handle == NULL)                                                                      /* check handle */
     {
@@ -502,7 +502,7 @@ uint8_t pca9685_get_sleep_mode(pca9685_handle_t *handle, pca9685_bool_t *enable)
     }
     
     res = handle->iic_read(handle->iic_addr, PCA9685_REG_MODE1, (uint8_t *)&prev, 1);        /* read mode 1 register */
-    if (res)                                                                                 /* check result */
+    if (res != 0)                                                                            /* check result */
     {
         handle->debug_print("pcf8591: read mode 1 register failed.\n");                      /* read mode 1 register failed */
         
@@ -526,8 +526,8 @@ uint8_t pca9685_get_sleep_mode(pca9685_handle_t *handle, pca9685_bool_t *enable)
  */
 uint8_t pca9685_set_respond_subaddress_1(pca9685_handle_t *handle, pca9685_bool_t enable)
 {
-    volatile uint8_t res;
-    volatile uint8_t prev;
+    uint8_t res;
+    uint8_t prev;
     
     if (handle == NULL)                                                                      /* check handle */
     {
@@ -539,7 +539,7 @@ uint8_t pca9685_set_respond_subaddress_1(pca9685_handle_t *handle, pca9685_bool_
     }
     
     res = handle->iic_read(handle->iic_addr, PCA9685_REG_MODE1, (uint8_t *)&prev, 1);        /* read mode 1 register */
-    if (res)                                                                                 /* check result */
+    if (res != 0)                                                                            /* check result */
     {
         handle->debug_print("pcf8591: read mode 1 register failed.\n");                      /* read mode 1 register failed */
         
@@ -548,7 +548,7 @@ uint8_t pca9685_set_respond_subaddress_1(pca9685_handle_t *handle, pca9685_bool_
     prev &= ~(1 << 3);                                                                       /* clear conf */
     prev |= enable << 3;                                                                     /* set conf */
     res = handle->iic_write(handle->iic_addr, PCA9685_REG_MODE1, (uint8_t *)&prev, 1);       /* write mode 1 register */
-    if (res)                                                                                 /* check result */
+    if (res != 0)                                                                            /* check result */
     {
         handle->debug_print("pcf8591: write mode 1 register failed.\n");                     /* write mode 1 register failed */
         
@@ -571,8 +571,8 @@ uint8_t pca9685_set_respond_subaddress_1(pca9685_handle_t *handle, pca9685_bool_
  */
 uint8_t pca9685_get_respond_subaddress_1(pca9685_handle_t *handle, pca9685_bool_t *enable)
 {
-    volatile uint8_t res;
-    volatile uint8_t prev;
+    uint8_t res;
+    uint8_t prev;
     
     if (handle == NULL)                                                                      /* check handle */
     {
@@ -584,7 +584,7 @@ uint8_t pca9685_get_respond_subaddress_1(pca9685_handle_t *handle, pca9685_bool_
     }
     
     res = handle->iic_read(handle->iic_addr, PCA9685_REG_MODE1, (uint8_t *)&prev, 1);        /* read mode 1 register */
-    if (res)                                                                                 /* check result */
+    if (res != 0)                                                                            /* check result */
     {
         handle->debug_print("pcf8591: read mode 1 register failed.\n");                      /* read mode 1 register failed */
         
@@ -608,8 +608,8 @@ uint8_t pca9685_get_respond_subaddress_1(pca9685_handle_t *handle, pca9685_bool_
  */
 uint8_t pca9685_set_respond_subaddress_2(pca9685_handle_t *handle, pca9685_bool_t enable)
 {
-    volatile uint8_t res;
-    volatile uint8_t prev;
+    uint8_t res;
+    uint8_t prev;
     
     if (handle == NULL)                                                                      /* check handle */
     {
@@ -621,7 +621,7 @@ uint8_t pca9685_set_respond_subaddress_2(pca9685_handle_t *handle, pca9685_bool_
     }
     
     res = handle->iic_read(handle->iic_addr, PCA9685_REG_MODE1, (uint8_t *)&prev, 1);        /* read mode 1 register */
-    if (res)                                                                                 /* check result */
+    if (res != 0)                                                                            /* check result */
     {
         handle->debug_print("pcf8591: read mode 1 register failed.\n");                      /* read mode 1 register failed */
         
@@ -630,7 +630,7 @@ uint8_t pca9685_set_respond_subaddress_2(pca9685_handle_t *handle, pca9685_bool_
     prev &= ~(1 << 2);                                                                       /* clear conf */
     prev |= enable << 2;                                                                     /* set conf */
     res = handle->iic_write(handle->iic_addr, PCA9685_REG_MODE1, (uint8_t *)&prev, 1);       /* write mode 1 register */
-    if (res)                                                                                 /* check result */
+    if (res != 0)                                                                            /* check result */
     {
         handle->debug_print("pcf8591: write mode 1 register failed.\n");                     /* write mode 1 register failed */
         
@@ -653,8 +653,8 @@ uint8_t pca9685_set_respond_subaddress_2(pca9685_handle_t *handle, pca9685_bool_
  */
 uint8_t pca9685_get_respond_subaddress_2(pca9685_handle_t *handle, pca9685_bool_t *enable)
 {
-    volatile uint8_t res;
-    volatile uint8_t prev;
+    uint8_t res;
+    uint8_t prev;
     
     if (handle == NULL)                                                                      /* check handle */
     {
@@ -666,7 +666,7 @@ uint8_t pca9685_get_respond_subaddress_2(pca9685_handle_t *handle, pca9685_bool_
     }
     
     res = handle->iic_read(handle->iic_addr, PCA9685_REG_MODE1, (uint8_t *)&prev, 1);        /* read mode 1 register */
-    if (res)                                                                                 /* check result */
+    if (res != 0)                                                                            /* check result */
     {
         handle->debug_print("pcf8591: read mode 1 register failed.\n");                      /* read mode 1 register failed */
         
@@ -690,8 +690,8 @@ uint8_t pca9685_get_respond_subaddress_2(pca9685_handle_t *handle, pca9685_bool_
  */
 uint8_t pca9685_set_respond_subaddress_3(pca9685_handle_t *handle, pca9685_bool_t enable)
 {
-    volatile uint8_t res;
-    volatile uint8_t prev;
+    uint8_t res;
+    uint8_t prev;
     
     if (handle == NULL)                                                                      /* check handle */
     {
@@ -703,7 +703,7 @@ uint8_t pca9685_set_respond_subaddress_3(pca9685_handle_t *handle, pca9685_bool_
     }
     
     res = handle->iic_read(handle->iic_addr, PCA9685_REG_MODE1, (uint8_t *)&prev, 1);        /* read mode 1 register */
-    if (res)                                                                                 /* check result */
+    if (res != 0)                                                                            /* check result */
     {
         handle->debug_print("pcf8591: read mode 1 register failed.\n");                      /* read mode 1 register failed */
         
@@ -712,7 +712,7 @@ uint8_t pca9685_set_respond_subaddress_3(pca9685_handle_t *handle, pca9685_bool_
     prev &= ~(1 << 1);                                                                       /* clear conf */
     prev |= enable << 1;                                                                     /* set conf */
     res = handle->iic_write(handle->iic_addr, PCA9685_REG_MODE1, (uint8_t *)&prev, 1);       /* write mode 1 register */
-    if (res)                                                                                 /* check result */
+    if (res != 0)                                                                            /* check result */
     {
         handle->debug_print("pcf8591: write mode 1 register failed.\n");                     /* write mode 1 register failed */
         
@@ -735,8 +735,8 @@ uint8_t pca9685_set_respond_subaddress_3(pca9685_handle_t *handle, pca9685_bool_
  */
 uint8_t pca9685_get_respond_subaddress_3(pca9685_handle_t *handle, pca9685_bool_t *enable)
 {
-    volatile uint8_t res;
-    volatile uint8_t prev;
+    uint8_t res;
+    uint8_t prev;
     
     if (handle == NULL)                                                                      /* check handle */
     {
@@ -748,7 +748,7 @@ uint8_t pca9685_get_respond_subaddress_3(pca9685_handle_t *handle, pca9685_bool_
     }
     
     res = handle->iic_read(handle->iic_addr, PCA9685_REG_MODE1, (uint8_t *)&prev, 1);        /* read mode 1 register */
-    if (res)                                                                                 /* check result */
+    if (res != 0)                                                                            /* check result */
     {
         handle->debug_print("pcf8591: read mode 1 register failed.\n");                      /* read mode 1 register failed */
         
@@ -772,8 +772,8 @@ uint8_t pca9685_get_respond_subaddress_3(pca9685_handle_t *handle, pca9685_bool_
  */
 uint8_t pca9685_set_respond_all_call(pca9685_handle_t *handle, pca9685_bool_t enable)
 {
-    volatile uint8_t res;
-    volatile uint8_t prev;
+    uint8_t res;
+    uint8_t prev;
     
     if (handle == NULL)                                                                      /* check handle */
     {
@@ -785,7 +785,7 @@ uint8_t pca9685_set_respond_all_call(pca9685_handle_t *handle, pca9685_bool_t en
     }
     
     res = handle->iic_read(handle->iic_addr, PCA9685_REG_MODE1, (uint8_t *)&prev, 1);        /* read mode 1 register */
-    if (res)                                                                                 /* check result */
+    if (res != 0)                                                                            /* check result */
     {
         handle->debug_print("pcf8591: read mode 1 register failed.\n");                      /* read mode 1 register failed */
         
@@ -794,7 +794,7 @@ uint8_t pca9685_set_respond_all_call(pca9685_handle_t *handle, pca9685_bool_t en
     prev &= ~(1 << 0);                                                                       /* clear conf */
     prev |= enable << 0;                                                                     /* set conf */
     res = handle->iic_write(handle->iic_addr, PCA9685_REG_MODE1, (uint8_t *)&prev, 1);       /* write mode 1 register */
-    if (res)                                                                                 /* check result */
+    if (res != 0)                                                                            /* check result */
     {
         handle->debug_print("pcf8591: write mode 1 register failed.\n");                     /* write mode 1 register failed */
         
@@ -817,8 +817,8 @@ uint8_t pca9685_set_respond_all_call(pca9685_handle_t *handle, pca9685_bool_t en
  */
 uint8_t pca9685_get_respond_all_call(pca9685_handle_t *handle, pca9685_bool_t *enable)
 {
-    volatile uint8_t res;
-    volatile uint8_t prev;
+    uint8_t res;
+    uint8_t prev;
     
     if (handle == NULL)                                                                      /* check handle */
     {
@@ -830,7 +830,7 @@ uint8_t pca9685_get_respond_all_call(pca9685_handle_t *handle, pca9685_bool_t *e
     }
     
     res = handle->iic_read(handle->iic_addr, PCA9685_REG_MODE1, (uint8_t *)&prev, 1);        /* read mode 1 register */
-    if (res)                                                                                 /* check result */
+    if (res != 0)                                                                            /* check result */
     {
         handle->debug_print("pcf8591: read mode 1 register failed.\n");                      /* read mode 1 register failed */
         
@@ -854,8 +854,8 @@ uint8_t pca9685_get_respond_all_call(pca9685_handle_t *handle, pca9685_bool_t *e
  */
 uint8_t pca9685_set_output_invert(pca9685_handle_t *handle, pca9685_bool_t enable)
 {
-    volatile uint8_t res;
-    volatile uint8_t prev;
+    uint8_t res;
+    uint8_t prev;
     
     if (handle == NULL)                                                                      /* check handle */
     {
@@ -867,7 +867,7 @@ uint8_t pca9685_set_output_invert(pca9685_handle_t *handle, pca9685_bool_t enabl
     }
     
     res = handle->iic_read(handle->iic_addr, PCA9685_REG_MODE2, (uint8_t *)&prev, 1);        /* read mode 2 register */
-    if (res)                                                                                 /* check result */
+    if (res != 0)                                                                            /* check result */
     {
         handle->debug_print("pcf8591: read mode 2 register failed.\n");                      /* read mode 2 register failed */
         
@@ -876,7 +876,7 @@ uint8_t pca9685_set_output_invert(pca9685_handle_t *handle, pca9685_bool_t enabl
     prev &= ~(1 << 4);                                                                       /* clear conf */
     prev |= enable << 4;                                                                     /* set conf */
     res = handle->iic_write(handle->iic_addr, PCA9685_REG_MODE2, (uint8_t *)&prev, 1);       /* write mode 2 register */
-    if (res)                                                                                 /* check result */
+    if (res != 0)                                                                            /* check result */
     {
         handle->debug_print("pcf8591: write mode 2 register failed.\n");                     /* write mode 2 register failed */
         
@@ -899,8 +899,8 @@ uint8_t pca9685_set_output_invert(pca9685_handle_t *handle, pca9685_bool_t enabl
  */
 uint8_t pca9685_get_output_invert(pca9685_handle_t *handle, pca9685_bool_t *enable)
 {
-    volatile uint8_t res;
-    volatile uint8_t prev;
+    uint8_t res;
+    uint8_t prev;
     
     if (handle == NULL)                                                                      /* check handle */
     {
@@ -912,7 +912,7 @@ uint8_t pca9685_get_output_invert(pca9685_handle_t *handle, pca9685_bool_t *enab
     }
     
     res = handle->iic_read(handle->iic_addr, PCA9685_REG_MODE2, (uint8_t *)&prev, 1);        /* read mode 2 register */
-    if (res)                                                                                 /* check result */
+    if (res != 0)                                                                            /* check result */
     {
         handle->debug_print("pcf8591: read mode 2 register failed.\n");                      /* read mode 2 register failed */
         
@@ -936,8 +936,8 @@ uint8_t pca9685_get_output_invert(pca9685_handle_t *handle, pca9685_bool_t *enab
  */
 uint8_t pca9685_set_output_change(pca9685_handle_t *handle, pca9685_output_change_t change)
 {
-    volatile uint8_t res;
-    volatile uint8_t prev;
+    uint8_t res;
+    uint8_t prev;
     
     if (handle == NULL)                                                                      /* check handle */
     {
@@ -949,7 +949,7 @@ uint8_t pca9685_set_output_change(pca9685_handle_t *handle, pca9685_output_chang
     }
     
     res = handle->iic_read(handle->iic_addr, PCA9685_REG_MODE2, (uint8_t *)&prev, 1);        /* read mode 2 register */
-    if (res)                                                                                 /* check result */
+    if (res != 0)                                                                            /* check result */
     {
         handle->debug_print("pcf8591: read mode 2 register failed.\n");                      /* read mode 2 register failed */
         
@@ -958,7 +958,7 @@ uint8_t pca9685_set_output_change(pca9685_handle_t *handle, pca9685_output_chang
     prev &= ~(1 << 3);                                                                       /* clear conf */
     prev |= change << 3;                                                                     /* set conf */
     res = handle->iic_write(handle->iic_addr, PCA9685_REG_MODE2, (uint8_t *)&prev, 1);       /* write mode 2 register */
-    if (res)                                                                                 /* check result */
+    if (res != 0)                                                                            /* check result */
     {
         handle->debug_print("pcf8591: write mode 2 register failed.\n");                     /* write mode 2 register failed */
         
@@ -981,8 +981,8 @@ uint8_t pca9685_set_output_change(pca9685_handle_t *handle, pca9685_output_chang
  */
 uint8_t pca9685_get_output_change(pca9685_handle_t *handle, pca9685_output_change_t *change)
 {
-    volatile uint8_t res;
-    volatile uint8_t prev;
+    uint8_t res;
+    uint8_t prev;
     
     if (handle == NULL)                                                                      /* check handle */
     {
@@ -994,7 +994,7 @@ uint8_t pca9685_get_output_change(pca9685_handle_t *handle, pca9685_output_chang
     }
     
     res = handle->iic_read(handle->iic_addr, PCA9685_REG_MODE2, (uint8_t *)&prev, 1);        /* read mode 2 register */
-    if (res)                                                                                 /* check result */
+    if (res != 0)                                                                            /* check result */
     {
         handle->debug_print("pcf8591: read mode 2 register failed.\n");                      /* read mode 2 register failed */
         
@@ -1018,8 +1018,8 @@ uint8_t pca9685_get_output_change(pca9685_handle_t *handle, pca9685_output_chang
  */
 uint8_t pca9685_set_output_driver(pca9685_handle_t *handle, pca9685_output_driver_t driver)
 {
-    volatile uint8_t res;
-    volatile uint8_t prev;
+    uint8_t res;
+    uint8_t prev;
     
     if (handle == NULL)                                                                      /* check handle */
     {
@@ -1031,7 +1031,7 @@ uint8_t pca9685_set_output_driver(pca9685_handle_t *handle, pca9685_output_drive
     }
     
     res = handle->iic_read(handle->iic_addr, PCA9685_REG_MODE2, (uint8_t *)&prev, 1);        /* read mode 2 register */
-    if (res)                                                                                 /* check result */
+    if (res != 0)                                                                            /* check result */
     {
         handle->debug_print("pcf8591: read mode 2 register failed.\n");                      /* read mode 2 register failed */
         
@@ -1040,7 +1040,7 @@ uint8_t pca9685_set_output_driver(pca9685_handle_t *handle, pca9685_output_drive
     prev &= ~(1 << 2);                                                                       /* clear conf */
     prev |= driver << 2;                                                                     /* set conf */
     res = handle->iic_write(handle->iic_addr, PCA9685_REG_MODE2, (uint8_t *)&prev, 1);       /* write mode 2 register */
-    if (res)                                                                                 /* check result */
+    if (res != 0)                                                                            /* check result */
     {
         handle->debug_print("pcf8591: write mode 2 register failed.\n");                     /* write mode 2 register failed */
         
@@ -1063,8 +1063,8 @@ uint8_t pca9685_set_output_driver(pca9685_handle_t *handle, pca9685_output_drive
  */
 uint8_t pca9685_get_output_driver(pca9685_handle_t *handle, pca9685_output_driver_t *driver)
 {
-    volatile uint8_t res;
-    volatile uint8_t prev;
+    uint8_t res;
+    uint8_t prev;
     
     if (handle == NULL)                                                                      /* check handle */
     {
@@ -1076,7 +1076,7 @@ uint8_t pca9685_get_output_driver(pca9685_handle_t *handle, pca9685_output_drive
     }
     
     res = handle->iic_read(handle->iic_addr, PCA9685_REG_MODE2, (uint8_t *)&prev, 1);        /* read mode 2 register */
-    if (res)                                                                                 /* check result */
+    if (res != 0)                                                                            /* check result */
     {
         handle->debug_print("pcf8591: read mode 2 register failed.\n");                      /* read mode 2 register failed */
         
@@ -1100,8 +1100,8 @@ uint8_t pca9685_get_output_driver(pca9685_handle_t *handle, pca9685_output_drive
  */
 uint8_t pca9685_set_output_disable_type(pca9685_handle_t *handle, pca9685_output_disable_type_t type)
 {
-    volatile uint8_t res;
-    volatile uint8_t prev;
+    uint8_t res;
+    uint8_t prev;
     
     if (handle == NULL)                                                                      /* check handle */
     {
@@ -1113,7 +1113,7 @@ uint8_t pca9685_set_output_disable_type(pca9685_handle_t *handle, pca9685_output
     }
     
     res = handle->iic_read(handle->iic_addr, PCA9685_REG_MODE2, (uint8_t *)&prev, 1);        /* read mode 2 register */
-    if (res)                                                                                 /* check result */
+    if (res != 0)                                                                            /* check result */
     {
         handle->debug_print("pcf8591: read mode 2 register failed.\n");                      /* read mode 2 register failed */
         
@@ -1122,7 +1122,7 @@ uint8_t pca9685_set_output_disable_type(pca9685_handle_t *handle, pca9685_output
     prev &= ~(3 << 0);                                                                       /* clear conf */
     prev |= type << 0;                                                                       /* set conf */
     res = handle->iic_write(handle->iic_addr, PCA9685_REG_MODE2, (uint8_t *)&prev, 1);       /* write mode 2 register */
-    if (res)                                                                                 /* check result */
+    if (res != 0)                                                                            /* check result */
     {
         handle->debug_print("pcf8591: write mode 2 register failed.\n");                     /* write mode 2 register failed */
         
@@ -1145,8 +1145,8 @@ uint8_t pca9685_set_output_disable_type(pca9685_handle_t *handle, pca9685_output
  */
 uint8_t pca9685_get_output_disable_type(pca9685_handle_t *handle, pca9685_output_disable_type_t *type)
 {
-    volatile uint8_t res;
-    volatile uint8_t prev;
+    uint8_t res;
+    uint8_t prev;
     
     if (handle == NULL)                                                                      /* check handle */
     {
@@ -1158,7 +1158,7 @@ uint8_t pca9685_get_output_disable_type(pca9685_handle_t *handle, pca9685_output
     }
     
     res = handle->iic_read(handle->iic_addr, PCA9685_REG_MODE2, (uint8_t *)&prev, 1);        /* read mode 2 register */
-    if (res)                                                                                 /* check result */
+    if (res != 0)                                                                            /* check result */
     {
         handle->debug_print("pcf8591: read mode 2 register failed.\n");                      /* read mode 2 register failed */
         
@@ -1182,7 +1182,7 @@ uint8_t pca9685_get_output_disable_type(pca9685_handle_t *handle, pca9685_output
  */
 uint8_t pca9685_set_subaddress_1(pca9685_handle_t *handle, uint8_t addr)
 {
-    volatile uint8_t res;
+    uint8_t res;
     
     if (handle == NULL)                                                                         /* check handle */
     {
@@ -1194,7 +1194,7 @@ uint8_t pca9685_set_subaddress_1(pca9685_handle_t *handle, uint8_t addr)
     }
     
     res = handle->iic_write(handle->iic_addr, PCA9685_REG_SUBADR1, (uint8_t *)&addr, 1);        /* write subaddress 1 register */
-    if (res)                                                                                    /* check result */
+    if (res != 0)                                                                               /* check result */
     {
         handle->debug_print("pcf8591: write subaddress 1 register failed.\n");                  /* write subaddress 1 register failed */
         
@@ -1217,7 +1217,7 @@ uint8_t pca9685_set_subaddress_1(pca9685_handle_t *handle, uint8_t addr)
  */
 uint8_t pca9685_get_subaddress_1(pca9685_handle_t *handle, uint8_t *addr)
 {
-    volatile uint8_t res;
+    uint8_t res;
     
     if (handle == NULL)                                                                       /* check handle */
     {
@@ -1229,7 +1229,7 @@ uint8_t pca9685_get_subaddress_1(pca9685_handle_t *handle, uint8_t *addr)
     }
     
     res = handle->iic_read(handle->iic_addr, PCA9685_REG_SUBADR1, (uint8_t *)addr, 1);        /* read subaddress 1 register */
-    if (res)                                                                                  /* check result */
+    if (res != 0)                                                                             /* check result */
     {
         handle->debug_print("pcf8591: read subaddress 1 register failed.\n");                 /* read subaddress 1 register failed */
         
@@ -1252,7 +1252,7 @@ uint8_t pca9685_get_subaddress_1(pca9685_handle_t *handle, uint8_t *addr)
  */
 uint8_t pca9685_set_subaddress_2(pca9685_handle_t *handle, uint8_t addr)
 {
-    volatile uint8_t res;
+    uint8_t res;
     
     if (handle == NULL)                                                                         /* check handle */
     {
@@ -1264,7 +1264,7 @@ uint8_t pca9685_set_subaddress_2(pca9685_handle_t *handle, uint8_t addr)
     }
     
     res = handle->iic_write(handle->iic_addr, PCA9685_REG_SUBADR2, (uint8_t *)&addr, 1);        /* write subaddress 2 register */
-    if (res)                                                                                    /* check result */
+    if (res != 0)                                                                               /* check result */
     {
         handle->debug_print("pcf8591: write subaddress 2 register failed.\n");                  /* write subaddress 2 register failed */
         
@@ -1287,7 +1287,7 @@ uint8_t pca9685_set_subaddress_2(pca9685_handle_t *handle, uint8_t addr)
  */
 uint8_t pca9685_get_subaddress_2(pca9685_handle_t *handle, uint8_t *addr)
 {
-    volatile uint8_t res;
+    uint8_t res;
     
     if (handle == NULL)                                                                       /* check handle */
     {
@@ -1299,7 +1299,7 @@ uint8_t pca9685_get_subaddress_2(pca9685_handle_t *handle, uint8_t *addr)
     }
     
     res = handle->iic_read(handle->iic_addr, PCA9685_REG_SUBADR2, (uint8_t *)addr, 1);        /* read subaddress 2 register */
-    if (res)                                                                                  /* check result */
+    if (res != 0)                                                                             /* check result */
     {
         handle->debug_print("pcf8591: read subaddress 2 register failed.\n");                 /* read subaddress 2 register failed */
         
@@ -1322,7 +1322,7 @@ uint8_t pca9685_get_subaddress_2(pca9685_handle_t *handle, uint8_t *addr)
  */
 uint8_t pca9685_set_subaddress_3(pca9685_handle_t *handle, uint8_t addr)
 {
-    volatile uint8_t res;
+    uint8_t res;
     
     if (handle == NULL)                                                                         /* check handle */
     {
@@ -1334,7 +1334,7 @@ uint8_t pca9685_set_subaddress_3(pca9685_handle_t *handle, uint8_t addr)
     }
     
     res = handle->iic_write(handle->iic_addr, PCA9685_REG_SUBADR3, (uint8_t *)&addr, 1);        /* write subaddress 3 register */
-    if (res)                                                                                    /* check result */
+    if (res != 0)                                                                               /* check result */
     {
         handle->debug_print("pcf8591: write subaddress 3 register failed.\n");                  /* write subaddress 3 register failed */
         
@@ -1357,7 +1357,7 @@ uint8_t pca9685_set_subaddress_3(pca9685_handle_t *handle, uint8_t addr)
  */
 uint8_t pca9685_get_subaddress_3(pca9685_handle_t *handle, uint8_t *addr)
 {
-    volatile uint8_t res;
+    uint8_t res;
     
     if (handle == NULL)                                                                       /* check handle */
     {
@@ -1369,7 +1369,7 @@ uint8_t pca9685_get_subaddress_3(pca9685_handle_t *handle, uint8_t *addr)
     }
     
     res = handle->iic_read(handle->iic_addr, PCA9685_REG_SUBADR3, (uint8_t *)addr, 1);        /* read subaddress 3 register */
-    if (res)                                                                                  /* check result */
+    if (res != 0)                                                                             /* check result */
     {
         handle->debug_print("pcf8591: read subaddress 3 register failed.\n");                 /* read subaddress 3 register failed */
         
@@ -1392,7 +1392,7 @@ uint8_t pca9685_get_subaddress_3(pca9685_handle_t *handle, uint8_t *addr)
  */
 uint8_t pca9685_set_all_call_address(pca9685_handle_t *handle, uint8_t addr)
 {
-    volatile uint8_t res;
+    uint8_t res;
     
     if (handle == NULL)                                                                            /* check handle */
     {
@@ -1404,7 +1404,7 @@ uint8_t pca9685_set_all_call_address(pca9685_handle_t *handle, uint8_t addr)
     }
     
     res = handle->iic_write(handle->iic_addr, PCA9685_REG_ALLCALLADR, (uint8_t *)&addr, 1);        /* write all call address register */
-    if (res)                                                                                       /* check result */
+    if (res != 0)                                                                                  /* check result */
     {
         handle->debug_print("pcf8591: write all call address register failed.\n");                 /* write all call address register failed */
         
@@ -1427,7 +1427,7 @@ uint8_t pca9685_set_all_call_address(pca9685_handle_t *handle, uint8_t addr)
  */
 uint8_t pca9685_get_all_call_address(pca9685_handle_t *handle, uint8_t *addr)
 {
-    volatile uint8_t res;
+    uint8_t res;
     
     if (handle == NULL)                                                                          /* check handle */
     {
@@ -1439,7 +1439,7 @@ uint8_t pca9685_get_all_call_address(pca9685_handle_t *handle, uint8_t *addr)
     }
     
     res = handle->iic_read(handle->iic_addr, PCA9685_REG_ALLCALLADR, (uint8_t *)addr, 1);        /* read all call address register */
-    if (res)                                                                                     /* check result */
+    if (res != 0)                                                                                /* check result */
     {
         handle->debug_print("pcf8591: read all call address register failed.\n");                /* read all call address register failed */
         
@@ -1465,8 +1465,8 @@ uint8_t pca9685_get_all_call_address(pca9685_handle_t *handle, uint8_t *addr)
  */
 uint8_t pca9685_write_channel(pca9685_handle_t *handle, pca9685_channel_t channel, uint16_t on_count, uint16_t off_count)
 {
-    volatile uint8_t res;
-    volatile uint8_t buf[4];
+    uint8_t res;
+    uint8_t buf[4];
     
     if (handle == NULL)                                                                                       /* check handle */
     {
@@ -1487,8 +1487,9 @@ uint8_t pca9685_write_channel(pca9685_handle_t *handle, pca9685_channel_t channe
     buf[1] = (on_count >> 8) & 0x1F;                                                                          /* set on count msb */
     buf[2] = (off_count >> 0) & 0xFF;                                                                         /* set off count lsb */
     buf[3] = (off_count >> 8) & 0x1F;                                                                         /* set off count msb */
-    res = handle->iic_write(handle->iic_addr, PCA9685_REG_LED0_ON_L + channel * 4, (uint8_t *)buf, 4);        /* write led register */
-    if (res)                                                                                                  /* check result */
+    res = handle->iic_write(handle->iic_addr, (uint8_t)(PCA9685_REG_LED0_ON_L + channel * 4), 
+                           (uint8_t *)buf, 4);                                                                /* write led register */
+    if (res != 0)                                                                                             /* check result */
     {
         handle->debug_print("pcf8591: write led register failed.\n");                                         /* write led register failed */
         
@@ -1513,8 +1514,8 @@ uint8_t pca9685_write_channel(pca9685_handle_t *handle, pca9685_channel_t channe
  */
 uint8_t pca9685_read_channel(pca9685_handle_t *handle, pca9685_channel_t channel, uint16_t *on_count, uint16_t *off_count)
 {
-    volatile uint8_t res;
-    volatile uint8_t buf[4];
+    uint8_t res;
+    uint8_t buf[4];
     
     if (handle == NULL)                                                                                      /* check handle */
     {
@@ -1525,8 +1526,10 @@ uint8_t pca9685_read_channel(pca9685_handle_t *handle, pca9685_channel_t channel
         return 3;                                                                                            /* return error */
     }
     
-    res = handle->iic_read(handle->iic_addr, PCA9685_REG_LED0_ON_L + channel * 4, (uint8_t *)buf, 4);        /* read led register */
-    if (res)                                                                                                 /* check result */
+    memset(buf, 0, sizeof(uint8_t) * 4);                                                                     /* clear the buffer */
+    res = handle->iic_read(handle->iic_addr, (uint8_t)(PCA9685_REG_LED0_ON_L + channel * 4),
+                          (uint8_t *)buf, 4);                                                                /* read led register */
+    if (res != 0)                                                                                            /* check result */
     {
         handle->debug_print("pcf8591: read led register failed.\n");                                         /* read led register failed */
         
@@ -1553,8 +1556,8 @@ uint8_t pca9685_read_channel(pca9685_handle_t *handle, pca9685_channel_t channel
  */
 uint8_t pca9685_write_all_channel(pca9685_handle_t *handle, uint16_t on_count, uint16_t off_count)
 {
-    volatile uint8_t res;
-    volatile uint8_t buf[4];
+    uint8_t res;
+    uint8_t buf[4];
     
     if (handle == NULL)                                                                            /* check handle */
     {
@@ -1576,7 +1579,7 @@ uint8_t pca9685_write_all_channel(pca9685_handle_t *handle, uint16_t on_count, u
     buf[2] = (off_count >> 0) & 0xFF;                                                              /* set off count lsb */
     buf[3] = (off_count >> 8) & 0x1F;                                                              /* set off count msb */
     res = handle->iic_write(handle->iic_addr, PCA9685_REG_ALL_LED_ON_L, (uint8_t *)buf, 4);        /* write all led register */
-    if (res)                                                                                       /* check result */
+    if (res != 0)                                                                                  /* check result */
     {
         handle->debug_print("pcf8591: write all led register failed.\n");                          /* write all led register failed */
         
@@ -1600,7 +1603,7 @@ uint8_t pca9685_write_all_channel(pca9685_handle_t *handle, uint16_t on_count, u
  */
 uint8_t pca9685_set_prescaler(pca9685_handle_t *handle, uint8_t prescaler)
 {
-    volatile uint8_t res;
+    uint8_t res;
     
     if (handle == NULL)                                                                                /* check handle */
     {
@@ -1618,7 +1621,7 @@ uint8_t pca9685_set_prescaler(pca9685_handle_t *handle, uint8_t prescaler)
     }
     
     res = handle->iic_write(handle->iic_addr, PCA9685_REG_PRE_SCALE, (uint8_t *)&prescaler, 1);        /* write prescaler register */
-    if (res)                                                                                           /* check result */
+    if (res != 0)                                                                                      /* check result */
     {
         handle->debug_print("pcf8591: write prescaler register failed.\n");                            /* write prescaler register failed */
         
@@ -1641,7 +1644,7 @@ uint8_t pca9685_set_prescaler(pca9685_handle_t *handle, uint8_t prescaler)
  */
 uint8_t pca9685_get_prescaler(pca9685_handle_t *handle, uint8_t *prescaler)
 {
-    volatile uint8_t res;
+    uint8_t res;
     
     if (handle == NULL)                                                                              /* check handle */
     {
@@ -1653,7 +1656,7 @@ uint8_t pca9685_get_prescaler(pca9685_handle_t *handle, uint8_t *prescaler)
     }
     
     res = handle->iic_read(handle->iic_addr, PCA9685_REG_PRE_SCALE, (uint8_t *)prescaler, 1);        /* read prescaler register */
-    if (res)                                                                                         /* check result */
+    if (res != 0)                                                                                    /* check result */
     {
         handle->debug_print("pcf8591: read prescaler register failed.\n");                           /* read prescaler register failed */
         
@@ -1810,7 +1813,7 @@ uint8_t pca9685_pwm_convert_to_data(pca9685_handle_t *handle, uint16_t on_count,
  */
 uint8_t pca9685_init(pca9685_handle_t *handle)
 {
-    volatile uint8_t res, prev;
+    uint8_t res, prev;
     
     if (handle == NULL)                                                                           /* check handle */
     {
@@ -1863,38 +1866,38 @@ uint8_t pca9685_init(pca9685_handle_t *handle)
         return 3;                                                                                 /* return error */
     }
     
-    if (handle->iic_init())                                                                       /* iic init */
+    if (handle->iic_init() != 0)                                                                  /* iic init */
     {
         handle->debug_print("pca9685: iic init failed.\n");                                       /* iic init failed */
         
         return 1;                                                                                 /* return error */
     }
-    if (handle->oe_gpio_init())                                                                   /* oe gpio init */
+    if (handle->oe_gpio_init() != 0)                                                              /* oe gpio init */
     {
         handle->debug_print("pca9685: oe gpio init failed.\n");                                   /* oe gpio init failed */
-        handle->iic_deinit();                                                                     /* iic deinit */
+        (void)handle->iic_deinit();                                                               /* iic deinit */
         
         return 1;                                                                                 /* return error */
     }
     
     res = handle->iic_read(handle->iic_addr, PCA9685_REG_MODE1, (uint8_t *)&prev, 1);             /* read mode 1 register */
-    if (res)                                                                                      /* check result */
+    if (res != 0)                                                                                 /* check result */
     {
         handle->debug_print("pcf8591: read mode 1 register failed.\n");                           /* read mode 1 register failed */
-        handle->oe_gpio_deinit();                                                                 /* oe gpio deinit */
-        handle->iic_deinit();                                                                     /* iic deinit */
+        (void)handle->oe_gpio_deinit();                                                           /* oe gpio deinit */
+        (void)handle->iic_deinit();                                                               /* iic deinit */
         
         return 4;                                                                                 /* return error */
     }
-    if (prev & 0x80)                                                                              /* check reset bit */
+    if ((prev & 0x80) != 0)                                                                       /* check reset bit */
     {
         prev &= ~(1 << 4);                                                                        /* clear sleep bit */
         res = handle->iic_write(handle->iic_addr, PCA9685_REG_MODE1, (uint8_t *)&prev, 1);        /* write mode 1 register */
-        if (res)                                                                                  /* check result */
+        if (res != 0)                                                                             /* check result */
         {
             handle->debug_print("pcf8591: write mode 1 register failed.\n");                      /* write mode 1 register failed */
-            handle->oe_gpio_deinit();                                                             /* oe gpio deinit */
-            handle->iic_deinit();                                                                 /* iic deinit */
+            (void)handle->oe_gpio_deinit();                                                       /* oe gpio deinit */
+            (void)handle->iic_deinit();                                                           /* iic deinit */
             
             return 4;                                                                             /* return error */
         }
@@ -1904,11 +1907,11 @@ uint8_t pca9685_init(pca9685_handle_t *handle)
     prev &= ~(1 << 6);                                                                            /* clear extern clock bit */
     prev &= ~(1 << 4);                                                                            /* clear sleep bit */
     res = handle->iic_write(handle->iic_addr, PCA9685_REG_MODE1, (uint8_t *)&prev, 1);            /* write mode 1 register */
-    if (res)                                                                                      /* check result */
+    if (res != 0)                                                                                 /* check result */
     {
         handle->debug_print("pcf8591: write mode 1 register failed.\n");                          /* write mode 1 register failed */
-        handle->oe_gpio_deinit();                                                                 /* oe gpio deinit */
-        handle->iic_deinit();                                                                     /* iic deinit */
+        (void)handle->oe_gpio_deinit();                                                           /* oe gpio deinit */
+        (void)handle->iic_deinit();                                                               /* iic deinit */
         
         return 4;                                                                                 /* return error */
     }
@@ -1931,7 +1934,7 @@ uint8_t pca9685_init(pca9685_handle_t *handle)
  */
 uint8_t pca9685_deinit(pca9685_handle_t *handle)
 {
-    volatile uint8_t res, prev;
+    uint8_t res, prev;
     
     if (handle == NULL)                                                                           /* check handle */
     {
@@ -1943,7 +1946,7 @@ uint8_t pca9685_deinit(pca9685_handle_t *handle)
     }
     
     res = handle->iic_read(handle->iic_addr, PCA9685_REG_MODE1, (uint8_t *)&prev, 1);             /* read mode 1 register */
-    if (res)                                                                                      /* check result */
+    if (res != 0)                                                                                 /* check result */
     {
         handle->debug_print("pcf8591: power down failed failed.\n");                              /* power down failed */
         
@@ -1951,19 +1954,19 @@ uint8_t pca9685_deinit(pca9685_handle_t *handle)
     }
     prev |= (1 << 4);                                                                             /* set sleep bit */
     res = handle->iic_write(handle->iic_addr, PCA9685_REG_MODE1, (uint8_t *)&prev, 1);            /* write mode 1 register */
-    if (res)                                                                                      /* check result */
+    if (res != 0)                                                                                 /* check result */
     {
         handle->debug_print("pcf8591: power down failed failed.\n");                              /* power down failed */
         
         return 1;                                                                                 /* return error */
     }
-    if (handle->oe_gpio_deinit())                                                                 /* oe gpio deinit */
+    if (handle->oe_gpio_deinit() != 0)                                                            /* oe gpio deinit */
     {
         handle->debug_print("pcf8591: oe gpio deinit failed.\n");                                 /* oe gpio deinit failed */
         
         return 2;                                                                                 /* return error */
     }
-    if (handle->iic_deinit())                                                                     /* iic deinit */
+    if (handle->iic_deinit() != 0)                                                                /* iic deinit */
     {
         handle->debug_print("pcf8591: iic deinit failed.\n");                                     /* iic deinit failed */
         
@@ -1998,7 +2001,14 @@ uint8_t pca9685_set_reg(pca9685_handle_t *handle, uint8_t reg, uint8_t *buf, uin
         return 3;                                                     /* return error */
     } 
     
-    return handle->iic_write(handle->iic_addr, reg, buf, len);        /* write data */
+    if (handle->iic_write(handle->iic_addr, reg, buf, len) != 0)      /* write data */
+    {
+        return 1;                                                     /* return error */
+    }
+    else
+    {
+        return 0;                                                     /* success return 0 */
+    }
 }
 
 /**
@@ -2025,7 +2035,14 @@ uint8_t pca9685_get_reg(pca9685_handle_t *handle, uint8_t reg, uint8_t *buf, uin
         return 3;                                                    /* return error */
     } 
     
-    return handle->iic_read(handle->iic_addr, reg, buf, len);        /* read data */
+    if (handle->iic_read(handle->iic_addr, reg, buf, len) != 0)      /* read data */
+    {
+        return 1;                                                    /* return error */
+    }
+    else
+    {
+        return 0;                                                    /* success return 0 */
+    }
 }
 
 /**

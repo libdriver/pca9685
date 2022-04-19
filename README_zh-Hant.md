@@ -1,4 +1,4 @@
-[English](/README.md) | [ 简体中文](/README_zh-Hans.md) | [繁體中文](/README_zh-Hant.md)
+[English](/README.md) | [ 简体中文](/README_zh-Hans.md) | [繁體中文](/README_zh-Hant.md) | [日本語](/README_ja.md) | [Deutsch](/README_de.md) | [한국어](/README_ko.md)
 
 <div align=center>
 <img src="/doc/image/logo.png"/>
@@ -6,11 +6,11 @@
 
 ## LibDriver PCA9685
 
-[![API](https://img.shields.io/badge/api-reference-blue)](https://www.libdriver.com/docs/pca9685/index.html) [![License](https://img.shields.io/badge/license-MIT-brightgreen.svg)](/LICENSE)
+[![MISRA](https://img.shields.io/badge/misra-compliant-brightgreen.svg)](/misra/README.md) [![API](https://img.shields.io/badge/api-reference-blue.svg)](https://www.libdriver.com/docs/pca9685/index.html) [![License](https://img.shields.io/badge/license-MIT-brightgreen.svg)](/LICENSE)
 
 PCA9685是一款由I²C總線控制的16通道LED控制器，最適合紅色/綠色/藍色/琥珀色(RGBA)彩色背光應用。每個LED輸出各自帶有12位分辨率(4096級)固定頻率的獨立PWM控制器，該控制器工作在24 Hz至1526 Hz的可編程頻率範圍內，佔空比從0 %至100 %可調，允許將LED設為特定的亮度值。所有輸出均設為相同的PWM頻率。每個LED輸出可以是關、開(無PWM控制)或按獨立PWM控制器的值設置。 LED輸出驅動器可編程為開漏極或圖騰柱，5 V情況下開漏極具有25 mA的灌電流能力，圖騰柱具有25 mA灌電流、10 mA拉電流能力。 PCA9685的工作電源電壓範圍為2.3 V至5.5 V，輸入和輸出容許5.5 V的電壓。 LED可直接連接至LED輸出(最高25 mA，5.5 V)，或通過外部驅動器和最少量的分離組件(用於更大電流或更高電壓的LED)控制。它可用於 RGB 或 RGBA LED 驅動器、LED 狀態信息、LED 顯示器、LCD 背光、蜂窩電話或手持設備的鍵盤背光等。
 
-LibDriver PCA9685是LibDriver推出的PCA9685的全功能驅動，該驅動提供PWM輸出等功能。
+LibDriver PCA9685是LibDriver推出的PCA9685的全功能驅動，該驅動提供PWM輸出等功能並且它符合MISRA標準。
 
 ### 目錄
 
@@ -50,8 +50,8 @@ LibDriver PCA9685是LibDriver推出的PCA9685的全功能驅動，該驅動提�
 #### example basic
 
 ```C
-volatile uint8_t res;
-volatile uint32_t i, times;
+uint8_t res;
+uint32_t i, times;
 pca9685_address_t address;
 pca9685_channel_t channel;
 
@@ -60,7 +60,7 @@ channel = PCA9685_CHANNEL_0;
 times = 10;
 
 res = pca9685_basic_init(address, 50);
-if (res)
+if (res != 0)
 {
     return 1;
 }
@@ -70,9 +70,9 @@ if (res)
 for (i = 1; i < times + 1; i++)
 {
     res = pca9685_basic_write(channel, 0.0f, 2.5f + (float)(i) / (float)(times) * 10.0f);
-    if (res)
+    if (res != 0)
     {
-        pca9685_basic_deinit();
+        (void)pca9685_basic_deinit();
 
         return 1;
     }
@@ -86,7 +86,7 @@ for (i = 1; i < times + 1; i++)
 
 ...
 
-pca9685_basic_deinit();
+(void)pca9685_basic_deinit();
 
 return 0;
 ```

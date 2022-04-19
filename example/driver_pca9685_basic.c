@@ -49,8 +49,8 @@ static pca9685_handle_t gs_handle;        /**< pca9685 handle */
  */
 uint8_t pca9685_basic_init(pca9685_address_t addr, uint16_t hz)
 {
-    volatile uint8_t res;
-    volatile uint8_t reg;
+    uint8_t res;
+    uint8_t reg;
     
     /* link interface function */
     DRIVER_PCA9685_LINK_INIT(&gs_handle, pca9685_handle_t);
@@ -66,7 +66,7 @@ uint8_t pca9685_basic_init(pca9685_address_t addr, uint16_t hz)
     
     /* set addr pin */
     res = pca9685_set_addr_pin(&gs_handle, addr);
-    if (res)
+    if (res != 0)
     {
         pca9685_interface_debug_print("pca9685: set addr pin failed.\n");
         
@@ -75,7 +75,7 @@ uint8_t pca9685_basic_init(pca9685_address_t addr, uint16_t hz)
     
     /* pca9685 init */
     res = pca9685_init(&gs_handle);
-    if (res)
+    if (res != 0)
     {
         pca9685_interface_debug_print("pca9685: init failed.\n");
         
@@ -84,200 +84,200 @@ uint8_t pca9685_basic_init(pca9685_address_t addr, uint16_t hz)
     
     /* inactive */
     res = pca9685_set_active(&gs_handle, PCA9685_BOOL_FALSE);
-    if (res)
+    if (res != 0)
     {
         pca9685_interface_debug_print("pca9685: set active failed.\n");
-        pca9685_deinit(&gs_handle);
+        (void)pca9685_deinit(&gs_handle);
         
         return 1;
     }
     
     /* set sleep mode */
     res = pca9685_set_sleep_mode(&gs_handle, PCA9685_BOOL_TRUE);
-    if (res)
+    if (res != 0)
     {
         pca9685_interface_debug_print("pca9685: set sleep mode failed.\n");
-        pca9685_deinit(&gs_handle);
+        (void)pca9685_deinit(&gs_handle);
         
         return 1;
     }
     
     /* set frequency */
     res = pca9685_output_frequency_convert_to_register(&gs_handle, PCA9685_OSCILLATOR_INTERNAL_FREQUENCY, hz, (uint8_t *)&reg);
-    if (res)
+    if (res != 0)
     {
         pca9685_interface_debug_print("pca9685: output frequency convert to register failed.\n");
-        pca9685_deinit(&gs_handle);
+        (void)pca9685_deinit(&gs_handle);
         
         return 1;
     }
     
     /* set prescaler */
     res = pca9685_set_prescaler(&gs_handle, reg);
-    if (res)
+    if (res != 0)
     {
         pca9685_interface_debug_print("pca9685: set prescaler failed.\n");
-        pca9685_deinit(&gs_handle);
+        (void)pca9685_deinit(&gs_handle);
         
         return 1;
     }
     
     /* disable external clock pin */
     res = pca9685_set_external_clock_pin(&gs_handle, PCA9685_BOOL_FALSE);
-    if (res)
+    if (res != 0)
     {
         pca9685_interface_debug_print("pca9685: set external clock pin failed.\n");
-        pca9685_deinit(&gs_handle);
+        (void)pca9685_deinit(&gs_handle);
         
         return 1;
     }
     
     /* enable auto increment */
     res = pca9685_set_register_auto_increment(&gs_handle, PCA9685_BOOL_TRUE);
-    if (res)
+    if (res != 0)
     {
         pca9685_interface_debug_print("pca9685: set register auto increment failed.\n");
-        pca9685_deinit(&gs_handle);
+        (void)pca9685_deinit(&gs_handle);
         
         return 1;
     }
     
     /* set respond subaddress 1 */
     res = pca9685_set_respond_subaddress_1(&gs_handle, PCA9685_BASIC_DEFAULT_RESPOND_SUBADDRESS_1);
-    if (res)
+    if (res != 0)
     {
         pca9685_interface_debug_print("pca9685: set respond subaddress 1 failed.\n");
-        pca9685_deinit(&gs_handle);
+        (void)pca9685_deinit(&gs_handle);
         
         return 1;
     }
     
     /* set respond subaddress 2 */
     res = pca9685_set_respond_subaddress_2(&gs_handle, PCA9685_BASIC_DEFAULT_RESPOND_SUBADDRESS_2);
-    if (res)
+    if (res != 0)
     {
         pca9685_interface_debug_print("pca9685: set respond subaddress 2 failed.\n");
-        pca9685_deinit(&gs_handle);
+        (void)pca9685_deinit(&gs_handle);
         
         return 1;
     }
     
     /* set respond subaddress 3 */
     res = pca9685_set_respond_subaddress_3(&gs_handle, PCA9685_BASIC_DEFAULT_RESPOND_SUBADDRESS_2);
-    if (res)
+    if (res != 0)
     {
         pca9685_interface_debug_print("pca9685: set respond subaddress 3 failed.\n");
-        pca9685_deinit(&gs_handle);
+        (void)pca9685_deinit(&gs_handle);
         
         return 1;
     }
     
     /* set respond all call */
     res = pca9685_set_respond_all_call(&gs_handle, PCA9685_BASIC_DEFAULT_RESPOND_ALL_CALL);
-    if (res)
+    if (res != 0)
     {
         pca9685_interface_debug_print("pca9685: set respond all call failed.\n");
-        pca9685_deinit(&gs_handle);
+        (void)pca9685_deinit(&gs_handle);
         
         return 1;
     }
     
     /* set output invert */
     res = pca9685_set_output_invert(&gs_handle, PCA9685_BASIC_DEFAULT_OUTPUT_INVERT);
-    if (res)
+    if (res != 0)
     {
         pca9685_interface_debug_print("pca9685: set output invert failed.\n");
-        pca9685_deinit(&gs_handle);
+        (void)pca9685_deinit(&gs_handle);
         
         return 1;
     }
     
     /* stop output change */
     res = pca9685_set_output_change(&gs_handle, PCA9685_BASIC_DEFAULT_OUTPUT_CHANGE);
-    if (res)
+    if (res != 0)
     {
         pca9685_interface_debug_print("pca9685: set output change failed.\n");
-        pca9685_deinit(&gs_handle);
+        (void)pca9685_deinit(&gs_handle);
         
         return 1;
     }
     
     /* set output driver */
     res = pca9685_set_output_driver(&gs_handle, PCA9685_BASIC_DEFAULT_OUTPUT_DRIVER);
-    if (res)
+    if (res != 0)
     {
         pca9685_interface_debug_print("pca9685: set output driver failed.\n");
-        pca9685_deinit(&gs_handle);
+        (void)pca9685_deinit(&gs_handle);
         
         return 1;
     }
     
     /* set output disable type */
     res = pca9685_set_output_disable_type(&gs_handle, PCA9685_OUTPUT_DISABLE_TYPE_HIGH_IMPEDANCE);
-    if (res)
+    if (res != 0)
     {
         pca9685_interface_debug_print("pca9685: set output disable type failed.\n");
-        pca9685_deinit(&gs_handle);
+        (void)pca9685_deinit(&gs_handle);
         
         return 1;
     }
     
     /* set subaddress 1 */
     res = pca9685_set_subaddress_1(&gs_handle, PCA9685_BASIC_DEFAULT_SUBADDRESS_1);
-    if (res)
+    if (res != 0)
     {
         pca9685_interface_debug_print("pca9685: set subaddress 1 failed.\n");
-        pca9685_deinit(&gs_handle);
+        (void)pca9685_deinit(&gs_handle);
         
         return 1;
     }
     
     /* set subaddress 2 */
     res = pca9685_set_subaddress_2(&gs_handle, PCA9685_BASIC_DEFAULT_SUBADDRESS_2);
-    if (res)
+    if (res != 0)
     {
         pca9685_interface_debug_print("pca9685: set subaddress 2 failed.\n");
-        pca9685_deinit(&gs_handle);
+        (void)pca9685_deinit(&gs_handle);
         
         return 1;
     }
     
     /* set subaddress 3 */
     res = pca9685_set_subaddress_3(&gs_handle, PCA9685_BASIC_DEFAULT_SUBADDRESS_3);
-    if (res)
+    if (res != 0)
     {
         pca9685_interface_debug_print("pca9685: set subaddress 3 failed.\n");
-        pca9685_deinit(&gs_handle);
+        (void)pca9685_deinit(&gs_handle);
         
         return 1;
     }
     
     /* set all call address */
     res = pca9685_set_all_call_address(&gs_handle, PCA9685_BASIC_DEFAULT_ALL_CALL_ADDRESS);
-    if (res)
+    if (res != 0)
     {
         pca9685_interface_debug_print("pca9685: set all call address failed.\n");
-        pca9685_deinit(&gs_handle);
+        (void)pca9685_deinit(&gs_handle);
         
         return 1;
     }
     
     /* set sleep mode */
     res = pca9685_set_sleep_mode(&gs_handle, PCA9685_BOOL_FALSE);
-    if (res)
+    if (res != 0)
     {
         pca9685_interface_debug_print("pca9685: set sleep mode failed.\n");
-        pca9685_deinit(&gs_handle);
+        (void)pca9685_deinit(&gs_handle);
         
         return 1;
     }
     
     /* active */
     res = pca9685_set_active(&gs_handle, PCA9685_BOOL_TRUE);
-    if (res)
+    if (res != 0)
     {
         pca9685_interface_debug_print("pca9685: set active failed.\n");
-        pca9685_deinit(&gs_handle);
+        (void)pca9685_deinit(&gs_handle);
         
         return 1;
     }
@@ -294,21 +294,20 @@ uint8_t pca9685_basic_init(pca9685_address_t addr, uint16_t hz)
  */
 uint8_t pca9685_basic_deinit(void)
 {
-    volatile uint8_t res;
+    uint8_t res;
     
     /* inactive */
     res = pca9685_set_active(&gs_handle, PCA9685_BOOL_FALSE);
-    if (res)
+    if (res != 0)
     {
         pca9685_interface_debug_print("pca9685: set active failed.\n");
-        pca9685_deinit(&gs_handle);
         
         return 1;
     }
     
     /* deinit */
     res = pca9685_deinit(&gs_handle);
-    if (res)
+    if (res != 0)
     {
         return 1;
     }
@@ -332,26 +331,20 @@ uint8_t pca9685_basic_deinit(void)
  */
 uint8_t pca9685_basic_write(pca9685_channel_t channel, float delay_percent, float high_duty_cycle_percent)
 {
-    volatile uint8_t res;
-    volatile uint16_t on_count, off_count;
+    uint8_t res;
+    uint16_t on_count, off_count;
     
     /* convert data */
     res = pca9685_pwm_convert_to_register(&gs_handle, delay_percent, high_duty_cycle_percent, (uint16_t *)&on_count, (uint16_t *)&off_count);
-    if (res)
+    if (res != 0)
     {
-        pca9685_interface_debug_print("pca9685: convert to register failed.\n");
-        pca9685_deinit(&gs_handle);
-        
         return 1;
     }
     
     /* write channel */
     res = pca9685_write_channel(&gs_handle, channel, on_count, off_count);
-    if (res)
+    if (res != 0)
     {
-        pca9685_interface_debug_print("pca9685: write channel failed.\n");
-        pca9685_deinit(&gs_handle);
-        
         return 1;
     }
     

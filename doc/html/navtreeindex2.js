@@ -17,7 +17,7 @@ var NAVTREEINDEX2 =
 "structpca9685__handle__s.html#a19bedf28d2b9748f6a62d9ae93f4e68f":[0,0,1,0,7],
 "structpca9685__handle__s.html#a406c9433252b7366de417b7a60915c81":[0,0,1,0,1],
 "structpca9685__handle__s.html#a5b1dc92e4696be54ec674f74687cad95":[0,0,1,0,9],
-"structpca9685__handle__s.html#a75f9f50c23e87e9407f9ec4e34bb42f2":[0,0,1,0,0],
+"structpca9685__handle__s.html#a769d5b3a6c14790a0e126e8fe70b384b":[0,0,1,0,0],
 "structpca9685__handle__s.html#a8826dd07625f8d90859ce9bd09628d61":[0,0,1,0,4],
 "structpca9685__handle__s.html#acebea25eb92c37977c26ff93417cbbc4":[0,0,1,0,8],
 "structpca9685__handle__s.html#aced1999518e2ad7e4631f458f1670780":[0,0,1,0,10],
