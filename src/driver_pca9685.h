@@ -34,8 +34,8 @@
  * </table>
  */
 
-#ifndef _DRIVER_PCA9685_H_
-#define _DRIVER_PCA9685_H_
+#ifndef DRIVER_PCA9685_H
+#define DRIVER_PCA9685_H
 
 #include <stdio.h>
 #include <stdint.h>
@@ -209,7 +209,7 @@ typedef struct pca9685_handle_s
     uint8_t (*oe_gpio_deinit)(void);                                                    /**< point to a oe_gpio_deinit function address */
     uint8_t (*oe_gpio_write)(uint8_t value);                                            /**< point to a oe_gpio_write function address */
     void (*delay_ms)(uint32_t ms);                                                      /**< point to a delay_ms function address */
-    uint16_t (*debug_print)(char *fmt, ...);                                            /**< point to a debug_print function address */
+    void (*debug_print)(const char *const fmt, ...);                                    /**< point to a debug_print function address */
     uint8_t inited;                                                                     /**< inited flag */
 } pca9685_handle_t;
 

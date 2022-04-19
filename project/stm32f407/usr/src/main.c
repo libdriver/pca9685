@@ -141,7 +141,7 @@ uint8_t pca9685(uint8_t argc, char **argv)
                 address = (pca9685_address_t)atoi(argv[4]);
                 
                 /* run reg test */
-                if (pca9685_register_test(address))
+                if (pca9685_register_test(address) != 0)
                 {
                     return 1;
                 }
@@ -199,7 +199,7 @@ uint8_t pca9685(uint8_t argc, char **argv)
                 channel = (pca9685_channel_t)(atoi(argv[7]));
         
                 /* run write test */
-                if (pca9685_servo_write_test(address, channel, atoi(argv[3])))
+                if (pca9685_servo_write_test(address, channel, atoi(argv[3])) != 0)
                 {
                     return 1;
                 }
@@ -220,8 +220,8 @@ uint8_t pca9685(uint8_t argc, char **argv)
             /* write function */
             if (strcmp("write", argv[2]) == 0)
             {
-                volatile uint8_t res;
-                volatile uint32_t i, times;
+                uint8_t res;
+                uint32_t i, times;
                 pca9685_address_t address;
                 pca9685_channel_t channel;
                 
@@ -250,7 +250,7 @@ uint8_t pca9685(uint8_t argc, char **argv)
                 times = atoi(argv[3]);
                 
                 res = pca9685_basic_init(address, 50);
-                if (res)
+                if (res != 0)
                 {
                     return 1;
                 }
@@ -258,9 +258,9 @@ uint8_t pca9685(uint8_t argc, char **argv)
                 {
                     /* write data */
                     res = pca9685_basic_write(channel, 0.0f, 2.5f + (float)(i) / (float)(times) * 10.0f);
-                    if (res)
+                    if (res != 0)
                     {
-                        pca9685_basic_deinit();
+                        (void)pca9685_basic_deinit();
                         
                         return 1;
                     }
@@ -299,7 +299,7 @@ uint8_t pca9685(uint8_t argc, char **argv)
  */
 int main(void)
 {
-    volatile uint8_t res;
+    uint8_t res;
     
     /* stm32f407 clock init and hal init */
     clock_init();

@@ -34,8 +34,8 @@
  * </table>
  */
 
-#ifndef _DRIVER_PCA9685_INTERFACE_H_
-#define _DRIVER_PCA9685_INTERFACE_H_
+#ifndef DRIVER_PCA9685_INTERFACE_H
+#define DRIVER_PCA9685_INTERFACE_H
 
 #include "driver_pca9685.h"
 
@@ -132,10 +132,9 @@ void pca9685_interface_delay_ms(uint32_t ms);
 /**
  * @brief     interface print format data
  * @param[in] fmt is the format data
- * @return    length of the send data
  * @note      none
  */
-uint16_t pca9685_interface_debug_print(char *fmt, ...);
+void pca9685_interface_debug_print(const char *const fmt, ...);
 
 /**
  * @}

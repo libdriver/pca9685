@@ -34,8 +34,8 @@
  * </table>
  */
 
-#ifndef _DRIVER_PCA9685_REGISTER_TEST_H_
-#define _DRIVER_PCA9685_REGISTER_TEST_H_
+#ifndef DRIVER_PCA9685_REGISTER_TEST_H
+#define DRIVER_PCA9685_REGISTER_TEST_H
 
 #include "driver_pca9685_interface.h"
 
