@@ -300,8 +300,6 @@ uint8_t pca9685_basic_deinit(void)
     res = pca9685_set_active(&gs_handle, PCA9685_BOOL_FALSE);
     if (res != 0)
     {
-        pca9685_interface_debug_print("pca9685: set active failed.\n");
-        
         return 1;
     }
     

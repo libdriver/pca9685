@@ -338,44 +338,42 @@ $(document).ready(function(){initNavTree('driver__pca9685__basic_8c_source.html'
 <div class="line"><a name="l00300"></a><span class="lineno">  300</span>&#160;    res = <a class="code" href="group__pca9685__base__driver.html#ga4368b3f7ec9db9155f4e1196396d4353">pca9685_set_active</a>(&amp;gs_handle, <a class="code" href="group__pca9685__base__driver.html#gga0ea356b77526e2daa2202772c9f25a3aa0e41dfcbc8edb0feb95f81477b5525d5">PCA9685_BOOL_FALSE</a>);</div>
 <div class="line"><a name="l00301"></a><span class="lineno">  301</span>&#160;    <span class="keywordflow">if</span> (res != 0)</div>
 <div class="line"><a name="l00302"></a><span class="lineno">  302</span>&#160;    {</div>
-<div class="line"><a name="l00303"></a><span class="lineno">  303</span>&#160;        <a class="code" href="group__pca9685__interface__driver.html#gaded79ad9a87d05eb690fced05aa6243f">pca9685_interface_debug_print</a>(<span class="stringliteral">&quot;pca9685: set active failed.\n&quot;</span>);</div>
-<div class="line"><a name="l00304"></a><span class="lineno">  304</span>&#160;        </div>
-<div class="line"><a name="l00305"></a><span class="lineno">  305</span>&#160;        <span class="keywordflow">return</span> 1;</div>
-<div class="line"><a name="l00306"></a><span class="lineno">  306</span>&#160;    }</div>
-<div class="line"><a name="l00307"></a><span class="lineno">  307</span>&#160;    </div>
-<div class="line"><a name="l00308"></a><span class="lineno">  308</span>&#160;    <span class="comment">/* deinit */</span></div>
-<div class="line"><a name="l00309"></a><span class="lineno">  309</span>&#160;    res = <a class="code" href="group__pca9685__base__driver.html#gaee1e63e56cfea0485102d56b9962bc5a">pca9685_deinit</a>(&amp;gs_handle);</div>
-<div class="line"><a name="l00310"></a><span class="lineno">  310</span>&#160;    <span class="keywordflow">if</span> (res != 0)</div>
-<div class="line"><a name="l00311"></a><span class="lineno">  311</span>&#160;    {</div>
-<div class="line"><a name="l00312"></a><span class="lineno">  312</span>&#160;        <span class="keywordflow">return</span> 1;</div>
-<div class="line"><a name="l00313"></a><span class="lineno">  313</span>&#160;    }</div>
-<div class="line"><a name="l00314"></a><span class="lineno">  314</span>&#160;    <span class="keywordflow">else</span></div>
-<div class="line"><a name="l00315"></a><span class="lineno">  315</span>&#160;    {</div>
-<div class="line"><a name="l00316"></a><span class="lineno">  316</span>&#160;        <span class="keywordflow">return</span> 0;</div>
-<div class="line"><a name="l00317"></a><span class="lineno">  317</span>&#160;    }</div>
-<div class="line"><a name="l00318"></a><span class="lineno">  318</span>&#160;}</div>
-<div class="line"><a name="l00319"></a><span class="lineno">  319</span>&#160; </div>
-<div class="line"><a name="l00332"></a><span class="lineno"><a class="line" href="group__pca9685__example__driver.html#gae8741e38c2ebd99c54f9666e64838ecd">  332</a></span>&#160;uint8_t <a class="code" href="group__pca9685__example__driver.html#gae8741e38c2ebd99c54f9666e64838ecd">pca9685_basic_write</a>(<a class="code" href="group__pca9685__base__driver.html#gab2422a1507d8ad709c5a7dd83fcf526c">pca9685_channel_t</a> channel, <span class="keywordtype">float</span> delay_percent, <span class="keywordtype">float</span> high_duty_cycle_percent)</div>
-<div class="line"><a name="l00333"></a><span class="lineno">  333</span>&#160;{</div>
-<div class="line"><a name="l00334"></a><span class="lineno">  334</span>&#160;    uint8_t res;</div>
-<div class="line"><a name="l00335"></a><span class="lineno">  335</span>&#160;    uint16_t on_count, off_count;</div>
-<div class="line"><a name="l00336"></a><span class="lineno">  336</span>&#160;    </div>
-<div class="line"><a name="l00337"></a><span class="lineno">  337</span>&#160;    <span class="comment">/* convert data */</span></div>
-<div class="line"><a name="l00338"></a><span class="lineno">  338</span>&#160;    res = <a class="code" href="group__pca9685__base__driver.html#ga04bb264778e4ff7dcbbb777a9867f22d">pca9685_pwm_convert_to_register</a>(&amp;gs_handle, delay_percent, high_duty_cycle_percent, (uint16_t *)&amp;on_count, (uint16_t *)&amp;off_count);</div>
-<div class="line"><a name="l00339"></a><span class="lineno">  339</span>&#160;    <span class="keywordflow">if</span> (res != 0)</div>
-<div class="line"><a name="l00340"></a><span class="lineno">  340</span>&#160;    {</div>
-<div class="line"><a name="l00341"></a><span class="lineno">  341</span>&#160;        <span class="keywordflow">return</span> 1;</div>
-<div class="line"><a name="l00342"></a><span class="lineno">  342</span>&#160;    }</div>
-<div class="line"><a name="l00343"></a><span class="lineno">  343</span>&#160;    </div>
-<div class="line"><a name="l00344"></a><span class="lineno">  344</span>&#160;    <span class="comment">/* write channel */</span></div>
-<div class="line"><a name="l00345"></a><span class="lineno">  345</span>&#160;    res = <a class="code" href="group__pca9685__base__driver.html#ga075e19d832199135dad43db034df3da3">pca9685_write_channel</a>(&amp;gs_handle, channel, on_count, off_count);</div>
-<div class="line"><a name="l00346"></a><span class="lineno">  346</span>&#160;    <span class="keywordflow">if</span> (res != 0)</div>
-<div class="line"><a name="l00347"></a><span class="lineno">  347</span>&#160;    {</div>
-<div class="line"><a name="l00348"></a><span class="lineno">  348</span>&#160;        <span class="keywordflow">return</span> 1;</div>
-<div class="line"><a name="l00349"></a><span class="lineno">  349</span>&#160;    }</div>
-<div class="line"><a name="l00350"></a><span class="lineno">  350</span>&#160;    </div>
-<div class="line"><a name="l00351"></a><span class="lineno">  351</span>&#160;    <span class="keywordflow">return</span> 0;</div>
-<div class="line"><a name="l00352"></a><span class="lineno">  352</span>&#160;}</div>
+<div class="line"><a name="l00303"></a><span class="lineno">  303</span>&#160;        <span class="keywordflow">return</span> 1;</div>
+<div class="line"><a name="l00304"></a><span class="lineno">  304</span>&#160;    }</div>
+<div class="line"><a name="l00305"></a><span class="lineno">  305</span>&#160;    </div>
+<div class="line"><a name="l00306"></a><span class="lineno">  306</span>&#160;    <span class="comment">/* deinit */</span></div>
+<div class="line"><a name="l00307"></a><span class="lineno">  307</span>&#160;    res = <a class="code" href="group__pca9685__base__driver.html#gaee1e63e56cfea0485102d56b9962bc5a">pca9685_deinit</a>(&amp;gs_handle);</div>
+<div class="line"><a name="l00308"></a><span class="lineno">  308</span>&#160;    <span class="keywordflow">if</span> (res != 0)</div>
+<div class="line"><a name="l00309"></a><span class="lineno">  309</span>&#160;    {</div>
+<div class="line"><a name="l00310"></a><span class="lineno">  310</span>&#160;        <span class="keywordflow">return</span> 1;</div>
+<div class="line"><a name="l00311"></a><span class="lineno">  311</span>&#160;    }</div>
+<div class="line"><a name="l00312"></a><span class="lineno">  312</span>&#160;    <span class="keywordflow">else</span></div>
+<div class="line"><a name="l00313"></a><span class="lineno">  313</span>&#160;    {</div>
+<div class="line"><a name="l00314"></a><span class="lineno">  314</span>&#160;        <span class="keywordflow">return</span> 0;</div>
+<div class="line"><a name="l00315"></a><span class="lineno">  315</span>&#160;    }</div>
+<div class="line"><a name="l00316"></a><span class="lineno">  316</span>&#160;}</div>
+<div class="line"><a name="l00317"></a><span class="lineno">  317</span>&#160; </div>
+<div class="line"><a name="l00330"></a><span class="lineno"><a class="line" href="group__pca9685__example__driver.html#gae8741e38c2ebd99c54f9666e64838ecd">  330</a></span>&#160;uint8_t <a class="code" href="group__pca9685__example__driver.html#gae8741e38c2ebd99c54f9666e64838ecd">pca9685_basic_write</a>(<a class="code" href="group__pca9685__base__driver.html#gab2422a1507d8ad709c5a7dd83fcf526c">pca9685_channel_t</a> channel, <span class="keywordtype">float</span> delay_percent, <span class="keywordtype">float</span> high_duty_cycle_percent)</div>
+<div class="line"><a name="l00331"></a><span class="lineno">  331</span>&#160;{</div>
+<div class="line"><a name="l00332"></a><span class="lineno">  332</span>&#160;    uint8_t res;</div>
+<div class="line"><a name="l00333"></a><span class="lineno">  333</span>&#160;    uint16_t on_count, off_count;</div>
+<div class="line"><a name="l00334"></a><span class="lineno">  334</span>&#160;    </div>
+<div class="line"><a name="l00335"></a><span class="lineno">  335</span>&#160;    <span class="comment">/* convert data */</span></div>
+<div class="line"><a name="l00336"></a><span class="lineno">  336</span>&#160;    res = <a class="code" href="group__pca9685__base__driver.html#ga04bb264778e4ff7dcbbb777a9867f22d">pca9685_pwm_convert_to_register</a>(&amp;gs_handle, delay_percent, high_duty_cycle_percent, (uint16_t *)&amp;on_count, (uint16_t *)&amp;off_count);</div>
+<div class="line"><a name="l00337"></a><span class="lineno">  337</span>&#160;    <span class="keywordflow">if</span> (res != 0)</div>
+<div class="line"><a name="l00338"></a><span class="lineno">  338</span>&#160;    {</div>
+<div class="line"><a name="l00339"></a><span class="lineno">  339</span>&#160;        <span class="keywordflow">return</span> 1;</div>
+<div class="line"><a name="l00340"></a><span class="lineno">  340</span>&#160;    }</div>
+<div class="line"><a name="l00341"></a><span class="lineno">  341</span>&#160;    </div>
+<div class="line"><a name="l00342"></a><span class="lineno">  342</span>&#160;    <span class="comment">/* write channel */</span></div>
+<div class="line"><a name="l00343"></a><span class="lineno">  343</span>&#160;    res = <a class="code" href="group__pca9685__base__driver.html#ga075e19d832199135dad43db034df3da3">pca9685_write_channel</a>(&amp;gs_handle, channel, on_count, off_count);</div>
+<div class="line"><a name="l00344"></a><span class="lineno">  344</span>&#160;    <span class="keywordflow">if</span> (res != 0)</div>
+<div class="line"><a name="l00345"></a><span class="lineno">  345</span>&#160;    {</div>
+<div class="line"><a name="l00346"></a><span class="lineno">  346</span>&#160;        <span class="keywordflow">return</span> 1;</div>
+<div class="line"><a name="l00347"></a><span class="lineno">  347</span>&#160;    }</div>
+<div class="line"><a name="l00348"></a><span class="lineno">  348</span>&#160;    </div>
+<div class="line"><a name="l00349"></a><span class="lineno">  349</span>&#160;    <span class="keywordflow">return</span> 0;</div>
+<div class="line"><a name="l00350"></a><span class="lineno">  350</span>&#160;}</div>
 <div class="ttc" id="adriver__pca9685__basic_8h_html"><div class="ttname"><a href="driver__pca9685__basic_8h.html">driver_pca9685_basic.h</a></div><div class="ttdoc">driver pca9685 basic header file</div></div>
 <div class="ttc" id="agroup__pca9685__base__driver_html_ga04bb264778e4ff7dcbbb777a9867f22d"><div class="ttname"><a href="group__pca9685__base__driver.html#ga04bb264778e4ff7dcbbb777a9867f22d">pca9685_pwm_convert_to_register</a></div><div class="ttdeci">uint8_t pca9685_pwm_convert_to_register(pca9685_handle_t *handle, float delay_percent, float high_duty_cycle_percent, uint16_t *on_count, uint16_t *off_count)</div><div class="ttdoc">convert the pwm to the register raw data</div><div class="ttdef"><b>Definition:</b> <a href="driver__pca9685_8c_source.html#l01741">driver_pca9685.c:1741</a></div></div>
 <div class="ttc" id="agroup__pca9685__base__driver_html_ga050cae686aef7b94b3c4e3bcded77b6e"><div class="ttname"><a href="group__pca9685__base__driver.html#ga050cae686aef7b94b3c4e3bcded77b6e">pca9685_set_prescaler</a></div><div class="ttdeci">uint8_t pca9685_set_prescaler(pca9685_handle_t *handle, uint8_t prescaler)</div><div class="ttdoc">set the clock prescaler</div><div class="ttdef"><b>Definition:</b> <a href="driver__pca9685_8c_source.html#l01604">driver_pca9685.c:1604</a></div></div>
@@ -417,7 +415,7 @@ $(document).ready(function(){initNavTree('driver__pca9685__basic_8c_source.html'
 <div class="ttc" id="agroup__pca9685__example__driver_html_ga913f75a17e76ee66bb7288f94d89be51"><div class="ttname"><a href="group__pca9685__example__driver.html#ga913f75a17e76ee66bb7288f94d89be51">PCA9685_BASIC_DEFAULT_SUBADDRESS_2</a></div><div class="ttdeci">#define PCA9685_BASIC_DEFAULT_SUBADDRESS_2</div><div class="ttdef"><b>Definition:</b> <a href="driver__pca9685__basic_8h_source.html#l00066">driver_pca9685_basic.h:66</a></div></div>
 <div class="ttc" id="agroup__pca9685__example__driver_html_gab6ee4a7f10db30f279c1dea749f7ee91"><div class="ttname"><a href="group__pca9685__example__driver.html#gab6ee4a7f10db30f279c1dea749f7ee91">PCA9685_BASIC_DEFAULT_OUTPUT_CHANGE</a></div><div class="ttdeci">#define PCA9685_BASIC_DEFAULT_OUTPUT_CHANGE</div><div class="ttdef"><b>Definition:</b> <a href="driver__pca9685__basic_8h_source.html#l00061">driver_pca9685_basic.h:61</a></div></div>
 <div class="ttc" id="agroup__pca9685__example__driver_html_gad845cd52f28fc8410cce618c068e2898"><div class="ttname"><a href="group__pca9685__example__driver.html#gad845cd52f28fc8410cce618c068e2898">pca9685_basic_init</a></div><div class="ttdeci">uint8_t pca9685_basic_init(pca9685_address_t addr, uint16_t hz)</div><div class="ttdoc">basic example init</div><div class="ttdef"><b>Definition:</b> <a href="driver__pca9685__basic_8c_source.html#l00050">driver_pca9685_basic.c:50</a></div></div>
-<div class="ttc" id="agroup__pca9685__example__driver_html_gae8741e38c2ebd99c54f9666e64838ecd"><div class="ttname"><a href="group__pca9685__example__driver.html#gae8741e38c2ebd99c54f9666e64838ecd">pca9685_basic_write</a></div><div class="ttdeci">uint8_t pca9685_basic_write(pca9685_channel_t channel, float delay_percent, float high_duty_cycle_percent)</div><div class="ttdoc">basic example write</div><div class="ttdef"><b>Definition:</b> <a href="driver__pca9685__basic_8c_source.html#l00332">driver_pca9685_basic.c:332</a></div></div>
+<div class="ttc" id="agroup__pca9685__example__driver_html_gae8741e38c2ebd99c54f9666e64838ecd"><div class="ttname"><a href="group__pca9685__example__driver.html#gae8741e38c2ebd99c54f9666e64838ecd">pca9685_basic_write</a></div><div class="ttdeci">uint8_t pca9685_basic_write(pca9685_channel_t channel, float delay_percent, float high_duty_cycle_percent)</div><div class="ttdoc">basic example write</div><div class="ttdef"><b>Definition:</b> <a href="driver__pca9685__basic_8c_source.html#l00330">driver_pca9685_basic.c:330</a></div></div>
 <div class="ttc" id="agroup__pca9685__example__driver_html_gafe0b811ba2eace2133f1b23901654e08"><div class="ttname"><a href="group__pca9685__example__driver.html#gafe0b811ba2eace2133f1b23901654e08">PCA9685_BASIC_DEFAULT_RESPOND_SUBADDRESS_2</a></div><div class="ttdeci">#define PCA9685_BASIC_DEFAULT_RESPOND_SUBADDRESS_2</div><div class="ttdef"><b>Definition:</b> <a href="driver__pca9685__basic_8h_source.html#l00058">driver_pca9685_basic.h:58</a></div></div>
 <div class="ttc" id="agroup__pca9685__interface__driver_html_ga27ee24e9eed11825862285d92c2edad5"><div class="ttname"><a href="group__pca9685__interface__driver.html#ga27ee24e9eed11825862285d92c2edad5">pca9685_interface_delay_ms</a></div><div class="ttdeci">void pca9685_interface_delay_ms(uint32_t ms)</div><div class="ttdoc">interface delay ms</div><div class="ttdef"><b>Definition:</b> <a href="driver__pca9685__interface__template_8c_source.html#l00137">driver_pca9685_interface_template.c:137</a></div></div>
 <div class="ttc" id="agroup__pca9685__interface__driver_html_ga570d0ed6704905625dd91eada724768d"><div class="ttname"><a href="group__pca9685__interface__driver.html#ga570d0ed6704905625dd91eada724768d">pca9685_interface_oe_deinit</a></div><div class="ttdeci">uint8_t pca9685_interface_oe_deinit(void)</div><div class="ttdoc">interface oe deinit</div><div class="ttdef"><b>Definition:</b> <a href="driver__pca9685__interface__template_8c_source.html#l00114">driver_pca9685_interface_template.c:114</a></div></div>
