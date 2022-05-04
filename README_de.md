@@ -28,15 +28,15 @@ LibDriver PCA9685 ist der Treiber mit vollem Funktionsumfang von PCA9685, der vo
 
 /src enthält LibDriver PCA9685-Quelldateien.
 
-/interface enthält die plattformunabhängige Vorlage LibDriver PCA9685 IIC。
+/interface enthält die plattformunabhängige Vorlage LibDriver PCA9685 IIC.
 
-/test enthält den Testcode des LibDriver PCA9685-Treibers und dieser Code kann die erforderliche Funktion des Chips einfach testen。
+/test enthält den Testcode des LibDriver PCA9685-Treibers und dieser Code kann die erforderliche Funktion des Chips einfach testen.
 
 /example enthält LibDriver PCA9685-Beispielcode.
 
 /doc enthält das LibDriver PCA9685-Offlinedokument.
 
-/Datenblatt enthält PCA9685-Datenblatt。
+/Datenblatt enthält PCA9685-Datenblatt.
 
 /project enthält den allgemeinen Beispielcode für Linux- und MCU-Entwicklungsboards. Alle Projekte verwenden das Shell-Skript, um den Treiber zu debuggen, und die detaillierten Anweisungen finden Sie in der README.md jedes Projekts.
 
