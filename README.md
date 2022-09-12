@@ -28,15 +28,15 @@ LibDriver PCA9685 is the full function driver of PCA9685 launched by LibDriver.P
 
 /src includes LibDriver PCA9685 source files.
 
-/interface includes LibDriver PCA9685 IIC platform independent template。
+/interface includes LibDriver PCA9685 IIC platform independent template.
 
-/test includes LibDriver PCA9685 driver test code and this code can test the chip necessary function simply。
+/test includes LibDriver PCA9685 driver test code and this code can test the chip necessary function simply.
 
 /example includes LibDriver PCA9685 sample code.
 
 /doc includes LibDriver PCA9685 offline document.
 
-/datasheet includes PCA9685 datasheet。
+/datasheet includes PCA9685 datasheet.
 
 /project includes the common Linux and MCU development board sample code. All projects use the shell script to debug the driver and the detail instruction can be found in each project's README.md.
 
@@ -51,6 +51,8 @@ Add /src, /interface and /example to your project.
 #### example basic
 
 ```C
+#include "driver_pca9685_basic.h"
+
 uint8_t res;
 uint32_t i, times;
 pca9685_address_t address;
