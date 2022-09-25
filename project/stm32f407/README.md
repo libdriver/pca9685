@@ -1,6 +1,6 @@
-### 1. chip
+### 1. Chip
 
-#### 1.1 chip info
+#### 1.1 Chip Info
 
 chip name : STM32F407ZGT6.
 
@@ -10,25 +10,25 @@ uart pin: TX/RX PA9/PA10.
 
 iic pin: SCL/SDA PB8/PB9.
 
-gpio pin: OE PA8
+gpio pin: OE PA8.
 
-### 2. shell
+### 2. Shell
 
-#### 2.1 shell parameter
+#### 2.1 Shell Parameter
 
-baud rate: 115200
+baud rate: 115200.
 
-data bits : 8
+data bits : 8.
 
-stop bits: 1
+stop bits: 1.
 
-parity: none
+parity: none.
 
-flow control: none
+flow control: none.
 
-### 3. pca9685
+### 3. PCA9685
 
-#### 3.1 command Instruction
+#### 3.1 Command Instruction
 
 ​           pca9685 is a basic command which can test all pca9685 driver function:
 
@@ -46,7 +46,7 @@ flow control: none
 
 ​           -c basic <times> -a <addr> -ch <channel>        run pca9685 write function.times means test times. addr is the iic address and it can be "00"-"63".channel is the written channel and it can be "0"-"15".
 
-#### 3.2 command example
+#### 3.2 Command Example
 
 ```shell
 pca9685 -i
