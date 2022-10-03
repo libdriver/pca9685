@@ -51,6 +51,8 @@ LibDriver PCA9685は、LibDriverによって起動されたPCA9685の全機能�
 #### example basic
 
 ```C
+#include "driver_pca9685_basic.h"
+
 uint8_t res;
 uint32_t i, times;
 pca9685_address_t address;

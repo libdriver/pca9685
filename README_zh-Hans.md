@@ -50,6 +50,8 @@ LibDriver PCA9685是LibDriver推出的PCA9685的全功能驱动，该驱动提�
 #### example basic
 
 ```C
+#include "driver_pca9685_basic.h"
+
 uint8_t res;
 uint32_t i, times;
 pca9685_address_t address;

@@ -51,6 +51,8 @@ Fügen Sie /src, /interface und /example zu Ihrem Projekt hinzu.
 #### example basic
 
 ```C
+#include "driver_pca9685_basic.h"
+
 uint8_t res;
 uint32_t i, times;
 pca9685_address_t address;
