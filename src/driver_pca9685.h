@@ -404,9 +404,9 @@ uint8_t pca9685_init(pca9685_handle_t *handle);
  * @return    status code
  *            - 0 success
  *            - 1 power down failed
- *            - 2 iic or gpio deinit failed
- *            - 3 handle is NULL
- *            - 4 handle is not initialized
+ *            - 2 handle is NULL
+ *            - 3 handle is not initialized
+ *            - 4 iic or gpio deinit failed
  * @note      none
  */
 uint8_t pca9685_deinit(pca9685_handle_t *handle);
