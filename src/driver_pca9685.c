@@ -1927,9 +1927,9 @@ uint8_t pca9685_init(pca9685_handle_t *handle)
  * @return    status code
  *            - 0 success
  *            - 1 power down failed
- *            - 2 iic or gpio deinit failed
- *            - 3 handle is NULL
- *            - 4 handle is not initialized
+ *            - 2 handle is NULL
+ *            - 3 handle is not initialized
+ *            - 4 iic or gpio deinit failed
  * @note      none
  */
 uint8_t pca9685_deinit(pca9685_handle_t *handle)
@@ -1964,13 +1964,13 @@ uint8_t pca9685_deinit(pca9685_handle_t *handle)
     {
         handle->debug_print("pcf8591: oe gpio deinit failed.\n");                                 /* oe gpio deinit failed */
         
-        return 2;                                                                                 /* return error */
+        return 4;                                                                                 /* return error */
     }
     if (handle->iic_deinit() != 0)                                                                /* iic deinit */
     {
         handle->debug_print("pcf8591: iic deinit failed.\n");                                     /* iic deinit failed */
         
-        return 2;                                                                                 /* return error */
+        return 4;                                                                                 /* return error */
     }
     handle->inited = 0;                                                                           /* set closed flag */
     
