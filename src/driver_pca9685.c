@@ -971,7 +971,7 @@ uint8_t pca9685_set_output_change(pca9685_handle_t *handle, pca9685_output_chang
 /**
  * @brief      get the output change type
  * @param[in]  *handle points to a pca9685 handle structure
- * @param[out] *change points to a output change type buffer
+ * @param[out] *change points to an output change type buffer
  * @return     status code
  *             - 0 success
  *             - 1 get output change failed
@@ -1053,7 +1053,7 @@ uint8_t pca9685_set_output_driver(pca9685_handle_t *handle, pca9685_output_drive
 /**
  * @brief      get the output driver type
  * @param[in]  *handle points to a pca9685 handle structure
- * @param[out] *driver points to a output driver type buffer
+ * @param[out] *driver points to an output driver type buffer
  * @return     status code
  *             - 0 success
  *             - 1 get output driver failed
@@ -1135,7 +1135,7 @@ uint8_t pca9685_set_output_disable_type(pca9685_handle_t *handle, pca9685_output
 /**
  * @brief      get the output disable type
  * @param[in]  *handle points to a pca9685 handle structure
- * @param[out] *type points to a output disable type buffer
+ * @param[out] *type points to an output disable type buffer
  * @return     status code
  *             - 0 success
  *             - 1 get output disable type failed
@@ -1417,7 +1417,7 @@ uint8_t pca9685_set_all_call_address(pca9685_handle_t *handle, uint8_t addr)
 /**
  * @brief      set the all call address
  * @param[in]  *handle points to a pca9685 handle structure
- * @param[out] *addr points to a all call address buffer
+ * @param[out] *addr points to an all call address buffer
  * @return     status code
  *             - 0 success
  *             - 1 get all call address failed
@@ -1503,8 +1503,8 @@ uint8_t pca9685_write_channel(pca9685_handle_t *handle, pca9685_channel_t channe
  * @brief      read led channels
  * @param[in]  *handle points to a pca9685 handle structure
  * @param[in]  channel is the led channel
- * @param[out] *on_count points to a led on count buffer
- * @param[out] *off_count points to a led off count buffer
+ * @param[out] *on_count points to an led on count buffer
+ * @param[out] *off_count points to an led off count buffer
  * @return     status code
  *             - 0 success
  *             - 1 read channel failed
@@ -1699,7 +1699,7 @@ uint8_t pca9685_output_frequency_convert_to_register(pca9685_handle_t *handle, u
  * @param[in]  *handle points to a pca9685 handle structure
  * @param[in]  oscillator is the oscillator frequency
  * @param[in]  reg is the register raw data
- * @param[out] *output_freq points to a output frequency buffer
+ * @param[out] *output_freq points to an output frequency buffer
  * @return     status code
  *             - 0 success
  *             - 2 handle is NULL
@@ -1727,8 +1727,8 @@ uint8_t pca9685_output_frequency_convert_to_data(pca9685_handle_t *handle, uint3
  * @param[in]  *handle points to a pca9685 handle structure
  * @param[in]  delay_percent is the start delay percent
  * @param[in]  high_duty_cycle_percent is the pwm high duty cycle percent
- * @param[out] *on_count points to a on counter buffer
- * @param[out] *off_count points to a off counter buffer
+ * @param[out] *on_count points to an on counter buffer
+ * @param[out] *off_count points to an off counter buffer
  * @return     status code
  *             - 0 success
  *             - 2 handle is NULL

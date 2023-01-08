@@ -2,49 +2,81 @@
 
 #### 1.1 Chip Info
 
-chip name : STM32F407ZGT6.
+Chip Name: STM32F407ZGT6.
 
-extern oscillator : 8MHz.
+Extern Oscillator: 8MHz.
 
-uart pin: TX/RX PA9/PA10.
+UART Pin: TX/RX PA9/PA10.
 
-iic pin: SCL/SDA PB8/PB9.
+IIC Pin: SCL/SDA PB8/PB9.
 
-gpio pin: OE PA8.
+GPIO Pin: OE PA8.
 
-### 2. Shell
+### 2. Development and Debugging
 
-#### 2.1 Shell Parameter
+#### 2.1 Integrated Development Environment
 
-baud rate: 115200.
+LidDriver provides both Keil and IAR integrated development environment projects.
 
-data bits : 8.
+MDK is the Keil ARM project and your Keil version must be 5 or higher.Keil ARM project needs STMicroelectronics STM32F4 Series Device Family Pack and you can download from https://www.keil.com/dd2/stmicroelectronics/stm32f407zgtx.
 
-stop bits: 1.
+EW is the IAR ARM project and your IAR version must be 9 or higher.
 
-parity: none.
+#### 2.2 Serial Port Parameter
 
-flow control: none.
+Baud Rate: 115200.
+
+Data Bits : 8.
+
+Stop Bits: 1.
+
+Parity: None.
+
+Flow Control: None.
+
+#### 2.3 Serial Port Assistant
+
+We use '\n' to wrap lines.If your serial port assistant displays exceptions (e.g. the displayed content does not divide lines), please modify the configuration of your serial port assistant or replace one that supports '\n' parsing.
 
 ### 3. PCA9685
 
 #### 3.1 Command Instruction
 
-​           pca9685 is a basic command which can test all pca9685 driver function:
+1. Show pca9685 chip and driver information.
 
-​           -i        show pca9685 chip and driver information.
+   ```shell
+   pca9685 (-i | --information)
+   ```
 
-​           -h       show pca9685 help.
+2. Show pca9685 help.
 
-​           -p       show pca9685 pin connections of the current board.
+   ```shell
+   pca9685 (-h | --help)
+   ```
 
-​           -t  (reg -a  <addr> | write <times> -a <addr> -ch <channel>)
+3. Show pca9685 pin connections of the current board.
 
-​           -t reg -a <addr>        run pca9685 register test. addr is the iic address and it can be "00"-"63".
+   ```shell
+   pca9685 (-p | --port)
+   ```
 
-​           -t write <times> -a <addr>  -ch <channel>      run pca9685 write test.times means test times. addr is the iic address and it can be "00"-"63".channel is the written channel and it can be "0"-"15".
+4. Run pca9685 register test, address is the iic address and it can be "0"-"63".
 
-​           -c basic <times> -a <addr> -ch <channel>        run pca9685 write function.times means test times. addr is the iic address and it can be "00"-"63".channel is the written channel and it can be "0"-"15".
+   ```shell
+   pca9685 (-t reg | --test=reg) [--addr=<address>]
+   ```
+
+5. Run pca9685 write test, num means test times, address is the iic address and it can be "0"-"63", ch is the used channel and it can be "0"-"15".
+
+   ```shell
+   pca9685 (-t write | --test=write) [--addr=<address>] [--channel=<ch>] [--times=<num>]
+   ```
+
+6. Run pca9685 write function, num means test times, address is the iic address and it can be "0"-"63", ch is the used channel and it can be "0"-"15".
+
+   ```shell
+   pca9685 (-e write | --example=write) [--addr=<address>] [--channel=<ch>] [--times=<num>]
+   ```
 
 #### 3.2 Command Example
 
@@ -71,7 +103,7 @@ pca9685: OE connected to GPIOA PIN8.
 ```
 
 ```shell
-pca9685 -t reg -a 0
+pca9685 -t reg --addr=0
 
 pca9685: chip is NXP PCA9685.
 pca9685: manufacturer is NXP.
@@ -390,7 +422,7 @@ pca9685: finish register test.
 ```
 
 ```shell
-pca9685 -t write 10 -a 00 -ch 0
+pca9685 -t write --addr=0 --channel=0 --times=10
 
 pca9685: chip is NXP PCA9685.
 pca9685: manufacturer is NXP.
@@ -426,34 +458,41 @@ pca9685: finish write test.
 ```
 
 ```shell
-pca9685 -c write 10 -a 00 -ch 0
+pca9685 -e write --addr=0 --channel=0 --times=10
 
-pca9685: set channel 1 18.00 degrees.
-pca9685: set channel 1 36.00 degrees.
-pca9685: set channel 1 54.00 degrees.
-pca9685: set channel 1 72.00 degrees.
-pca9685: set channel 1 90.00 degrees.
-pca9685: set channel 1 108.00 degrees.
-pca9685: set channel 1 126.00 degrees.
-pca9685: set channel 1 144.00 degrees.
-pca9685: set channel 1 162.00 degrees.
-pca9685: set channel 1 180.00 degrees.
+pca9685: set channel 0 18.00 degrees.
+pca9685: set channel 0 36.00 degrees.
+pca9685: set channel 0 54.00 degrees.
+pca9685: set channel 0 72.00 degrees.
+pca9685: set channel 0 90.00 degrees.
+pca9685: set channel 0 108.00 degrees.
+pca9685: set channel 0 126.00 degrees.
+pca9685: set channel 0 144.00 degrees.
+pca9685: set channel 0 162.00 degrees.
+pca9685: set channel 0 180.00 degrees.
 ```
 
 ```shell
 pca9685 -h
 
-pca9685 -i
-	show pca9685 chip and driver information.
-pca9685 -h
-	show pca9685 help.
-pca9685 -p
-	show pca9685 pin connections of the current board.
-pca9685 -t reg -a <addr>
-	run pca9685 register test.addr is the iic address and it can be "00"-"63".
-pca9685 -t write <times> -a <addr> -ch <channel>
-	run pca9685 write test.times means test times.addr is the iic address and it can be "00"-"63".channel is the written channel and it can be "0"-"15".
-pca9685 -c basic <times> -a <addr> -ch <channel>
-	run pca9685 write function.times means test times.addr is the iic address and it can be "00"-"63".channel is the written channel and it can be "0"-"15".
+Usage:
+  pca9685 (-i | --information)
+  pca9685 (-h | --help)
+  pca9685 (-p | --port)
+  pca9685 (-t reg | --test=reg) [--addr=<address>]
+  pca9685 (-t write | --test=write) [--addr=<address>] [--channel=<ch>] [--times=<num>]
+  pca9685 (-e write | --example=write) [--addr=<address>] [--channel=<ch>] [--times=<num>]
+
+Options:
+      --addr=<address>    Set the addr pin and it can be "0"-"63".([default: 0])
+      --channel=<ch>      Set the used channel and it can be "0"-"15".([default: 0])
+  -e <write>, --example=<write>
+                          Run the driver example.
+  -h, --help              Show the help.
+  -i, --information       Show the chip information.
+  -p, --port              Display the pin connections of the current board.
+  -t <reg | write>, --test=<reg | write>
+                          Run the driver test.
+      --times=<num>       Set the running times.([default: 3])
 ```
 

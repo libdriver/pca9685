@@ -1,12 +1,12 @@
-### 1. Chip
+### 1. Board
 
-#### 1.1 Chip Info
+#### 1.1 Board Info
 
-chip name : Raspberry Pi 4B.
+Board Name: Raspberry Pi 4B.
 
-iic pin: SCL/SDA GPIO3/GPIO2.
+IIC Pin: SCL/SDA GPIO3/GPIO2.
 
-gpio pin: OE GPIO17.
+GPIO Pin: OE GPIO17.
 
 ### 2. Install
 
@@ -76,21 +76,41 @@ find_package(pca9685 REQUIRED)
 
 #### 3.1 Command Instruction
 
-​           pca9685 is a basic command which can test all pca9685 driver function:
+1. Show pca9685 chip and driver information.
 
-​           -i        show pca9685 chip and driver information.
+   ```shell
+   pca9685 (-i | --information)
+   ```
 
-​           -h       show pca9685 help.
+2. Show pca9685 help.
 
-​           -p       show pca9685 pin connections of the current board.
+   ```shell
+   pca9685 (-h | --help)
+   ```
 
-​           -t  (reg -a  <addr> | write <times> -a <addr> -ch <channel>)
+3. Show pca9685 pin connections of the current board.
 
-​           -t reg -a <addr>        run pca9685 register test. addr is the iic address and it can be "00"-"63".
+   ```shell
+   pca9685 (-p | --port)
+   ```
 
-​           -t write <times> -a <addr>  -ch <channel>      run pca9685 write test.times means test times. addr is the iic address and it can be "00"-"63".channel is the written channel and it can be "0"-"15".
+4. Run pca9685 register test, address is the iic address and it can be "0"-"63".
 
-​           -c basic <times> -a <addr> -ch <channel>        run pca9685 write function.times means test times. addr is the iic address and it can be "00"-"63".channel is the written channel and it can be "0"-"15".
+   ```shell
+   pca9685 (-t reg | --test=reg) [--addr=<address>]
+   ```
+
+5. Run pca9685 write test, num means test times, address is the iic address and it can be "0"-"63", ch is the used channel and it can be "0"-"15".
+
+   ```shell
+   pca9685 (-t write | --test=write) [--addr=<address>] [--channel=<ch>] [--times=<num>]
+   ```
+
+6. Run pca9685 write function, num means test times, address is the iic address and it can be "0"-"63", ch is the used channel and it can be "0"-"15".
+
+   ```shell
+   pca9685 (-e write | --example=write) [--addr=<address>] [--channel=<ch>] [--times=<num>]
+   ```
 
 #### 3.2 Command Example
 
@@ -117,7 +137,7 @@ pca9685: OE connected to GPIO17(BCM).
 ```
 
 ```shell
-./pca9685 -t reg -a 0
+./pca9685 -t reg --addr=0
 
 pca9685: chip is NXP PCA9685.
 pca9685: manufacturer is NXP.
@@ -130,7 +150,7 @@ pca9685: max temperature is 85.0C.
 pca9685: min temperature is -40.0C.
 pca9685: start register test.
 pca9685: pca9685_set_addr/pca9685_get_addr test.
-pca9685: set addr 0xB0.
+pca9685: set addr 0x67.
 pca9685: check addr ok.
 pca9685: pca9685_set_addr_pin/pca9685_get_addr_pin test.
 pca9685: set addr pin 0x00.
@@ -262,7 +282,7 @@ pca9685: check addr pin ok.
 pca9685: set addr pin 0x3F.
 pca9685: check addr pin ok.
 pca9685: pca9685_set_prescaler/pca9685_get_prescaler test.
-pca9685: set prescaler 0x46.
+pca9685: set prescaler 0x59.
 pca9685: check prescaler ok.
 pca9685: pca9685_set_restart/pca9685_get_restart test.
 pca9685: disable restart.
@@ -325,118 +345,118 @@ pca9685: check output disable type ok.
 pca9685: set output disable type high impedance.
 pca9685: check output disable type ok.
 pca9685: pca9685_set_subaddress_1/pca9685_get_subaddress_1 test.
-pca9685: set subaddress 1 0x48.
+pca9685: set subaddress 1 0x68.
 pca9685: check subaddress 1 ok.
 pca9685: pca9685_set_subaddress_2/pca9685_get_subaddress_2 test.
-pca9685: set subaddress 2 0x68.
+pca9685: set subaddress 2 0x72.
 pca9685: check subaddress 2 ok.
 pca9685: pca9685_set_subaddress_3/pca9685_get_subaddress_3 test.
-pca9685: set subaddress 3 0x06.
+pca9685: set subaddress 3 0x50.
 pca9685: check subaddress 3 ok.
 pca9685: pca9685_set_all_call_address/pca9685_get_all_call_address test.
-pca9685: set all call address 0x44.
+pca9685: set all call address 0xFE.
 pca9685: check all call address ok.
 pca9685: pca9685_output_frequency_convert_to_register/pca9685_output_frequency_convert_to_data test.
-pca9685: set output frequency 1190.
-pca9685: check output frequency 1221.
+pca9685: set output frequency 842.
+pca9685: check output frequency 872.
 pca9685: pca9685_pwm_convert_to_register/pca9685_pwm_convert_to_data test.
-pca9685: set delay percent 17.50.
-pca9685: set high duty cycle percent 12.60.
-pca9685: on_count is 0x02CD.
-pca9685: off_count is 0x04D1.
-pca9685: check delay percent 17.50.
-pca9685: check high duty cycle percent 12.60.
+pca9685: set delay percent 12.50.
+pca9685: set high duty cycle percent 54.60.
+pca9685: on_count is 0x0200.
+pca9685: off_count is 0x0ABC.
+pca9685: check delay percent 12.50.
+pca9685: check high duty cycle percent 54.59.
 pca9685: pca9685_write_channel/pca9685_read_channel test.
 pca9685: set channel 0.
-pca9685: set on_count 0x07C4.
-pca9685: set off_count 0x0830.
+pca9685: set on_count 0x04CD.
+pca9685: set off_count 0x0587.
 pca9685: check on_count ok.
 pca9685: check off_count ok.
 pca9685: set channel 1.
-pca9685: set on_count 0x072B.
-pca9685: set off_count 0x0AE5.
+pca9685: set on_count 0x07AB.
+pca9685: set off_count 0x099D.
 pca9685: check on_count ok.
 pca9685: check off_count ok.
 pca9685: set channel 2.
-pca9685: set on_count 0x0661.
-pca9685: set off_count 0x07C6.
+pca9685: set on_count 0x06FB.
+pca9685: set off_count 0x08DE.
 pca9685: check on_count ok.
 pca9685: check off_count ok.
 pca9685: set channel 3.
-pca9685: set on_count 0x07A1.
-pca9685: set off_count 0x0C13.
+pca9685: set on_count 0x0146.
+pca9685: set off_count 0x01C2.
 pca9685: check on_count ok.
 pca9685: check off_count ok.
 pca9685: set channel 4.
-pca9685: set on_count 0x0064.
-pca9685: set off_count 0x039D.
+pca9685: set on_count 0x02C2.
+pca9685: set off_count 0x0316.
 pca9685: check on_count ok.
 pca9685: check off_count ok.
 pca9685: set channel 5.
-pca9685: set on_count 0x063D.
-pca9685: set off_count 0x082B.
+pca9685: set on_count 0x07F8.
+pca9685: set off_count 0x0B13.
 pca9685: check on_count ok.
 pca9685: check off_count ok.
 pca9685: set channel 6.
-pca9685: set on_count 0x06D2.
-pca9685: set off_count 0x0987.
+pca9685: set on_count 0x01E8.
+pca9685: set off_count 0x07CF.
 pca9685: check on_count ok.
 pca9685: check off_count ok.
 pca9685: set channel 7.
-pca9685: set on_count 0x015A.
-pca9685: set off_count 0x0393.
+pca9685: set on_count 0x038D.
+pca9685: set off_count 0x0B03.
 pca9685: check on_count ok.
 pca9685: check off_count ok.
 pca9685: set channel 8.
-pca9685: set on_count 0x0768.
-pca9685: set off_count 0x0D50.
+pca9685: set on_count 0x055A.
+pca9685: set off_count 0x0688.
 pca9685: check on_count ok.
 pca9685: check off_count ok.
 pca9685: set channel 9.
-pca9685: set on_count 0x00C9.
-pca9685: set off_count 0x0373.
+pca9685: set on_count 0x0263.
+pca9685: set off_count 0x0496.
 pca9685: check on_count ok.
 pca9685: check off_count ok.
 pca9685: set channel 10.
-pca9685: set on_count 0x075C.
-pca9685: set off_count 0x0DFB.
+pca9685: set on_count 0x079F.
+pca9685: set off_count 0x0C68.
 pca9685: check on_count ok.
 pca9685: check off_count ok.
 pca9685: set channel 11.
-pca9685: set on_count 0x0230.
-pca9685: set off_count 0x02F1.
+pca9685: set on_count 0x079A.
+pca9685: set off_count 0x0B00.
 pca9685: check on_count ok.
 pca9685: check off_count ok.
 pca9685: set channel 12.
-pca9685: set on_count 0x0658.
-pca9685: set off_count 0x0932.
+pca9685: set on_count 0x0532.
+pca9685: set off_count 0x053F.
 pca9685: check on_count ok.
 pca9685: check off_count ok.
 pca9685: set channel 13.
-pca9685: set on_count 0x0259.
-pca9685: set off_count 0x0518.
+pca9685: set on_count 0x07B7.
+pca9685: set off_count 0x09E8.
 pca9685: check on_count ok.
 pca9685: check off_count ok.
 pca9685: set channel 14.
-pca9685: set on_count 0x04DD.
-pca9685: set off_count 0x0BB9.
+pca9685: set on_count 0x0458.
+pca9685: set off_count 0x04FB.
 pca9685: check on_count ok.
 pca9685: check off_count ok.
 pca9685: set channel 15.
-pca9685: set on_count 0x031B.
-pca9685: set off_count 0x078C.
+pca9685: set on_count 0x015A.
+pca9685: set off_count 0x027F.
 pca9685: check on_count ok.
 pca9685: check off_count ok.
 pca9685: pca9685_write_all_channel/pca9685_read_all_channel test.
-pca9685: set on_count 0x06BB.
-pca9685: set off_count 0x0CDE.
+pca9685: set on_count 0x015D.
+pca9685: set off_count 0x0262.
 pca9685: check on_count ok.
 pca9685: check off_count ok.
 pca9685: finish register test.
 ```
 
 ```shell
-./pca9685 -t write 10 -a 00 -ch 0
+./pca9685 -t write --addr=0 --channel=0 --times=10
 
 pca9685: chip is NXP PCA9685.
 pca9685: manufacturer is NXP.
@@ -472,34 +492,41 @@ pca9685: finish write test.
 ```
 
 ```shell
-./pca9685 -c write 10 -a 00 -ch 0
+./pca9685 -e write --addr=0 --channel=0 --times=10
 
-pca9685: set channel 1 18.00 degrees.
-pca9685: set channel 1 36.00 degrees.
-pca9685: set channel 1 54.00 degrees.
-pca9685: set channel 1 72.00 degrees.
-pca9685: set channel 1 90.00 degrees.
-pca9685: set channel 1 108.00 degrees.
-pca9685: set channel 1 126.00 degrees.
-pca9685: set channel 1 144.00 degrees.
-pca9685: set channel 1 162.00 degrees.
-pca9685: set channel 1 180.00 degrees.
+pca9685: set channel 0 18.00 degrees.
+pca9685: set channel 0 36.00 degrees.
+pca9685: set channel 0 54.00 degrees.
+pca9685: set channel 0 72.00 degrees.
+pca9685: set channel 0 90.00 degrees.
+pca9685: set channel 0 108.00 degrees.
+pca9685: set channel 0 126.00 degrees.
+pca9685: set channel 0 144.00 degrees.
+pca9685: set channel 0 162.00 degrees.
+pca9685: set channel 0 180.00 degrees.
 ```
 
 ```shell
 ./pca9685 -h
 
-pca9685 -i
-	show pca9685 chip and driver information.
-pca9685 -h
-	show pca9685 help.
-pca9685 -p
-	show pca9685 pin connections of the current board.
-pca9685 -t reg -a <addr>
-	run pca9685 register test.addr is the iic address and it can be "00"-"63".
-pca9685 -t write <times> -a <addr> -ch <channel>
-	run pca9685 write test.times means test times.addr is the iic address and it can be "00"-"63".channel is the written channel and it can be "0"-"15".
-pca9685 -c basic <times> -a <addr> -ch <channel>
-	run pca9685 write function.times means test times.addr is the iic address and it can be "00"-"63".channel is the written channel and it can be "0"-"15".
+Usage:
+  pca9685 (-i | --information)
+  pca9685 (-h | --help)
+  pca9685 (-p | --port)
+  pca9685 (-t reg | --test=reg) [--addr=<address>]
+  pca9685 (-t write | --test=write) [--addr=<address>] [--channel=<ch>] [--times=<num>]
+  pca9685 (-e write | --example=write) [--addr=<address>] [--channel=<ch>] [--times=<num>]
+
+Options:
+      --addr=<address>    Set the addr pin and it can be "0"-"63".([default: 0])
+      --channel=<ch>      Set the used channel and it can be "0"-"15".([default: 0])
+  -e <write>, --example=<write>
+                          Run the driver example.
+  -h, --help              Show the help.
+  -i, --information       Show the chip information.
+  -p, --port              Display the pin connections of the current board.
+  -t <reg | write>, --test=<reg | write>
+                          Run the driver test.
+      --times=<num>       Set the running times.([default: 3])
 ```
 

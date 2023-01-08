@@ -201,13 +201,13 @@ typedef enum
 typedef struct pca9685_handle_s
 {
     uint8_t iic_addr;                                                                   /**< iic device address */
-    uint8_t (*iic_init)(void);                                                          /**< point to a iic_init function address */
-    uint8_t (*iic_deinit)(void);                                                        /**< point to a iic_deinit function address */
-    uint8_t (*iic_read)(uint8_t addr, uint8_t reg, uint8_t *buf, uint16_t len);         /**< point to a iic_read function address */
-    uint8_t (*iic_write)(uint8_t addr, uint8_t reg, uint8_t *buf, uint16_t len);        /**< point to a iic_write function address */
-    uint8_t (*oe_gpio_init)(void);                                                      /**< point to a oe_gpio_init function address */
-    uint8_t (*oe_gpio_deinit)(void);                                                    /**< point to a oe_gpio_deinit function address */
-    uint8_t (*oe_gpio_write)(uint8_t value);                                            /**< point to a oe_gpio_write function address */
+    uint8_t (*iic_init)(void);                                                          /**< point to an iic_init function address */
+    uint8_t (*iic_deinit)(void);                                                        /**< point to an iic_deinit function address */
+    uint8_t (*iic_read)(uint8_t addr, uint8_t reg, uint8_t *buf, uint16_t len);         /**< point to an iic_read function address */
+    uint8_t (*iic_write)(uint8_t addr, uint8_t reg, uint8_t *buf, uint16_t len);        /**< point to an iic_write function address */
+    uint8_t (*oe_gpio_init)(void);                                                      /**< point to an oe_gpio_init function address */
+    uint8_t (*oe_gpio_deinit)(void);                                                    /**< point to an oe_gpio_deinit function address */
+    uint8_t (*oe_gpio_write)(uint8_t value);                                            /**< point to an oe_gpio_write function address */
     void (*delay_ms)(uint32_t ms);                                                      /**< point to a delay_ms function address */
     void (*debug_print)(const char *const fmt, ...);                                    /**< point to a debug_print function address */
     uint8_t inited;                                                                     /**< inited flag */
@@ -251,7 +251,7 @@ typedef struct pca9685_info_s
 /**
  * @brief     link iic_init function
  * @param[in] HANDLE points to a pca9685 handle structure
- * @param[in] FUC points to a iic_init function address
+ * @param[in] FUC points to an iic_init function address
  * @note      none
  */
 #define DRIVER_PCA9685_LINK_IIC_INIT(HANDLE, FUC)           (HANDLE)->iic_init = FUC
@@ -259,7 +259,7 @@ typedef struct pca9685_info_s
 /**
  * @brief     link iic_deinit function
  * @param[in] HANDLE points to a pca9685 handle structure
- * @param[in] FUC points to a iic_deinit function address
+ * @param[in] FUC points to an iic_deinit function address
  * @note      none
  */
 #define DRIVER_PCA9685_LINK_IIC_DEINIT(HANDLE, FUC)         (HANDLE)->iic_deinit = FUC
@@ -267,7 +267,7 @@ typedef struct pca9685_info_s
 /**
  * @brief     link iic_read function
  * @param[in] HANDLE points to a pca9685 handle structure
- * @param[in] FUC points to a iic_read function address
+ * @param[in] FUC points to an iic_read function address
  * @note      none
  */
 #define DRIVER_PCA9685_LINK_IIC_READ(HANDLE, FUC)           (HANDLE)->iic_read = FUC
@@ -275,7 +275,7 @@ typedef struct pca9685_info_s
 /**
  * @brief     link iic_write function
  * @param[in] HANDLE points to a pca9685 handle structure
- * @param[in] FUC points to a iic_write function address
+ * @param[in] FUC points to an iic_write function address
  * @note      none
  */
 #define DRIVER_PCA9685_LINK_IIC_WEITE(HANDLE, FUC)          (HANDLE)->iic_write = FUC
@@ -283,7 +283,7 @@ typedef struct pca9685_info_s
 /**
  * @brief     link oe_gpio_init function
  * @param[in] HANDLE points to a pca9685 handle structure
- * @param[in] FUC points to a oe_gpio_init function address
+ * @param[in] FUC points to an oe_gpio_init function address
  * @note      none
  */
 #define DRIVER_PCA9685_LINK_OE_GPIO_INIT(HANDLE, FUC)       (HANDLE)->oe_gpio_init = FUC
@@ -291,7 +291,7 @@ typedef struct pca9685_info_s
 /**
  * @brief     link oe_gpio_deinit function
  * @param[in] HANDLE points to a pca9685 handle structure
- * @param[in] FUC points to a oe_gpio_deinit function address
+ * @param[in] FUC points to an oe_gpio_deinit function address
  * @note      none
  */
 #define DRIVER_PCA9685_LINK_OE_GPIO_DEINIT(HANDLE, FUC)     (HANDLE)->oe_gpio_deinit = FUC
@@ -299,7 +299,7 @@ typedef struct pca9685_info_s
 /**
  * @brief     link oe_gpio_write function
  * @param[in] HANDLE points to a pca9685 handle structure
- * @param[in] FUC points to a oe_gpio_write function address
+ * @param[in] FUC points to an oe_gpio_write function address
  * @note      none
  */
 #define DRIVER_PCA9685_LINK_OE_GPIO_WRITE(HANDLE, FUC)      (HANDLE)->oe_gpio_write = FUC
@@ -431,8 +431,8 @@ uint8_t pca9685_write_channel(pca9685_handle_t *handle, pca9685_channel_t channe
  * @brief      read led channels
  * @param[in]  *handle points to a pca9685 handle structure
  * @param[in]  channel is the led channel
- * @param[out] *on_count points to a led on count buffer
- * @param[out] *off_count points to a led off count buffer
+ * @param[out] *on_count points to an led on count buffer
+ * @param[out] *off_count points to an led off count buffer
  * @return     status code
  *             - 0 success
  *             - 1 read channel failed
@@ -462,8 +462,8 @@ uint8_t pca9685_write_all_channel(pca9685_handle_t *handle, uint16_t on_count, u
  * @param[in]  *handle points to a pca9685 handle structure
  * @param[in]  delay_percent is the start delay percent
  * @param[in]  high_duty_cycle_percent is the pwm high duty cycle percent
- * @param[out] *on_count points to a on counter buffer
- * @param[out] *off_count points to a off counter buffer
+ * @param[out] *on_count points to an on counter buffer
+ * @param[out] *off_count points to an off counter buffer
  * @return     status code
  *             - 0 success
  *             - 2 handle is NULL
@@ -552,7 +552,7 @@ uint8_t pca9685_output_frequency_convert_to_register(pca9685_handle_t *handle, u
  * @param[in]  *handle points to a pca9685 handle structure
  * @param[in]  oscillator is the oscillator frequency
  * @param[in]  reg is the register raw data
- * @param[out] *output_freq points to a output frequency buffer
+ * @param[out] *output_freq points to an output frequency buffer
  * @return     status code
  *             - 0 success
  *             - 2 handle is NULL
@@ -811,7 +811,7 @@ uint8_t pca9685_set_output_change(pca9685_handle_t *handle, pca9685_output_chang
 /**
  * @brief      get the output change type
  * @param[in]  *handle points to a pca9685 handle structure
- * @param[out] *change points to a output change type buffer
+ * @param[out] *change points to an output change type buffer
  * @return     status code
  *             - 0 success
  *             - 1 get output change failed
@@ -837,7 +837,7 @@ uint8_t pca9685_set_output_driver(pca9685_handle_t *handle, pca9685_output_drive
 /**
  * @brief      get the output driver type
  * @param[in]  *handle points to a pca9685 handle structure
- * @param[out] *driver points to a output driver type buffer
+ * @param[out] *driver points to an output driver type buffer
  * @return     status code
  *             - 0 success
  *             - 1 get output driver failed
@@ -863,7 +863,7 @@ uint8_t pca9685_set_output_disable_type(pca9685_handle_t *handle, pca9685_output
 /**
  * @brief      get the output disable type
  * @param[in]  *handle points to a pca9685 handle structure
- * @param[out] *type points to a output disable type buffer
+ * @param[out] *type points to an output disable type buffer
  * @return     status code
  *             - 0 success
  *             - 1 get output disable type failed
@@ -967,7 +967,7 @@ uint8_t pca9685_set_all_call_address(pca9685_handle_t *handle, uint8_t addr);
 /**
  * @brief      set the all call address
  * @param[in]  *handle points to a pca9685 handle structure
- * @param[out] *addr points to a all call address buffer
+ * @param[out] *addr points to an all call address buffer
  * @return     status code
  *             - 0 success
  *             - 1 get all call address failed
