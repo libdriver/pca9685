@@ -141,11 +141,11 @@ uint8_t pca9685_servo_write_test(pca9685_address_t addr, pca9685_channel_t chann
         return 1;
     }
     
-    /* set prescaler */
+    /* set pre scale */
     res = pca9685_set_prescaler(&gs_handle, reg);
     if (res != 0)
     {
-        pca9685_interface_debug_print("pca9685: set prescaler failed.\n");
+        pca9685_interface_debug_print("pca9685: set pre scale failed.\n");
         (void)pca9685_deinit(&gs_handle);
         
         return 1;
@@ -171,31 +171,31 @@ uint8_t pca9685_servo_write_test(pca9685_address_t addr, pca9685_channel_t chann
         return 1;
     }
     
-    /* disable respond subaddress 1 */
+    /* disable respond sub address 1 */
     res = pca9685_set_respond_subaddress_1(&gs_handle, PCA9685_BOOL_FALSE);
     if (res != 0)
     {
-        pca9685_interface_debug_print("pca9685: set respond subaddress 1 failed.\n");
+        pca9685_interface_debug_print("pca9685: set respond sub address 1 failed.\n");
         (void)pca9685_deinit(&gs_handle);
         
         return 1;
     }
     
-    /* disable respond subaddress 2 */
+    /* disable respond sub address 2 */
     res = pca9685_set_respond_subaddress_2(&gs_handle, PCA9685_BOOL_FALSE);
     if (res != 0)
     {
-        pca9685_interface_debug_print("pca9685: set respond subaddress 2 failed.\n");
+        pca9685_interface_debug_print("pca9685: set respond sub address 2 failed.\n");
         (void)pca9685_deinit(&gs_handle);
         
         return 1;
     }
     
-    /* disable respond subaddress 3 */
+    /* disable respond sub address 3 */
     res = pca9685_set_respond_subaddress_3(&gs_handle, PCA9685_BOOL_FALSE);
     if (res != 0)
     {
-        pca9685_interface_debug_print("pca9685: set respond subaddress 3 failed.\n");
+        pca9685_interface_debug_print("pca9685: set respond sub address 3 failed.\n");
         (void)pca9685_deinit(&gs_handle);
         
         return 1;
@@ -295,7 +295,7 @@ uint8_t pca9685_servo_write_test(pca9685_address_t addr, pca9685_channel_t chann
             return 1;
         }
         
-        /* outpu data */
+        /* output data */
         pca9685_interface_debug_print("pca9685: set channel %d %0.2f degrees.\n", channel, (float)(i) / (float)(times) * 180.0f);
         
         /* delay 1000 ms */
@@ -326,7 +326,7 @@ uint8_t pca9685_servo_write_test(pca9685_address_t addr, pca9685_channel_t chann
             return 1;
         }
         
-        /* outpu data */
+        /* output data */
         pca9685_interface_debug_print("pca9685: set all channel %0.2f degrees.\n", (float)(i) / (float)(times) * 180.0f);
         
         /* delay 1000 ms */

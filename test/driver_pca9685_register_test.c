@@ -119,7 +119,7 @@ uint8_t pca9685_register_test(pca9685_address_t addr)
     res = pca9685_get_addr(&gs_handle, (uint8_t *)&addr_value_check);
     if (res != 0)
     {
-        pca9685_interface_debug_print("pca9685: set gddr failed.\n");
+        pca9685_interface_debug_print("pca9685: set addr failed.\n");
         
         return 1;
     }
@@ -194,7 +194,7 @@ uint8_t pca9685_register_test(pca9685_address_t addr)
     res = pca9685_set_prescaler(&gs_handle, prescaler);
     if (res != 0)
     {
-        pca9685_interface_debug_print("pca9685: set prescaler failed.\n");
+        pca9685_interface_debug_print("pca9685: set pres cale failed.\n");
         (void)pca9685_deinit(&gs_handle);
         
         return 1;
@@ -381,41 +381,41 @@ uint8_t pca9685_register_test(pca9685_address_t addr)
     res = pca9685_set_respond_subaddress_1(&gs_handle, PCA9685_BOOL_FALSE);
     if (res != 0)
     {
-        pca9685_interface_debug_print("pca9685: set respond subaddress 1 failed.\n");
+        pca9685_interface_debug_print("pca9685: set respond sub address 1 failed.\n");
         (void)pca9685_deinit(&gs_handle);
         
         return 1;
     }
-    pca9685_interface_debug_print("pca9685: disable respond subaddress 1.\n");
+    pca9685_interface_debug_print("pca9685: disable respond sub address 1.\n");
     res = pca9685_get_respond_subaddress_1(&gs_handle, &enable);
     if (res != 0)
     {
-        pca9685_interface_debug_print("pca9685: get respond subaddress 1 failed.\n");
+        pca9685_interface_debug_print("pca9685: get respond sub address 1 failed.\n");
         (void)pca9685_deinit(&gs_handle);
         
         return 1;
     }
-    pca9685_interface_debug_print("pca9685: check respond subaddress 1 %s.\n", enable == PCA9685_BOOL_FALSE ? "ok" : "error");
+    pca9685_interface_debug_print("pca9685: check respond sub address 1 %s.\n", enable == PCA9685_BOOL_FALSE ? "ok" : "error");
     
     /* enable */
     res = pca9685_set_respond_subaddress_1(&gs_handle, PCA9685_BOOL_TRUE);
     if (res != 0)
     {
-        pca9685_interface_debug_print("pca9685: set respond subaddress 1 failed.\n");
+        pca9685_interface_debug_print("pca9685: set respond sub address 1 failed.\n");
         (void)pca9685_deinit(&gs_handle);
         
         return 1;
     }
-    pca9685_interface_debug_print("pca9685: enable respond subaddress 1.\n");
+    pca9685_interface_debug_print("pca9685: enable respond sub address 1.\n");
     res = pca9685_get_respond_subaddress_1(&gs_handle, &enable);
     if (res != 0)
     {
-        pca9685_interface_debug_print("pca9685: get respond subaddress 1 failed.\n");
+        pca9685_interface_debug_print("pca9685: get respond sub address 1 failed.\n");
         (void)pca9685_deinit(&gs_handle);
         
         return 1;
     }
-    pca9685_interface_debug_print("pca9685: check respond subaddress 1 %s.\n", enable == PCA9685_BOOL_TRUE ? "ok" : "error");
+    pca9685_interface_debug_print("pca9685: check respond sub address 1 %s.\n", enable == PCA9685_BOOL_TRUE ? "ok" : "error");
     
     /* pca9685_set_respond_subaddress_2/pca9685_get_respond_subaddress_2 test */
     pca9685_interface_debug_print("pca9685: pca9685_set_respond_subaddress_2/pca9685_get_respond_subaddress_2 test.\n");
@@ -424,41 +424,41 @@ uint8_t pca9685_register_test(pca9685_address_t addr)
     res = pca9685_set_respond_subaddress_2(&gs_handle, PCA9685_BOOL_FALSE);
     if (res != 0)
     {
-        pca9685_interface_debug_print("pca9685: set respond subaddress 2 failed.\n");
+        pca9685_interface_debug_print("pca9685: set respond sub address 2 failed.\n");
         (void)pca9685_deinit(&gs_handle);
         
         return 1;
     }
-    pca9685_interface_debug_print("pca9685: disable respond subaddress 2.\n");
+    pca9685_interface_debug_print("pca9685: disable respond sub address 2.\n");
     res = pca9685_get_respond_subaddress_2(&gs_handle, &enable);
     if (res != 0)
     {
-        pca9685_interface_debug_print("pca9685: get respond subaddress 2 failed.\n");
+        pca9685_interface_debug_print("pca9685: get respond sub address 2 failed.\n");
         (void)pca9685_deinit(&gs_handle);
         
         return 1;
     }
-    pca9685_interface_debug_print("pca9685: check respond subaddress 2 %s.\n", enable == PCA9685_BOOL_FALSE ? "ok" : "error");
+    pca9685_interface_debug_print("pca9685: check respond sub address 2 %s.\n", enable == PCA9685_BOOL_FALSE ? "ok" : "error");
     
     /* enable */
     res = pca9685_set_respond_subaddress_2(&gs_handle, PCA9685_BOOL_TRUE);
     if (res != 0)
     {
-        pca9685_interface_debug_print("pca9685: set respond subaddress 2 failed.\n");
+        pca9685_interface_debug_print("pca9685: set respond sub address 2 failed.\n");
         (void)pca9685_deinit(&gs_handle);
         
         return 1;
     }
-    pca9685_interface_debug_print("pca9685: enable respond subaddress 2.\n");
+    pca9685_interface_debug_print("pca9685: enable respond sub address 2.\n");
     res = pca9685_get_respond_subaddress_2(&gs_handle, &enable);
     if (res != 0)
     {
-        pca9685_interface_debug_print("pca9685: get respond subaddress 2 failed.\n");
+        pca9685_interface_debug_print("pca9685: get respond sub address 2 failed.\n");
         (void)pca9685_deinit(&gs_handle);
         
         return 1;
     }
-    pca9685_interface_debug_print("pca9685: check respond subaddress 2 %s.\n", enable == PCA9685_BOOL_TRUE ? "ok" : "error");
+    pca9685_interface_debug_print("pca9685: check respond sub address 2 %s.\n", enable == PCA9685_BOOL_TRUE ? "ok" : "error");
     
     /* pca9685_set_respond_subaddress_3/pca9685_get_respond_subaddress_3 test */
     pca9685_interface_debug_print("pca9685: pca9685_set_respond_subaddress_3/pca9685_get_respond_subaddress_3 test.\n");
@@ -467,41 +467,41 @@ uint8_t pca9685_register_test(pca9685_address_t addr)
     res = pca9685_set_respond_subaddress_3(&gs_handle, PCA9685_BOOL_FALSE);
     if (res != 0)
     {
-        pca9685_interface_debug_print("pca9685: set respond subaddress 3 failed.\n");
+        pca9685_interface_debug_print("pca9685: set respond sub address 3 failed.\n");
         (void)pca9685_deinit(&gs_handle);
         
         return 1;
     }
-    pca9685_interface_debug_print("pca9685: disable respond subaddress 3.\n");
+    pca9685_interface_debug_print("pca9685: disable respond sub address 3.\n");
     res = pca9685_get_respond_subaddress_3(&gs_handle, &enable);
     if (res != 0)
     {
-        pca9685_interface_debug_print("pca9685: get respond subaddress 3 failed.\n");
+        pca9685_interface_debug_print("pca9685: get respond sub address 3 failed.\n");
         (void)pca9685_deinit(&gs_handle);
         
         return 1;
     }
-    pca9685_interface_debug_print("pca9685: check respond subaddress 3 %s.\n", enable == PCA9685_BOOL_FALSE ? "ok" : "error");
+    pca9685_interface_debug_print("pca9685: check respond sub address 3 %s.\n", enable == PCA9685_BOOL_FALSE ? "ok" : "error");
     
     /* enable */
     res = pca9685_set_respond_subaddress_3(&gs_handle, PCA9685_BOOL_TRUE);
     if (res != 0)
     {
-        pca9685_interface_debug_print("pca9685: set respond subaddress 3 failed.\n");
+        pca9685_interface_debug_print("pca9685: set respond sub address 3 failed.\n");
         (void)pca9685_deinit(&gs_handle);
         
         return 1;
     }
-    pca9685_interface_debug_print("pca9685: enable respond subaddress 3.\n");
+    pca9685_interface_debug_print("pca9685: enable respond sub address 3.\n");
     res = pca9685_get_respond_subaddress_3(&gs_handle, &enable);
     if (res != 0)
     {
-        pca9685_interface_debug_print("pca9685: get respond subaddress 3 failed.\n");
+        pca9685_interface_debug_print("pca9685: get respond sub address 3 failed.\n");
         (void)pca9685_deinit(&gs_handle);
         
         return 1;
     }
-    pca9685_interface_debug_print("pca9685: check respond subaddress 3 %s.\n", enable == PCA9685_BOOL_TRUE ? "ok" : "error");
+    pca9685_interface_debug_print("pca9685: check respond sub address 3 %s.\n", enable == PCA9685_BOOL_TRUE ? "ok" : "error");
     
     /* pca9685_set_respond_all_call/pca9685_get_respond_all_call test */
     pca9685_interface_debug_print("pca9685: pca9685_set_respond_all_call/pca9685_get_respond_all_call test.\n");
@@ -558,7 +558,7 @@ uint8_t pca9685_register_test(pca9685_address_t addr)
         
         return 1;
     }
-    pca9685_interface_debug_print("pca9685: disable outoput invert.\n");
+    pca9685_interface_debug_print("pca9685: disable output invert.\n");
     res = pca9685_get_output_invert(&gs_handle, &enable);
     if (res != 0)
     {
@@ -567,7 +567,7 @@ uint8_t pca9685_register_test(pca9685_address_t addr)
         
         return 1;
     }
-    pca9685_interface_debug_print("pca9685: check outoput invert %s.\n", enable == PCA9685_BOOL_FALSE ? "ok" : "error");
+    pca9685_interface_debug_print("pca9685: check output invert %s.\n", enable == PCA9685_BOOL_FALSE ? "ok" : "error");
     
     /* enable */
     res = pca9685_set_output_invert(&gs_handle, PCA9685_BOOL_TRUE);
@@ -578,7 +578,7 @@ uint8_t pca9685_register_test(pca9685_address_t addr)
         
         return 1;
     }
-    pca9685_interface_debug_print("pca9685: enable outoput invert.\n");
+    pca9685_interface_debug_print("pca9685: enable output invert.\n");
     res = pca9685_get_output_invert(&gs_handle, &enable);
     if (res != 0)
     {
@@ -587,7 +587,7 @@ uint8_t pca9685_register_test(pca9685_address_t addr)
         
         return 1;
     }
-    pca9685_interface_debug_print("pca9685: check outoput invert %s.\n", enable == PCA9685_BOOL_TRUE ? "ok" : "error");
+    pca9685_interface_debug_print("pca9685: check output invert %s.\n", enable == PCA9685_BOOL_TRUE ? "ok" : "error");
     
     /* pca9685_set_output_change/pca9685_get_output_change test */
     pca9685_interface_debug_print("pca9685: pca9685_set_output_change/pca9685_get_output_change test.\n");
@@ -610,7 +610,7 @@ uint8_t pca9685_register_test(pca9685_address_t addr)
         
         return 1;
     }
-    pca9685_interface_debug_print("pca9685: check outoput change %s.\n", change == PCA9685_OUTPUT_CHANGE_STOP ? "ok" : "error");
+    pca9685_interface_debug_print("pca9685: check output change %s.\n", change == PCA9685_OUTPUT_CHANGE_STOP ? "ok" : "error");
     
     /* set ack change */
     res = pca9685_set_output_change(&gs_handle, PCA9685_OUTPUT_CHANGE_ACK);
@@ -630,7 +630,7 @@ uint8_t pca9685_register_test(pca9685_address_t addr)
         
         return 1;
     }
-    pca9685_interface_debug_print("pca9685: check outoput change %s.\n", change == PCA9685_OUTPUT_CHANGE_ACK ? "ok" : "error");
+    pca9685_interface_debug_print("pca9685: check output change %s.\n", change == PCA9685_OUTPUT_CHANGE_ACK ? "ok" : "error");
     
     /* pca9685_set_output_driver/pca9685_get_output_driver test */
     pca9685_interface_debug_print("pca9685: pca9685_set_output_driver/pca9685_get_output_driver test.\n");
@@ -653,7 +653,7 @@ uint8_t pca9685_register_test(pca9685_address_t addr)
         
         return 1;
     }
-    pca9685_interface_debug_print("pca9685: check outoput driver %s.\n", driver == PCA9685_OUTPUT_DRIVER_OPEN_DRAIN ? "ok" : "error");
+    pca9685_interface_debug_print("pca9685: check output driver %s.\n", driver == PCA9685_OUTPUT_DRIVER_OPEN_DRAIN ? "ok" : "error");
     
     /* totem pole */
     res = pca9685_set_output_driver(&gs_handle, PCA9685_OUTPUT_DRIVER_TOTEM_POLE);
@@ -673,7 +673,7 @@ uint8_t pca9685_register_test(pca9685_address_t addr)
         
         return 1;
     }
-    pca9685_interface_debug_print("pca9685: check outoput driver %s.\n", driver == PCA9685_OUTPUT_DRIVER_TOTEM_POLE ? "ok" : "error");
+    pca9685_interface_debug_print("pca9685: check output driver %s.\n", driver == PCA9685_OUTPUT_DRIVER_TOTEM_POLE ? "ok" : "error");
     
     /* pca9685_set_output_disable_type/pca9685_get_output_disable_type test */
     pca9685_interface_debug_print("pca9685: pca9685_set_output_disable_type/pca9685_get_output_disable_type test.\n");
@@ -746,21 +746,21 @@ uint8_t pca9685_register_test(pca9685_address_t addr)
     res = pca9685_set_subaddress_1(&gs_handle, addr_value);
     if (res != 0)
     {
-        pca9685_interface_debug_print("pca9685: set subaddress 1 failed.\n");
+        pca9685_interface_debug_print("pca9685: set sub address 1 failed.\n");
         (void)pca9685_deinit(&gs_handle);
         
         return 1;
     }
-    pca9685_interface_debug_print("pca9685: set subaddress 1 0x%02X.\n", addr_value);
+    pca9685_interface_debug_print("pca9685: set sub address 1 0x%02X.\n", addr_value);
     res = pca9685_get_subaddress_1(&gs_handle, (uint8_t *)&addr_value_check);
     if (res != 0)
     {
-        pca9685_interface_debug_print("pca9685: get subaddress 1 failed.\n");
+        pca9685_interface_debug_print("pca9685: get sub address 1 failed.\n");
         (void)pca9685_deinit(&gs_handle);
         
         return 1;
     }
-    pca9685_interface_debug_print("pca9685: check subaddress 1 %s.\n", addr_value_check == addr_value ? "ok" : "error");
+    pca9685_interface_debug_print("pca9685: check sub address 1 %s.\n", addr_value_check == addr_value ? "ok" : "error");
     
     /* pca9685_set_subaddress_2/pca9685_get_subaddress_2 test */
     pca9685_interface_debug_print("pca9685: pca9685_set_subaddress_2/pca9685_get_subaddress_2 test.\n");
@@ -770,21 +770,21 @@ uint8_t pca9685_register_test(pca9685_address_t addr)
     res = pca9685_set_subaddress_2(&gs_handle, addr_value);
     if (res != 0)
     {
-        pca9685_interface_debug_print("pca9685: set subaddress 2 failed.\n");
+        pca9685_interface_debug_print("pca9685: set sub address 2 failed.\n");
         (void)pca9685_deinit(&gs_handle);
         
         return 1;
     }
-    pca9685_interface_debug_print("pca9685: set subaddress 2 0x%02X.\n", addr_value);
+    pca9685_interface_debug_print("pca9685: set sub address 2 0x%02X.\n", addr_value);
     res = pca9685_get_subaddress_2(&gs_handle, (uint8_t *)&addr_value_check);
     if (res != 0)
     {
-        pca9685_interface_debug_print("pca9685: get subaddress 2 failed.\n");
+        pca9685_interface_debug_print("pca9685: get sub address 2 failed.\n");
         (void)pca9685_deinit(&gs_handle);
         
         return 1;
     }
-    pca9685_interface_debug_print("pca9685: check subaddress 2 %s.\n", addr_value_check == addr_value ? "ok" : "error");
+    pca9685_interface_debug_print("pca9685: check sub address 2 %s.\n", addr_value_check == addr_value ? "ok" : "error");
     
     /* pca9685_set_subaddress_3/pca9685_get_subaddress_3 test */
     pca9685_interface_debug_print("pca9685: pca9685_set_subaddress_3/pca9685_get_subaddress_3 test.\n");
@@ -794,21 +794,21 @@ uint8_t pca9685_register_test(pca9685_address_t addr)
     res = pca9685_set_subaddress_3(&gs_handle, addr_value);
     if (res != 0)
     {
-        pca9685_interface_debug_print("pca9685: set subaddress 3 failed.\n");
+        pca9685_interface_debug_print("pca9685: set sub address 3 failed.\n");
         (void)pca9685_deinit(&gs_handle);
         
         return 1;
     }
-    pca9685_interface_debug_print("pca9685: set subaddress 3 0x%02X.\n", addr_value);
+    pca9685_interface_debug_print("pca9685: set sub address 3 0x%02X.\n", addr_value);
     res = pca9685_get_subaddress_3(&gs_handle, (uint8_t *)&addr_value_check);
     if (res != 0)
     {
-        pca9685_interface_debug_print("pca9685: get subaddress 3 failed.\n");
+        pca9685_interface_debug_print("pca9685: get sub address 3 failed.\n");
         (void)pca9685_deinit(&gs_handle);
         
         return 1;
     }
-    pca9685_interface_debug_print("pca9685: check subaddress 3 %s.\n", addr_value_check == addr_value ? "ok" : "error");
+    pca9685_interface_debug_print("pca9685: check sub address 3 %s.\n", addr_value_check == addr_value ? "ok" : "error");
     
     /* pca9685_set_all_call_address/pca9685_get_all_call_address test */
     pca9685_interface_debug_print("pca9685: pca9685_set_all_call_address/pca9685_get_all_call_address test.\n");

@@ -507,12 +507,12 @@ uint8_t pca9685_pwm_convert_to_data(pca9685_handle_t *handle, uint16_t on_count,
 uint8_t pca9685_set_active(pca9685_handle_t *handle, pca9685_bool_t enable);
 
 /**
- * @brief     set the clock prescaler
+ * @brief     set the clock pres cale
  * @param[in] *handle points to a pca9685 handle structure
- * @param[in] prescaler is the clock prescaler
+ * @param[in] prescaler is the clock pre scale
  * @return    status code
  *            - 0 success
- *            - 1 set prescaler failed
+ *            - 1 set pre scale failed
  *            - 2 handle is NULL
  *            - 3 handle is not initialized
  *            - 4 prescaler must be >= 3
@@ -521,12 +521,12 @@ uint8_t pca9685_set_active(pca9685_handle_t *handle, pca9685_bool_t enable);
 uint8_t pca9685_set_prescaler(pca9685_handle_t *handle, uint8_t prescaler);
 
 /**
- * @brief      get the clock prescaler
+ * @brief      get the clock pre scale
  * @param[in]  *handle points to a pca9685 handle structure
- * @param[out] *prescaler points to a clock prescaler buffer
+ * @param[out] *prescaler points to a clock pre scale buffer
  * @return     status code
  *             - 0 success
- *             - 1 get prescaler failed
+ *             - 1 get pre scale failed
  *             - 2 handle is NULL
  *             - 3 handle is not initialized
  * @note       none
@@ -666,12 +666,12 @@ uint8_t pca9685_set_sleep_mode(pca9685_handle_t *handle, pca9685_bool_t enable);
 uint8_t pca9685_get_sleep_mode(pca9685_handle_t *handle, pca9685_bool_t *enable);
 
 /**
- * @brief     enable or disable respond subaddress 1
+ * @brief     enable or disable respond sub address 1
  * @param[in] *handle points to a pca9685 handle structure
  * @param[in] enable is a bool value
  * @return    status code
  *            - 0 success
- *            - 1 set respond subaddress 1 failed
+ *            - 1 set respond sub address 1 failed
  *            - 2 handle is NULL
  *            - 3 handle is not initialized
  * @note      none
@@ -679,12 +679,12 @@ uint8_t pca9685_get_sleep_mode(pca9685_handle_t *handle, pca9685_bool_t *enable)
 uint8_t pca9685_set_respond_subaddress_1(pca9685_handle_t *handle, pca9685_bool_t enable);
 
 /**
- * @brief      get the respond subaddress 1 status
+ * @brief      get the respond sub address 1 status
  * @param[in]  *handle points to a pca9685 handle structure
  * @param[out] *enable points to a bool value buffer
  * @return     status code
  *             - 0 success
- *             - 1 get respond subaddress 1 failed
+ *             - 1 get respond sub address 1 failed
  *             - 2 handle is NULL
  *             - 3 handle is not initialized
  * @note       none
@@ -692,12 +692,12 @@ uint8_t pca9685_set_respond_subaddress_1(pca9685_handle_t *handle, pca9685_bool_
 uint8_t pca9685_get_respond_subaddress_1(pca9685_handle_t *handle, pca9685_bool_t *enable);
 
 /**
- * @brief     enable or disable respond subaddress 2
+ * @brief     enable or disable respond sub address 2
  * @param[in] *handle points to a pca9685 handle structure
  * @param[in] enable is a bool value
  * @return    status code
  *            - 0 success
- *            - 1 set respond subaddress 2 failed
+ *            - 1 set respond sub address 2 failed
  *            - 2 handle is NULL
  *            - 3 handle is not initialized
  * @note      none
@@ -705,12 +705,12 @@ uint8_t pca9685_get_respond_subaddress_1(pca9685_handle_t *handle, pca9685_bool_
 uint8_t pca9685_set_respond_subaddress_2(pca9685_handle_t *handle, pca9685_bool_t enable);
 
 /**
- * @brief      get the respond subaddress 2 status
+ * @brief      get the respond sub address 2 status
  * @param[in]  *handle points to a pca9685 handle structure
  * @param[out] *enable points to a bool value buffer
  * @return     status code
  *             - 0 success
- *             - 1 get respond subaddress 2 failed
+ *             - 1 get respond sub address 2 failed
  *             - 2 handle is NULL
  *             - 3 handle is not initialized
  * @note       none
@@ -718,12 +718,12 @@ uint8_t pca9685_set_respond_subaddress_2(pca9685_handle_t *handle, pca9685_bool_
 uint8_t pca9685_get_respond_subaddress_2(pca9685_handle_t *handle, pca9685_bool_t *enable);
 
 /**
- * @brief     enable or disable respond subaddress 3
+ * @brief     enable or disable respond sub address 3
  * @param[in] *handle points to a pca9685 handle structure
  * @param[in] enable is a bool value
  * @return    status code
  *            - 0 success
- *            - 1 set respond subaddress 3 failed
+ *            - 1 set respond sub address 3 failed
  *            - 2 handle is NULL
  *            - 3 handle is not initialized
  * @note      none
@@ -731,12 +731,12 @@ uint8_t pca9685_get_respond_subaddress_2(pca9685_handle_t *handle, pca9685_bool_
 uint8_t pca9685_set_respond_subaddress_3(pca9685_handle_t *handle, pca9685_bool_t enable);
 
 /**
- * @brief      get the respond subaddress 3 status
+ * @brief      get the respond sub address 3 status
  * @param[in]  *handle points to a pca9685 handle structure
  * @param[out] *enable points to a bool value buffer
  * @return     status code
  *             - 0 success
- *             - 1 get respond subaddress 3 failed
+ *             - 1 get respond sub address 3 failed
  *             - 2 handle is NULL
  *             - 3 handle is not initialized
  * @note       none
@@ -874,12 +874,12 @@ uint8_t pca9685_set_output_disable_type(pca9685_handle_t *handle, pca9685_output
 uint8_t pca9685_get_output_disable_type(pca9685_handle_t *handle, pca9685_output_disable_type_t *type);
 
 /**
- * @brief     set the subaddress 1
+ * @brief     set the sub address 1
  * @param[in] *handle points to a pca9685 handle structure
- * @param[in] addr is the subaddress 1
+ * @param[in] addr is the sub address 1
  * @return    status code
  *            - 0 success
- *            - 1 set subaddress 1 failed
+ *            - 1 set sub address 1 failed
  *            - 2 handle is NULL
  *            - 3 handle is not initialized
  * @note      none
@@ -887,12 +887,12 @@ uint8_t pca9685_get_output_disable_type(pca9685_handle_t *handle, pca9685_output
 uint8_t pca9685_set_subaddress_1(pca9685_handle_t *handle, uint8_t addr);
 
 /**
- * @brief      get the subaddress 1
+ * @brief      get the sub address 1
  * @param[in]  *handle points to a pca9685 handle structure
- * @param[out] *addr points to a subaddress 1 buffer
+ * @param[out] *addr points to a sub address 1 buffer
  * @return     status code
  *             - 0 success
- *             - 1 get subaddress 1 failed
+ *             - 1 get sub address 1 failed
  *             - 2 handle is NULL
  *             - 3 handle is not initialized
  * @note       none
@@ -900,12 +900,12 @@ uint8_t pca9685_set_subaddress_1(pca9685_handle_t *handle, uint8_t addr);
 uint8_t pca9685_get_subaddress_1(pca9685_handle_t *handle, uint8_t *addr);
 
 /**
- * @brief     set the subaddress 2
+ * @brief     set the sub address 2
  * @param[in] *handle points to a pca9685 handle structure
- * @param[in] addr is the subaddress 2
+ * @param[in] addr is the sub address 2
  * @return    status code
  *            - 0 success
- *            - 1 set subaddress 2 failed
+ *            - 1 set sub address 2 failed
  *            - 2 handle is NULL
  *            - 3 handle is not initialized
  * @note      none
@@ -913,12 +913,12 @@ uint8_t pca9685_get_subaddress_1(pca9685_handle_t *handle, uint8_t *addr);
 uint8_t pca9685_set_subaddress_2(pca9685_handle_t *handle, uint8_t addr);
 
 /**
- * @brief      get the subaddress 2
+ * @brief      get the sub address 2
  * @param[in]  *handle points to a pca9685 handle structure
- * @param[out] *addr points to a subaddress 2 buffer
+ * @param[out] *addr points to a sub address 2 buffer
  * @return     status code
  *             - 0 success
- *             - 1 get subaddress 2 failed
+ *             - 1 get sub address 2 failed
  *             - 2 handle is NULL
  *             - 3 handle is not initialized
  * @note       none
@@ -926,12 +926,12 @@ uint8_t pca9685_set_subaddress_2(pca9685_handle_t *handle, uint8_t addr);
 uint8_t pca9685_get_subaddress_2(pca9685_handle_t *handle, uint8_t *addr);
 
 /**
- * @brief     set the subaddress 3
+ * @brief     set the sub address 3
  * @param[in] *handle points to a pca9685 handle structure
- * @param[in] addr is the subaddress 3
+ * @param[in] addr is the sub address 3
  * @return    status code
  *            - 0 success
- *            - 1 set subaddress 3 failed
+ *            - 1 set sub address 3 failed
  *            - 2 handle is NULL
  *            - 3 handle is not initialized
  * @note      none
@@ -939,12 +939,12 @@ uint8_t pca9685_get_subaddress_2(pca9685_handle_t *handle, uint8_t *addr);
 uint8_t pca9685_set_subaddress_3(pca9685_handle_t *handle, uint8_t addr);
 
 /**
- * @brief      get the subaddress 3
+ * @brief      get the sub address 3
  * @param[in]  *handle points to a pca9685 handle structure
- * @param[out] *addr points to a subaddress 3 buffer
+ * @param[out] *addr points to a sub address 3 buffer
  * @return     status code
  *             - 0 success
- *             - 1 get subaddress 3 failed
+ *             - 1 get sub address 3 failed
  *             - 2 handle is NULL
  *             - 3 handle is not initialized
  * @note       none
