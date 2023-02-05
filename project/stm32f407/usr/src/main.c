@@ -77,7 +77,7 @@ uint8_t pca9685(uint8_t argc, char **argv)
         {"times", required_argument, NULL, 3},
         {NULL, 0, NULL, 0},
     };
-    char type[33] = "unknow";
+    char type[33] = "unknown";
     uint32_t times = 3;
     pca9685_address_t addr = PCA9685_ADDRESS_A000000;
     pca9685_channel_t channel = PCA9685_CHANNEL_0;
@@ -336,7 +336,7 @@ int main(void)
     /* uart init */
     uart_init(115200);
     
-    /* shell init && register pca9685 fuction */
+    /* shell init && register pca9685 function */
     shell_init();
     shell_register("pca9685", pca9685);
     uart_print("pca9685: welcome to libdriver pca9685.\n");
@@ -359,7 +359,7 @@ int main(void)
             }
             else if (res == 2)
             {
-                uart_print("pca9685: unknow command.\n");
+                uart_print("pca9685: unknown command.\n");
             }
             else if (res == 3)
             {
@@ -375,7 +375,7 @@ int main(void)
             }
             else
             {
-                uart_print("pca9685: unknow status code.\n");
+                uart_print("pca9685: unknown status code.\n");
             }
             uart_flush();
         }

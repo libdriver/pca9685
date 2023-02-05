@@ -112,11 +112,11 @@ uint8_t pca9685_basic_init(pca9685_address_t addr, uint16_t hz)
         return 1;
     }
     
-    /* set prescaler */
+    /* set pre scale */
     res = pca9685_set_prescaler(&gs_handle, reg);
     if (res != 0)
     {
-        pca9685_interface_debug_print("pca9685: set prescaler failed.\n");
+        pca9685_interface_debug_print("pca9685: set pre scale failed.\n");
         (void)pca9685_deinit(&gs_handle);
         
         return 1;
@@ -142,31 +142,31 @@ uint8_t pca9685_basic_init(pca9685_address_t addr, uint16_t hz)
         return 1;
     }
     
-    /* set respond subaddress 1 */
+    /* set respond sub address 1 */
     res = pca9685_set_respond_subaddress_1(&gs_handle, PCA9685_BASIC_DEFAULT_RESPOND_SUBADDRESS_1);
     if (res != 0)
     {
-        pca9685_interface_debug_print("pca9685: set respond subaddress 1 failed.\n");
+        pca9685_interface_debug_print("pca9685: set respond sub address 1 failed.\n");
         (void)pca9685_deinit(&gs_handle);
         
         return 1;
     }
     
-    /* set respond subaddress 2 */
+    /* set respond sub address 2 */
     res = pca9685_set_respond_subaddress_2(&gs_handle, PCA9685_BASIC_DEFAULT_RESPOND_SUBADDRESS_2);
     if (res != 0)
     {
-        pca9685_interface_debug_print("pca9685: set respond subaddress 2 failed.\n");
+        pca9685_interface_debug_print("pca9685: set respond sub address 2 failed.\n");
         (void)pca9685_deinit(&gs_handle);
         
         return 1;
     }
     
-    /* set respond subaddress 3 */
+    /* set respond sub address 3 */
     res = pca9685_set_respond_subaddress_3(&gs_handle, PCA9685_BASIC_DEFAULT_RESPOND_SUBADDRESS_2);
     if (res != 0)
     {
-        pca9685_interface_debug_print("pca9685: set respond subaddress 3 failed.\n");
+        pca9685_interface_debug_print("pca9685: set respond sub address 3 failed.\n");
         (void)pca9685_deinit(&gs_handle);
         
         return 1;
@@ -222,31 +222,31 @@ uint8_t pca9685_basic_init(pca9685_address_t addr, uint16_t hz)
         return 1;
     }
     
-    /* set subaddress 1 */
+    /* set sub address 1 */
     res = pca9685_set_subaddress_1(&gs_handle, PCA9685_BASIC_DEFAULT_SUBADDRESS_1);
     if (res != 0)
     {
-        pca9685_interface_debug_print("pca9685: set subaddress 1 failed.\n");
+        pca9685_interface_debug_print("pca9685: set sub address 1 failed.\n");
         (void)pca9685_deinit(&gs_handle);
         
         return 1;
     }
     
-    /* set subaddress 2 */
+    /* set sub address 2 */
     res = pca9685_set_subaddress_2(&gs_handle, PCA9685_BASIC_DEFAULT_SUBADDRESS_2);
     if (res != 0)
     {
-        pca9685_interface_debug_print("pca9685: set subaddress 2 failed.\n");
+        pca9685_interface_debug_print("pca9685: set sub address 2 failed.\n");
         (void)pca9685_deinit(&gs_handle);
         
         return 1;
     }
     
-    /* set subaddress 3 */
+    /* set sub address 3 */
     res = pca9685_set_subaddress_3(&gs_handle, PCA9685_BASIC_DEFAULT_SUBADDRESS_3);
     if (res != 0)
     {
-        pca9685_interface_debug_print("pca9685: set subaddress 3 failed.\n");
+        pca9685_interface_debug_print("pca9685: set sub address 3 failed.\n");
         (void)pca9685_deinit(&gs_handle);
         
         return 1;

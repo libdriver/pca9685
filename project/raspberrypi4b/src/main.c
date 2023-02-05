@@ -68,7 +68,7 @@ uint8_t pca9685(uint8_t argc, char **argv)
         {"times", required_argument, NULL, 3},
         {NULL, 0, NULL, 0},
     };
-    char type[33] = "unknow";
+    char type[33] = "unknown";
     uint32_t times = 3;
     pca9685_address_t addr = PCA9685_ADDRESS_A000000;
     pca9685_channel_t channel = PCA9685_CHANNEL_0;
@@ -337,7 +337,7 @@ int main(uint8_t argc, char **argv)
     }
     else
     {
-        pca9685_interface_debug_print("pca9685: unknow status code.\n");
+        pca9685_interface_debug_print("pca9685: unknown status code.\n");
     }
 
     return 0;
