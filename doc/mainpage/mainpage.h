@@ -1,6 +1,6 @@
 /**
  * @mainpage  LibDriver PCA9685
- * @brief     libdriver pca9685 is a full function driver of pca9685 and it can run in both MCU and Linux platform.
+ * @brief     LibDriver PCA9685 is a full function driver of PCA9685 and it can run in both MCU and Linux platform.
  * @version   1.0.0
  * @author    Shifeng Li
  *
