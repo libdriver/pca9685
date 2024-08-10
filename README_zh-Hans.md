@@ -8,7 +8,7 @@
 
 [![MISRA](https://img.shields.io/badge/misra-compliant-brightgreen.svg)](/misra/README.md) [![API](https://img.shields.io/badge/api-reference-blue.svg)](https://www.libdriver.com/docs/pca9685/index.html) [![License](https://img.shields.io/badge/license-MIT-brightgreen.svg)](/LICENSE)
 
-PCA9685是一款由I²C总线控制的16通道LED控制器，最适合红色/绿色/蓝色/琥珀色(RGBA)彩色背光应用。每个LED输出各自带有12位分辨率(4096级)固定频率的独立PWM控制器，该控制器工作在24 Hz至1526 Hz的可编程频率范围内，占空比从0 %至100 %可调，允许将LED设为特定的亮度值。所有输出均设为相同的PWM频率。每个LED输出可以是关、开(无PWM控制)或按独立PWM控制器的值设置。LED输出驱动器可编程为开漏极或图腾柱，5 V情况下开漏极具有25 mA的灌电流能力，图腾柱具有25 mA灌电流、10 mA拉电流能力。PCA9685的工作电源电压范围为2.3 V至5.5 V，输入和输出容许5.5 V的电压。LED可直接连接至LED输出(最高25 mA，5.5 V)，或通过外部驱动器和最少量的分离组件(用于更大电流或更高电压的LED)控制。它可用于 RGB 或 RGBA LED 驱动器、LED 状态信息、LED 显示器、LCD 背光、蜂窝电话或手持设备的键盘背光等。
+PCA9685是一款由I²C总线控制的16通道LED控制器，最适合红色/绿色/蓝色/琥珀色(RGBA)彩色背光应用。每个LED输出各自带有12位分辨率(4096级)固定频率的独立PWM控制器，该控制器工作在24Hz至1526Hz的可编程频率范围内，占空比从0%至100%可调，允许将LED设为特定的亮度值。所有输出均设为相同的PWM频率。每个LED输出可以是关、开(无PWM控制)或按独立PWM控制器的值设置。LED输出驱动器可编程为开漏模式，5V情况下开漏模式具有25mA的电流接收能力。PCA9685的工作电源电压范围为2.3V至5.5V，输入和输出容许5.5V的电压。LED可直接连接至LED输出(最高25mA，5.5V)，或通过外部驱动器和最少量的分离组件(用于更大电流或更高电压的LED)控制。它可用于 RGB 或 RGBA LED 驱动器、LED 状态信息、LED显示器、LCD背光、蜂窝电话或手持设备的键盘背光等。
 
 LibDriver PCA9685是LibDriver推出的PCA9685的全功能驱动，该驱动提供PWM输出等功能并且它符合MISRA标准。
 
