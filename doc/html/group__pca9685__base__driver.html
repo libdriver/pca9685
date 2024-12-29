@@ -778,7 +778,7 @@ Functions</h2></td></tr>
 <p>close the chip </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramdir">[in]</td><td class="paramname">*handle</td><td>points to a pca9685 handle structure </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">*handle</td><td>pointer to a pca9685 handle structure </td></tr>
   </table>
   </dd>
 </dl>
@@ -825,8 +825,8 @@ Functions</h2></td></tr>
 <p>get the address </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramdir">[in]</td><td class="paramname">*handle</td><td>points to a pca9685 handle structure </td></tr>
-    <tr><td class="paramdir">[out]</td><td class="paramname">*addr</td><td>points to a chip address buffer </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">*handle</td><td>pointer to a pca9685 handle structure </td></tr>
+    <tr><td class="paramdir">[out]</td><td class="paramname">*addr</td><td>pointer to a chip address buffer </td></tr>
   </table>
   </dd>
 </dl>
@@ -870,8 +870,8 @@ Functions</h2></td></tr>
 <p>get the address pin </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramdir">[in]</td><td class="paramname">*handle</td><td>points to a pca9685 handle structure </td></tr>
-    <tr><td class="paramdir">[out]</td><td class="paramname">*addr_pin</td><td>points to a chip address pins buffer </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">*handle</td><td>pointer to a pca9685 handle structure </td></tr>
+    <tr><td class="paramdir">[out]</td><td class="paramname">*addr_pin</td><td>pointer to a chip address pins buffer </td></tr>
   </table>
   </dd>
 </dl>
@@ -915,8 +915,8 @@ Functions</h2></td></tr>
 <p>set the all call address </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramdir">[in]</td><td class="paramname">*handle</td><td>points to a pca9685 handle structure </td></tr>
-    <tr><td class="paramdir">[out]</td><td class="paramname">*addr</td><td>points to an all call address buffer </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">*handle</td><td>pointer to a pca9685 handle structure </td></tr>
+    <tr><td class="paramdir">[out]</td><td class="paramname">*addr</td><td>pointer to an all call address buffer </td></tr>
   </table>
   </dd>
 </dl>
@@ -962,8 +962,8 @@ Functions</h2></td></tr>
 <p>get the external clock pin status </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramdir">[in]</td><td class="paramname">*handle</td><td>points to a pca9685 handle structure </td></tr>
-    <tr><td class="paramdir">[out]</td><td class="paramname">*enable</td><td>points to a bool value buffer </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">*handle</td><td>pointer to a pca9685 handle structure </td></tr>
+    <tr><td class="paramdir">[out]</td><td class="paramname">*enable</td><td>pointer to a bool value buffer </td></tr>
   </table>
   </dd>
 </dl>
@@ -1009,8 +1009,8 @@ Functions</h2></td></tr>
 <p>get the output change type </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramdir">[in]</td><td class="paramname">*handle</td><td>points to a pca9685 handle structure </td></tr>
-    <tr><td class="paramdir">[out]</td><td class="paramname">*change</td><td>points to an output change type buffer </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">*handle</td><td>pointer to a pca9685 handle structure </td></tr>
+    <tr><td class="paramdir">[out]</td><td class="paramname">*change</td><td>pointer to an output change type buffer </td></tr>
   </table>
   </dd>
 </dl>
@@ -1056,8 +1056,8 @@ Functions</h2></td></tr>
 <p>get the output disable type </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramdir">[in]</td><td class="paramname">*handle</td><td>points to a pca9685 handle structure </td></tr>
-    <tr><td class="paramdir">[out]</td><td class="paramname">*type</td><td>points to an output disable type buffer </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">*handle</td><td>pointer to a pca9685 handle structure </td></tr>
+    <tr><td class="paramdir">[out]</td><td class="paramname">*type</td><td>pointer to an output disable type buffer </td></tr>
   </table>
   </dd>
 </dl>
@@ -1103,8 +1103,8 @@ Functions</h2></td></tr>
 <p>get the output driver type </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramdir">[in]</td><td class="paramname">*handle</td><td>points to a pca9685 handle structure </td></tr>
-    <tr><td class="paramdir">[out]</td><td class="paramname">*driver</td><td>points to an output driver type buffer </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">*handle</td><td>pointer to a pca9685 handle structure </td></tr>
+    <tr><td class="paramdir">[out]</td><td class="paramname">*driver</td><td>pointer to an output driver type buffer </td></tr>
   </table>
   </dd>
 </dl>
@@ -1150,8 +1150,8 @@ Functions</h2></td></tr>
 <p>get the output invert status </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramdir">[in]</td><td class="paramname">*handle</td><td>points to a pca9685 handle structure </td></tr>
-    <tr><td class="paramdir">[out]</td><td class="paramname">*enable</td><td>points to a bool value buffer </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">*handle</td><td>pointer to a pca9685 handle structure </td></tr>
+    <tr><td class="paramdir">[out]</td><td class="paramname">*enable</td><td>pointer to a bool value buffer </td></tr>
   </table>
   </dd>
 </dl>
@@ -1197,8 +1197,8 @@ Functions</h2></td></tr>
 <p>get the clock pre scale </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramdir">[in]</td><td class="paramname">*handle</td><td>points to a pca9685 handle structure </td></tr>
-    <tr><td class="paramdir">[out]</td><td class="paramname">*prescaler</td><td>points to a clock pre scale buffer </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">*handle</td><td>pointer to a pca9685 handle structure </td></tr>
+    <tr><td class="paramdir">[out]</td><td class="paramname">*prescaler</td><td>pointer to a clock pre scale buffer </td></tr>
   </table>
   </dd>
 </dl>
@@ -1244,8 +1244,8 @@ Functions</h2></td></tr>
 <p>get the register auto increment status </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramdir">[in]</td><td class="paramname">*handle</td><td>points to a pca9685 handle structure </td></tr>
-    <tr><td class="paramdir">[out]</td><td class="paramname">*enable</td><td>points to a bool value buffer </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">*handle</td><td>pointer to a pca9685 handle structure </td></tr>
+    <tr><td class="paramdir">[out]</td><td class="paramname">*enable</td><td>pointer to a bool value buffer </td></tr>
   </table>
   </dd>
 </dl>
@@ -1291,8 +1291,8 @@ Functions</h2></td></tr>
 <p>get the respond all call status </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramdir">[in]</td><td class="paramname">*handle</td><td>points to a pca9685 handle structure </td></tr>
-    <tr><td class="paramdir">[out]</td><td class="paramname">*enable</td><td>points to a bool value buffer </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">*handle</td><td>pointer to a pca9685 handle structure </td></tr>
+    <tr><td class="paramdir">[out]</td><td class="paramname">*enable</td><td>pointer to a bool value buffer </td></tr>
   </table>
   </dd>
 </dl>
@@ -1338,8 +1338,8 @@ Functions</h2></td></tr>
 <p>get the respond sub address 1 status </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramdir">[in]</td><td class="paramname">*handle</td><td>points to a pca9685 handle structure </td></tr>
-    <tr><td class="paramdir">[out]</td><td class="paramname">*enable</td><td>points to a bool value buffer </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">*handle</td><td>pointer to a pca9685 handle structure </td></tr>
+    <tr><td class="paramdir">[out]</td><td class="paramname">*enable</td><td>pointer to a bool value buffer </td></tr>
   </table>
   </dd>
 </dl>
@@ -1385,8 +1385,8 @@ Functions</h2></td></tr>
 <p>get the respond sub address 2 status </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramdir">[in]</td><td class="paramname">*handle</td><td>points to a pca9685 handle structure </td></tr>
-    <tr><td class="paramdir">[out]</td><td class="paramname">*enable</td><td>points to a bool value buffer </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">*handle</td><td>pointer to a pca9685 handle structure </td></tr>
+    <tr><td class="paramdir">[out]</td><td class="paramname">*enable</td><td>pointer to a bool value buffer </td></tr>
   </table>
   </dd>
 </dl>
@@ -1432,8 +1432,8 @@ Functions</h2></td></tr>
 <p>get the respond sub address 3 status </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramdir">[in]</td><td class="paramname">*handle</td><td>points to a pca9685 handle structure </td></tr>
-    <tr><td class="paramdir">[out]</td><td class="paramname">*enable</td><td>points to a bool value buffer </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">*handle</td><td>pointer to a pca9685 handle structure </td></tr>
+    <tr><td class="paramdir">[out]</td><td class="paramname">*enable</td><td>pointer to a bool value buffer </td></tr>
   </table>
   </dd>
 </dl>
@@ -1479,8 +1479,8 @@ Functions</h2></td></tr>
 <p>get the restart status </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramdir">[in]</td><td class="paramname">*handle</td><td>points to a pca9685 handle structure </td></tr>
-    <tr><td class="paramdir">[out]</td><td class="paramname">*enable</td><td>points to a bool value buffer </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">*handle</td><td>pointer to a pca9685 handle structure </td></tr>
+    <tr><td class="paramdir">[out]</td><td class="paramname">*enable</td><td>pointer to a bool value buffer </td></tr>
   </table>
   </dd>
 </dl>
@@ -1526,8 +1526,8 @@ Functions</h2></td></tr>
 <p>get the sleep mode status </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramdir">[in]</td><td class="paramname">*handle</td><td>points to a pca9685 handle structure </td></tr>
-    <tr><td class="paramdir">[out]</td><td class="paramname">*enable</td><td>points to a bool value buffer </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">*handle</td><td>pointer to a pca9685 handle structure </td></tr>
+    <tr><td class="paramdir">[out]</td><td class="paramname">*enable</td><td>pointer to a bool value buffer </td></tr>
   </table>
   </dd>
 </dl>
@@ -1573,8 +1573,8 @@ Functions</h2></td></tr>
 <p>get the sub address 1 </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramdir">[in]</td><td class="paramname">*handle</td><td>points to a pca9685 handle structure </td></tr>
-    <tr><td class="paramdir">[out]</td><td class="paramname">*addr</td><td>points to a sub address 1 buffer </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">*handle</td><td>pointer to a pca9685 handle structure </td></tr>
+    <tr><td class="paramdir">[out]</td><td class="paramname">*addr</td><td>pointer to a sub address 1 buffer </td></tr>
   </table>
   </dd>
 </dl>
@@ -1620,8 +1620,8 @@ Functions</h2></td></tr>
 <p>get the sub address 2 </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramdir">[in]</td><td class="paramname">*handle</td><td>points to a pca9685 handle structure </td></tr>
-    <tr><td class="paramdir">[out]</td><td class="paramname">*addr</td><td>points to a sub address 2 buffer </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">*handle</td><td>pointer to a pca9685 handle structure </td></tr>
+    <tr><td class="paramdir">[out]</td><td class="paramname">*addr</td><td>pointer to a sub address 2 buffer </td></tr>
   </table>
   </dd>
 </dl>
@@ -1667,8 +1667,8 @@ Functions</h2></td></tr>
 <p>get the sub address 3 </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramdir">[in]</td><td class="paramname">*handle</td><td>points to a pca9685 handle structure </td></tr>
-    <tr><td class="paramdir">[out]</td><td class="paramname">*addr</td><td>points to a sub address 3 buffer </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">*handle</td><td>pointer to a pca9685 handle structure </td></tr>
+    <tr><td class="paramdir">[out]</td><td class="paramname">*addr</td><td>pointer to a sub address 3 buffer </td></tr>
   </table>
   </dd>
 </dl>
@@ -1704,7 +1704,7 @@ Functions</h2></td></tr>
 <p>get chip's information </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramdir">[out]</td><td class="paramname">*info</td><td>points to a pca9685 info structure </td></tr>
+    <tr><td class="paramdir">[out]</td><td class="paramname">*info</td><td>pointer to a pca9685 info structure </td></tr>
   </table>
   </dd>
 </dl>
@@ -1738,7 +1738,7 @@ Functions</h2></td></tr>
 <p>initialize the chip </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramdir">[in]</td><td class="paramname">*handle</td><td>points to a pca9685 handle structure </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">*handle</td><td>pointer to a pca9685 handle structure </td></tr>
   </table>
   </dd>
 </dl>
@@ -1797,10 +1797,10 @@ Functions</h2></td></tr>
 <p>convert the register raw data to the output frequency </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramdir">[in]</td><td class="paramname">*handle</td><td>points to a pca9685 handle structure </td></tr>
-    <tr><td class="paramdir">[in]</td><td class="paramname">oscillator</td><td>is the oscillator frequency </td></tr>
-    <tr><td class="paramdir">[in]</td><td class="paramname">reg</td><td>is the register raw data </td></tr>
-    <tr><td class="paramdir">[out]</td><td class="paramname">*output_freq</td><td>points to an output frequency buffer </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">*handle</td><td>pointer to a pca9685 handle structure </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">oscillator</td><td>oscillator frequency </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">reg</td><td>register raw data </td></tr>
+    <tr><td class="paramdir">[out]</td><td class="paramname">*output_freq</td><td>pointer to an output frequency buffer </td></tr>
   </table>
   </dd>
 </dl>
@@ -1857,10 +1857,10 @@ Functions</h2></td></tr>
 <p>convert the output frequency to the register raw data </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramdir">[in]</td><td class="paramname">*handle</td><td>points to a pca9685 handle structure </td></tr>
-    <tr><td class="paramdir">[in]</td><td class="paramname">oscillator</td><td>is the oscillator frequency </td></tr>
-    <tr><td class="paramdir">[in]</td><td class="paramname">output_freq</td><td>is the output frequency </td></tr>
-    <tr><td class="paramdir">[out]</td><td class="paramname">*reg</td><td>points to a register raw buffer </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">*handle</td><td>pointer to a pca9685 handle structure </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">oscillator</td><td>oscillator frequency </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">output_freq</td><td>output frequency </td></tr>
+    <tr><td class="paramdir">[out]</td><td class="paramname">*reg</td><td>pointer to a register raw buffer </td></tr>
   </table>
   </dd>
 </dl>
@@ -1923,11 +1923,11 @@ Functions</h2></td></tr>
 <p>convert the register raw data to the pwm </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramdir">[in]</td><td class="paramname">*handle</td><td>points to a pca9685 handle structure </td></tr>
-    <tr><td class="paramdir">[in]</td><td class="paramname">on_count</td><td>is the led on count </td></tr>
-    <tr><td class="paramdir">[in]</td><td class="paramname">off_count</td><td>is the led off count </td></tr>
-    <tr><td class="paramdir">[out]</td><td class="paramname">*delay_percent</td><td>points to a delay percent buffer </td></tr>
-    <tr><td class="paramdir">[out]</td><td class="paramname">*high_duty_cycle_percent</td><td>points to a high duty cycle percent buffer </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">*handle</td><td>pointer to a pca9685 handle structure </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">on_count</td><td>led on count </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">off_count</td><td>led off count </td></tr>
+    <tr><td class="paramdir">[out]</td><td class="paramname">*delay_percent</td><td>pointer to a delay percent buffer </td></tr>
+    <tr><td class="paramdir">[out]</td><td class="paramname">*high_duty_cycle_percent</td><td>pointer to a high duty cycle percent buffer </td></tr>
   </table>
   </dd>
 </dl>
@@ -1991,11 +1991,11 @@ Functions</h2></td></tr>
 <p>convert the pwm to the register raw data </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramdir">[in]</td><td class="paramname">*handle</td><td>points to a pca9685 handle structure </td></tr>
-    <tr><td class="paramdir">[in]</td><td class="paramname">delay_percent</td><td>is the start delay percent </td></tr>
-    <tr><td class="paramdir">[in]</td><td class="paramname">high_duty_cycle_percent</td><td>is the pwm high duty cycle percent </td></tr>
-    <tr><td class="paramdir">[out]</td><td class="paramname">*on_count</td><td>points to an on counter buffer </td></tr>
-    <tr><td class="paramdir">[out]</td><td class="paramname">*off_count</td><td>points to an off counter buffer </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">*handle</td><td>pointer to a pca9685 handle structure </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">delay_percent</td><td>start delay percent </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">high_duty_cycle_percent</td><td>pwm high duty cycle percent </td></tr>
+    <tr><td class="paramdir">[out]</td><td class="paramname">*on_count</td><td>pointer to an on counter buffer </td></tr>
+    <tr><td class="paramdir">[out]</td><td class="paramname">*off_count</td><td>pointer to an off counter buffer </td></tr>
   </table>
   </dd>
 </dl>
@@ -2053,10 +2053,10 @@ Functions</h2></td></tr>
 <p>read led channels </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramdir">[in]</td><td class="paramname">*handle</td><td>points to a pca9685 handle structure </td></tr>
-    <tr><td class="paramdir">[in]</td><td class="paramname">channel</td><td>is the led channel </td></tr>
-    <tr><td class="paramdir">[out]</td><td class="paramname">*on_count</td><td>points to an led on count buffer </td></tr>
-    <tr><td class="paramdir">[out]</td><td class="paramname">*off_count</td><td>points to an led off count buffer </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">*handle</td><td>pointer to a pca9685 handle structure </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">channel</td><td>led channel </td></tr>
+    <tr><td class="paramdir">[out]</td><td class="paramname">*on_count</td><td>pointer to an led on count buffer </td></tr>
+    <tr><td class="paramdir">[out]</td><td class="paramname">*off_count</td><td>pointer to an led off count buffer </td></tr>
   </table>
   </dd>
 </dl>
@@ -2102,8 +2102,8 @@ Functions</h2></td></tr>
 <p>set the chip active </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramdir">[in]</td><td class="paramname">*handle</td><td>points to a pca9685 handle structure </td></tr>
-    <tr><td class="paramdir">[in]</td><td class="paramname">enable</td><td>is a bool value </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">*handle</td><td>pointer to a pca9685 handle structure </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">enable</td><td>bool value </td></tr>
   </table>
   </dd>
 </dl>
@@ -2149,8 +2149,8 @@ Functions</h2></td></tr>
 <p>set the address </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramdir">[in]</td><td class="paramname">*handle</td><td>points to a pca9685 handle structure </td></tr>
-    <tr><td class="paramdir">[in]</td><td class="paramname">addr</td><td>is the chip address </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">*handle</td><td>pointer to a pca9685 handle structure </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">addr</td><td>chip address </td></tr>
   </table>
   </dd>
 </dl>
@@ -2194,8 +2194,8 @@ Functions</h2></td></tr>
 <p>set the address pin </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramdir">[in]</td><td class="paramname">*handle</td><td>points to a pca9685 handle structure </td></tr>
-    <tr><td class="paramdir">[in]</td><td class="paramname">addr_pin</td><td>is the chip address pins </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">*handle</td><td>pointer to a pca9685 handle structure </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">addr_pin</td><td>chip address pins </td></tr>
   </table>
   </dd>
 </dl>
@@ -2239,8 +2239,8 @@ Functions</h2></td></tr>
 <p>set the all call address </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramdir">[in]</td><td class="paramname">*handle</td><td>points to a pca9685 handle structure </td></tr>
-    <tr><td class="paramdir">[in]</td><td class="paramname">addr</td><td>is the all call address </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">*handle</td><td>pointer to a pca9685 handle structure </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">addr</td><td>all call address </td></tr>
   </table>
   </dd>
 </dl>
@@ -2286,8 +2286,8 @@ Functions</h2></td></tr>
 <p>enable or disable the external clock pin </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramdir">[in]</td><td class="paramname">*handle</td><td>points to a pca9685 handle structure </td></tr>
-    <tr><td class="paramdir">[in]</td><td class="paramname">enable</td><td>is a bool value </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">*handle</td><td>pointer to a pca9685 handle structure </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">enable</td><td>bool value </td></tr>
   </table>
   </dd>
 </dl>
@@ -2333,8 +2333,8 @@ Functions</h2></td></tr>
 <p>set the output change type </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramdir">[in]</td><td class="paramname">*handle</td><td>points to a pca9685 handle structure </td></tr>
-    <tr><td class="paramdir">[in]</td><td class="paramname">change</td><td>is the output change type </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">*handle</td><td>pointer to a pca9685 handle structure </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">change</td><td>output change type </td></tr>
   </table>
   </dd>
 </dl>
@@ -2380,8 +2380,8 @@ Functions</h2></td></tr>
 <p>set the output disable type </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramdir">[in]</td><td class="paramname">*handle</td><td>points to a pca9685 handle structure </td></tr>
-    <tr><td class="paramdir">[in]</td><td class="paramname">type</td><td>is the output disable type </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">*handle</td><td>pointer to a pca9685 handle structure </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">type</td><td>output disable type </td></tr>
   </table>
   </dd>
 </dl>
@@ -2427,8 +2427,8 @@ Functions</h2></td></tr>
 <p>set the output driver type </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramdir">[in]</td><td class="paramname">*handle</td><td>points to a pca9685 handle structure </td></tr>
-    <tr><td class="paramdir">[in]</td><td class="paramname">driver</td><td>is the output driver type </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">*handle</td><td>pointer to a pca9685 handle structure </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">driver</td><td>output driver type </td></tr>
   </table>
   </dd>
 </dl>
@@ -2474,8 +2474,8 @@ Functions</h2></td></tr>
 <p>enable or disable output invert </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramdir">[in]</td><td class="paramname">*handle</td><td>points to a pca9685 handle structure </td></tr>
-    <tr><td class="paramdir">[in]</td><td class="paramname">enable</td><td>is a bool value </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">*handle</td><td>pointer to a pca9685 handle structure </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">enable</td><td>bool value </td></tr>
   </table>
   </dd>
 </dl>
@@ -2521,8 +2521,8 @@ Functions</h2></td></tr>
 <p>set the clock pres cale </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramdir">[in]</td><td class="paramname">*handle</td><td>points to a pca9685 handle structure </td></tr>
-    <tr><td class="paramdir">[in]</td><td class="paramname">prescaler</td><td>is the clock pre scale </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">*handle</td><td>pointer to a pca9685 handle structure </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">prescaler</td><td>clock pre scale </td></tr>
   </table>
   </dd>
 </dl>
@@ -2569,8 +2569,8 @@ Functions</h2></td></tr>
 <p>enable or disable the register auto increment </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramdir">[in]</td><td class="paramname">*handle</td><td>points to a pca9685 handle structure </td></tr>
-    <tr><td class="paramdir">[in]</td><td class="paramname">enable</td><td>is a bool value </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">*handle</td><td>pointer to a pca9685 handle structure </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">enable</td><td>bool value </td></tr>
   </table>
   </dd>
 </dl>
@@ -2616,8 +2616,8 @@ Functions</h2></td></tr>
 <p>enable or disable respond all call </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramdir">[in]</td><td class="paramname">*handle</td><td>points to a pca9685 handle structure </td></tr>
-    <tr><td class="paramdir">[in]</td><td class="paramname">enable</td><td>is a bool value </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">*handle</td><td>pointer to a pca9685 handle structure </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">enable</td><td>bool value </td></tr>
   </table>
   </dd>
 </dl>
@@ -2663,8 +2663,8 @@ Functions</h2></td></tr>
 <p>enable or disable respond sub address 1 </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramdir">[in]</td><td class="paramname">*handle</td><td>points to a pca9685 handle structure </td></tr>
-    <tr><td class="paramdir">[in]</td><td class="paramname">enable</td><td>is a bool value </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">*handle</td><td>pointer to a pca9685 handle structure </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">enable</td><td>bool value </td></tr>
   </table>
   </dd>
 </dl>
@@ -2710,8 +2710,8 @@ Functions</h2></td></tr>
 <p>enable or disable respond sub address 2 </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramdir">[in]</td><td class="paramname">*handle</td><td>points to a pca9685 handle structure </td></tr>
-    <tr><td class="paramdir">[in]</td><td class="paramname">enable</td><td>is a bool value </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">*handle</td><td>pointer to a pca9685 handle structure </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">enable</td><td>bool value </td></tr>
   </table>
   </dd>
 </dl>
@@ -2757,8 +2757,8 @@ Functions</h2></td></tr>
 <p>enable or disable respond sub address 3 </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramdir">[in]</td><td class="paramname">*handle</td><td>points to a pca9685 handle structure </td></tr>
-    <tr><td class="paramdir">[in]</td><td class="paramname">enable</td><td>is a bool value </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">*handle</td><td>pointer to a pca9685 handle structure </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">enable</td><td>bool value </td></tr>
   </table>
   </dd>
 </dl>
@@ -2804,8 +2804,8 @@ Functions</h2></td></tr>
 <p>enable or disable restart </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramdir">[in]</td><td class="paramname">*handle</td><td>points to a pca9685 handle structure </td></tr>
-    <tr><td class="paramdir">[in]</td><td class="paramname">enable</td><td>is a bool value </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">*handle</td><td>pointer to a pca9685 handle structure </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">enable</td><td>bool value </td></tr>
   </table>
   </dd>
 </dl>
@@ -2851,8 +2851,8 @@ Functions</h2></td></tr>
 <p>enable or disable the sleep mode </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramdir">[in]</td><td class="paramname">*handle</td><td>points to a pca9685 handle structure </td></tr>
-    <tr><td class="paramdir">[in]</td><td class="paramname">enable</td><td>is a bool value </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">*handle</td><td>pointer to a pca9685 handle structure </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">enable</td><td>bool value </td></tr>
   </table>
   </dd>
 </dl>
@@ -2898,8 +2898,8 @@ Functions</h2></td></tr>
 <p>set the sub address 1 </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramdir">[in]</td><td class="paramname">*handle</td><td>points to a pca9685 handle structure </td></tr>
-    <tr><td class="paramdir">[in]</td><td class="paramname">addr</td><td>is the sub address 1 </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">*handle</td><td>pointer to a pca9685 handle structure </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">addr</td><td>sub address 1 </td></tr>
   </table>
   </dd>
 </dl>
@@ -2945,8 +2945,8 @@ Functions</h2></td></tr>
 <p>set the sub address 2 </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramdir">[in]</td><td class="paramname">*handle</td><td>points to a pca9685 handle structure </td></tr>
-    <tr><td class="paramdir">[in]</td><td class="paramname">addr</td><td>is the sub address 2 </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">*handle</td><td>pointer to a pca9685 handle structure </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">addr</td><td>sub address 2 </td></tr>
   </table>
   </dd>
 </dl>
@@ -2992,8 +2992,8 @@ Functions</h2></td></tr>
 <p>set the sub address 3 </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramdir">[in]</td><td class="paramname">*handle</td><td>points to a pca9685 handle structure </td></tr>
-    <tr><td class="paramdir">[in]</td><td class="paramname">addr</td><td>is the sub address 3 </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">*handle</td><td>pointer to a pca9685 handle structure </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">addr</td><td>sub address 3 </td></tr>
   </table>
   </dd>
 </dl>
@@ -3045,9 +3045,9 @@ Functions</h2></td></tr>
 <p>write all led channels </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramdir">[in]</td><td class="paramname">*handle</td><td>points to a pca9685 handle structure </td></tr>
-    <tr><td class="paramdir">[in]</td><td class="paramname">on_count</td><td>is the led on count </td></tr>
-    <tr><td class="paramdir">[in]</td><td class="paramname">off_count</td><td>is the led off count </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">*handle</td><td>pointer to a pca9685 handle structure </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">on_count</td><td>led on count </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">off_count</td><td>led off count </td></tr>
   </table>
   </dd>
 </dl>
@@ -3106,10 +3106,10 @@ Functions</h2></td></tr>
 <p>write led channels </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramdir">[in]</td><td class="paramname">*handle</td><td>points to a pca9685 handle structure </td></tr>
-    <tr><td class="paramdir">[in]</td><td class="paramname">channel</td><td>is the led channel </td></tr>
-    <tr><td class="paramdir">[in]</td><td class="paramname">on_count</td><td>is the led on count </td></tr>
-    <tr><td class="paramdir">[in]</td><td class="paramname">off_count</td><td>is the led off count </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">*handle</td><td>pointer to a pca9685 handle structure </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">channel</td><td>led channel </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">on_count</td><td>led on count </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">off_count</td><td>led off count </td></tr>
   </table>
   </dd>
 </dl>

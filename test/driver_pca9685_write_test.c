@@ -40,9 +40,9 @@ static pca9685_handle_t gs_handle;        /**< pca9685 handle */
 
 /**
  * @brief     servo write test
- * @param[in] addr is the iic device address
- * @param[in] channel is the written channel
- * @param[in] times is the test times
+ * @param[in] addr iic device address
+ * @param[in] channel written channel
+ * @param[in] times test times
  * @return    status code
  *            - 0 success
  *            - 1 test failed

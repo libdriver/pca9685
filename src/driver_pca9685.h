@@ -242,80 +242,80 @@ typedef struct pca9685_info_s
 
 /**
  * @brief     initialize pca9685_handle_t structure
- * @param[in] HANDLE points to a pca9685 handle structure
- * @param[in] STRUCTURE is pca9685l_handle_t
+ * @param[in] HANDLE pointer to a pca9685 handle structure
+ * @param[in] STRUCTURE pca9685l_handle_t
  * @note      none
  */
 #define DRIVER_PCA9685_LINK_INIT(HANDLE, STRUCTURE)         memset(HANDLE, 0, sizeof(STRUCTURE))
 
 /**
  * @brief     link iic_init function
- * @param[in] HANDLE points to a pca9685 handle structure
- * @param[in] FUC points to an iic_init function address
+ * @param[in] HANDLE pointer to a pca9685 handle structure
+ * @param[in] FUC pointer to an iic_init function address
  * @note      none
  */
 #define DRIVER_PCA9685_LINK_IIC_INIT(HANDLE, FUC)           (HANDLE)->iic_init = FUC
 
 /**
  * @brief     link iic_deinit function
- * @param[in] HANDLE points to a pca9685 handle structure
- * @param[in] FUC points to an iic_deinit function address
+ * @param[in] HANDLE pointer to a pca9685 handle structure
+ * @param[in] FUC pointer to an iic_deinit function address
  * @note      none
  */
 #define DRIVER_PCA9685_LINK_IIC_DEINIT(HANDLE, FUC)         (HANDLE)->iic_deinit = FUC
 
 /**
  * @brief     link iic_read function
- * @param[in] HANDLE points to a pca9685 handle structure
- * @param[in] FUC points to an iic_read function address
+ * @param[in] HANDLE pointer to a pca9685 handle structure
+ * @param[in] FUC pointer to an iic_read function address
  * @note      none
  */
 #define DRIVER_PCA9685_LINK_IIC_READ(HANDLE, FUC)           (HANDLE)->iic_read = FUC
 
 /**
  * @brief     link iic_write function
- * @param[in] HANDLE points to a pca9685 handle structure
- * @param[in] FUC points to an iic_write function address
+ * @param[in] HANDLE pointer to a pca9685 handle structure
+ * @param[in] FUC pointer to an iic_write function address
  * @note      none
  */
 #define DRIVER_PCA9685_LINK_IIC_WEITE(HANDLE, FUC)          (HANDLE)->iic_write = FUC
 
 /**
  * @brief     link oe_gpio_init function
- * @param[in] HANDLE points to a pca9685 handle structure
- * @param[in] FUC points to an oe_gpio_init function address
+ * @param[in] HANDLE pointer to a pca9685 handle structure
+ * @param[in] FUC pointer to an oe_gpio_init function address
  * @note      none
  */
 #define DRIVER_PCA9685_LINK_OE_GPIO_INIT(HANDLE, FUC)       (HANDLE)->oe_gpio_init = FUC
 
 /**
  * @brief     link oe_gpio_deinit function
- * @param[in] HANDLE points to a pca9685 handle structure
- * @param[in] FUC points to an oe_gpio_deinit function address
+ * @param[in] HANDLE pointer to a pca9685 handle structure
+ * @param[in] FUC pointer to an oe_gpio_deinit function address
  * @note      none
  */
 #define DRIVER_PCA9685_LINK_OE_GPIO_DEINIT(HANDLE, FUC)     (HANDLE)->oe_gpio_deinit = FUC
 
 /**
  * @brief     link oe_gpio_write function
- * @param[in] HANDLE points to a pca9685 handle structure
- * @param[in] FUC points to an oe_gpio_write function address
+ * @param[in] HANDLE pointer to a pca9685 handle structure
+ * @param[in] FUC pointer to an oe_gpio_write function address
  * @note      none
  */
 #define DRIVER_PCA9685_LINK_OE_GPIO_WRITE(HANDLE, FUC)      (HANDLE)->oe_gpio_write = FUC
 
 /**
  * @brief     link delay_ms function
- * @param[in] HANDLE points to a pca9685 handle structure
- * @param[in] FUC points to a delay_ms function address
+ * @param[in] HANDLE pointer to a pca9685 handle structure
+ * @param[in] FUC pointer to a delay_ms function address
  * @note      none
  */
 #define DRIVER_PCA9685_LINK_DELAY_MS(HANDLE, FUC)           (HANDLE)->delay_ms = FUC
 
 /**
  * @brief     link debug_print function
- * @param[in] HANDLE points to a pca9685 handle structure
- * @param[in] FUC points to a debug_print function address
+ * @param[in] HANDLE pointer to a pca9685 handle structure
+ * @param[in] FUC pointer to a debug_print function address
  * @note      none
  */
 #define DRIVER_PCA9685_LINK_DEBUG_PRINT(HANDLE, FUC)        (HANDLE)->debug_print = FUC
@@ -333,7 +333,7 @@ typedef struct pca9685_info_s
 
 /**
  * @brief      get chip's information
- * @param[out] *info points to a pca9685 info structure
+ * @param[out] *info pointer to a pca9685 info structure
  * @return     status code
  *             - 0 success
  *             - 2 handle is NULL
@@ -343,8 +343,8 @@ uint8_t pca9685_info(pca9685_info_t *info);
 
 /**
  * @brief     set the address pin
- * @param[in] *handle points to a pca9685 handle structure
- * @param[in] addr_pin is the chip address pins
+ * @param[in] *handle pointer to a pca9685 handle structure
+ * @param[in] addr_pin chip address pins
  * @return    status code
  *            - 0 success
  *            - 2 handle is NULL
@@ -354,8 +354,8 @@ uint8_t pca9685_set_addr_pin(pca9685_handle_t *handle, pca9685_address_t addr_pi
 
 /**
  * @brief      get the address pin
- * @param[in]  *handle points to a pca9685 handle structure
- * @param[out] *addr_pin points to a chip address pins buffer
+ * @param[in]  *handle pointer to a pca9685 handle structure
+ * @param[out] *addr_pin pointer to a chip address pins buffer
  * @return     status code
  *             - 0 success
  *             - 2 handle is NULL
@@ -365,8 +365,8 @@ uint8_t pca9685_get_addr_pin(pca9685_handle_t *handle, pca9685_address_t *addr_p
 
 /**
  * @brief     set the address
- * @param[in] *handle points to a pca9685 handle structure
- * @param[in] addr is the chip address
+ * @param[in] *handle pointer to a pca9685 handle structure
+ * @param[in] addr chip address
  * @return    status code
  *            - 0 success
  *            - 2 handle is NULL
@@ -376,8 +376,8 @@ uint8_t pca9685_set_addr(pca9685_handle_t *handle, uint8_t addr);
 
 /**
  * @brief      get the address
- * @param[in]  *handle points to a pca9685 handle structure
- * @param[out] *addr points to a chip address buffer
+ * @param[in]  *handle pointer to a pca9685 handle structure
+ * @param[out] *addr pointer to a chip address buffer
  * @return     status code
  *             - 0 success
  *             - 2 handle is NULL
@@ -387,7 +387,7 @@ uint8_t pca9685_get_addr(pca9685_handle_t *handle, uint8_t *addr);
 
 /**
  * @brief     initialize the chip
- * @param[in] *handle points to a pca9685 handle structure
+ * @param[in] *handle pointer to a pca9685 handle structure
  * @return    status code
  *            - 0 success
  *            - 1 iic or gpio initialization failed
@@ -400,7 +400,7 @@ uint8_t pca9685_init(pca9685_handle_t *handle);
 
 /**
  * @brief     close the chip
- * @param[in] *handle points to a pca9685 handle structure
+ * @param[in] *handle pointer to a pca9685 handle structure
  * @return    status code
  *            - 0 success
  *            - 1 power down failed
@@ -413,10 +413,10 @@ uint8_t pca9685_deinit(pca9685_handle_t *handle);
 
 /**
  * @brief     write led channels
- * @param[in] *handle points to a pca9685 handle structure
- * @param[in] channel is the led channel
- * @param[in] on_count is the led on count
- * @param[in] off_count is the led off count
+ * @param[in] *handle pointer to a pca9685 handle structure
+ * @param[in] channel led channel
+ * @param[in] on_count led on count
+ * @param[in] off_count led off count
  * @return    status code
  *            - 0 success
  *            - 1 write channel failed
@@ -429,10 +429,10 @@ uint8_t pca9685_write_channel(pca9685_handle_t *handle, pca9685_channel_t channe
 
 /**
  * @brief      read led channels
- * @param[in]  *handle points to a pca9685 handle structure
- * @param[in]  channel is the led channel
- * @param[out] *on_count points to an led on count buffer
- * @param[out] *off_count points to an led off count buffer
+ * @param[in]  *handle pointer to a pca9685 handle structure
+ * @param[in]  channel led channel
+ * @param[out] *on_count pointer to an led on count buffer
+ * @param[out] *off_count pointer to an led off count buffer
  * @return     status code
  *             - 0 success
  *             - 1 read channel failed
@@ -444,9 +444,9 @@ uint8_t pca9685_read_channel(pca9685_handle_t *handle, pca9685_channel_t channel
 
 /**
  * @brief     write all led channels
- * @param[in] *handle points to a pca9685 handle structure
- * @param[in] on_count is the led on count
- * @param[in] off_count is the led off count
+ * @param[in] *handle pointer to a pca9685 handle structure
+ * @param[in] on_count led on count
+ * @param[in] off_count led off count
  * @return    status code
  *            - 0 success
  *            - 1 write all channel failed
@@ -459,11 +459,11 @@ uint8_t pca9685_write_all_channel(pca9685_handle_t *handle, uint16_t on_count, u
 
 /**
  * @brief      convert the pwm to the register raw data
- * @param[in]  *handle points to a pca9685 handle structure
- * @param[in]  delay_percent is the start delay percent
- * @param[in]  high_duty_cycle_percent is the pwm high duty cycle percent
- * @param[out] *on_count points to an on counter buffer
- * @param[out] *off_count points to an off counter buffer
+ * @param[in]  *handle pointer to a pca9685 handle structure
+ * @param[in]  delay_percent start delay percent
+ * @param[in]  high_duty_cycle_percent pwm high duty cycle percent
+ * @param[out] *on_count pointer to an on counter buffer
+ * @param[out] *off_count pointer to an off counter buffer
  * @return     status code
  *             - 0 success
  *             - 2 handle is NULL
@@ -478,11 +478,11 @@ uint8_t pca9685_pwm_convert_to_register(pca9685_handle_t *handle, float delay_pe
 
 /**
  * @brief      convert the register raw data to the pwm
- * @param[in]  *handle points to a pca9685 handle structure
- * @param[in]  on_count is the led on count
- * @param[in]  off_count is the led off count
- * @param[out] *delay_percent points to a delay percent buffer
- * @param[out] *high_duty_cycle_percent points to a high duty cycle percent buffer
+ * @param[in]  *handle pointer to a pca9685 handle structure
+ * @param[in]  on_count led on count
+ * @param[in]  off_count led off count
+ * @param[out] *delay_percent pointer to a delay percent buffer
+ * @param[out] *high_duty_cycle_percent pointer to a high duty cycle percent buffer
  * @return     status code
  *             - 0 success
  *             - 2 handle is NULL
@@ -495,8 +495,8 @@ uint8_t pca9685_pwm_convert_to_data(pca9685_handle_t *handle, uint16_t on_count,
 
 /**
  * @brief     set the chip active
- * @param[in] *handle points to a pca9685 handle structure
- * @param[in] enable is a bool value
+ * @param[in] *handle pointer to a pca9685 handle structure
+ * @param[in] enable bool value
  * @return    status code
  *            - 0 success
  *            - 1 set active failed
@@ -508,8 +508,8 @@ uint8_t pca9685_set_active(pca9685_handle_t *handle, pca9685_bool_t enable);
 
 /**
  * @brief     set the clock pres cale
- * @param[in] *handle points to a pca9685 handle structure
- * @param[in] prescaler is the clock pre scale
+ * @param[in] *handle pointer to a pca9685 handle structure
+ * @param[in] prescaler clock pre scale
  * @return    status code
  *            - 0 success
  *            - 1 set pre scale failed
@@ -522,8 +522,8 @@ uint8_t pca9685_set_prescaler(pca9685_handle_t *handle, uint8_t prescaler);
 
 /**
  * @brief      get the clock pre scale
- * @param[in]  *handle points to a pca9685 handle structure
- * @param[out] *prescaler points to a clock pre scale buffer
+ * @param[in]  *handle pointer to a pca9685 handle structure
+ * @param[out] *prescaler pointer to a clock pre scale buffer
  * @return     status code
  *             - 0 success
  *             - 1 get pre scale failed
@@ -535,10 +535,10 @@ uint8_t pca9685_get_prescaler(pca9685_handle_t *handle, uint8_t *prescaler);
 
 /**
  * @brief      convert the output frequency to the register raw data
- * @param[in]  *handle points to a pca9685 handle structure
- * @param[in]  oscillator is the oscillator frequency
- * @param[in]  output_freq is the output frequency
- * @param[out] *reg points to a register raw buffer
+ * @param[in]  *handle pointer to a pca9685 handle structure
+ * @param[in]  oscillator oscillator frequency
+ * @param[in]  output_freq output frequency
+ * @param[out] *reg pointer to a register raw buffer
  * @return     status code
  *             - 0 success
  *             - 2 handle is NULL
@@ -549,10 +549,10 @@ uint8_t pca9685_output_frequency_convert_to_register(pca9685_handle_t *handle, u
 
 /**
  * @brief      convert the register raw data to the output frequency
- * @param[in]  *handle points to a pca9685 handle structure
- * @param[in]  oscillator is the oscillator frequency
- * @param[in]  reg is the register raw data
- * @param[out] *output_freq points to an output frequency buffer
+ * @param[in]  *handle pointer to a pca9685 handle structure
+ * @param[in]  oscillator oscillator frequency
+ * @param[in]  reg register raw data
+ * @param[out] *output_freq pointer to an output frequency buffer
  * @return     status code
  *             - 0 success
  *             - 2 handle is NULL
@@ -563,8 +563,8 @@ uint8_t pca9685_output_frequency_convert_to_data(pca9685_handle_t *handle, uint3
 
 /**
  * @brief     enable or disable restart
- * @param[in] *handle points to a pca9685 handle structure
- * @param[in] enable is a bool value
+ * @param[in] *handle pointer to a pca9685 handle structure
+ * @param[in] enable bool value
  * @return    status code
  *            - 0 success
  *            - 1 set restart failed
@@ -576,8 +576,8 @@ uint8_t pca9685_set_restart(pca9685_handle_t *handle, pca9685_bool_t enable);
 
 /**
  * @brief      get the restart status
- * @param[in]  *handle points to a pca9685 handle structure
- * @param[out] *enable points to a bool value buffer
+ * @param[in]  *handle pointer to a pca9685 handle structure
+ * @param[out] *enable pointer to a bool value buffer
  * @return     status code
  *             - 0 success
  *             - 1 get restart failed
@@ -589,8 +589,8 @@ uint8_t pca9685_get_restart(pca9685_handle_t *handle, pca9685_bool_t *enable);
 
 /**
  * @brief     enable or disable the external clock pin
- * @param[in] *handle points to a pca9685 handle structure
- * @param[in] enable is a bool value
+ * @param[in] *handle pointer to a pca9685 handle structure
+ * @param[in] enable bool value
  * @return    status code
  *            - 0 success
  *            - 1 set external clock pin failed
@@ -602,8 +602,8 @@ uint8_t pca9685_set_external_clock_pin(pca9685_handle_t *handle, pca9685_bool_t 
 
 /**
  * @brief      get the external clock pin status
- * @param[in]  *handle points to a pca9685 handle structure
- * @param[out] *enable points to a bool value buffer
+ * @param[in]  *handle pointer to a pca9685 handle structure
+ * @param[out] *enable pointer to a bool value buffer
  * @return     status code
  *             - 0 success
  *             - 1 get external clock pin failed
@@ -615,8 +615,8 @@ uint8_t pca9685_get_external_clock_pin(pca9685_handle_t *handle, pca9685_bool_t 
 
 /**
  * @brief     enable or disable the register auto increment
- * @param[in] *handle points to a pca9685 handle structure
- * @param[in] enable is a bool value
+ * @param[in] *handle pointer to a pca9685 handle structure
+ * @param[in] enable bool value
  * @return    status code
  *            - 0 success
  *            - 1 set register auto increment failed
@@ -628,8 +628,8 @@ uint8_t pca9685_set_register_auto_increment(pca9685_handle_t *handle, pca9685_bo
 
 /**
  * @brief      get the register auto increment status
- * @param[in]  *handle points to a pca9685 handle structure
- * @param[out] *enable points to a bool value buffer
+ * @param[in]  *handle pointer to a pca9685 handle structure
+ * @param[out] *enable pointer to a bool value buffer
  * @return     status code
  *             - 0 success
  *             - 1 get register auto increment failed
@@ -641,8 +641,8 @@ uint8_t pca9685_get_register_auto_increment(pca9685_handle_t *handle, pca9685_bo
 
 /**
  * @brief     enable or disable the sleep mode
- * @param[in] *handle points to a pca9685 handle structure
- * @param[in] enable is a bool value
+ * @param[in] *handle pointer to a pca9685 handle structure
+ * @param[in] enable bool value
  * @return    status code
  *            - 0 success
  *            - 1 set sleep mode failed
@@ -654,8 +654,8 @@ uint8_t pca9685_set_sleep_mode(pca9685_handle_t *handle, pca9685_bool_t enable);
 
 /**
  * @brief      get the sleep mode status
- * @param[in]  *handle points to a pca9685 handle structure
- * @param[out] *enable points to a bool value buffer
+ * @param[in]  *handle pointer to a pca9685 handle structure
+ * @param[out] *enable pointer to a bool value buffer
  * @return     status code
  *             - 0 success
  *             - 1 get sleep mode failed
@@ -667,8 +667,8 @@ uint8_t pca9685_get_sleep_mode(pca9685_handle_t *handle, pca9685_bool_t *enable)
 
 /**
  * @brief     enable or disable respond sub address 1
- * @param[in] *handle points to a pca9685 handle structure
- * @param[in] enable is a bool value
+ * @param[in] *handle pointer to a pca9685 handle structure
+ * @param[in] enable bool value
  * @return    status code
  *            - 0 success
  *            - 1 set respond sub address 1 failed
@@ -680,8 +680,8 @@ uint8_t pca9685_set_respond_subaddress_1(pca9685_handle_t *handle, pca9685_bool_
 
 /**
  * @brief      get the respond sub address 1 status
- * @param[in]  *handle points to a pca9685 handle structure
- * @param[out] *enable points to a bool value buffer
+ * @param[in]  *handle pointer to a pca9685 handle structure
+ * @param[out] *enable pointer to a bool value buffer
  * @return     status code
  *             - 0 success
  *             - 1 get respond sub address 1 failed
@@ -693,8 +693,8 @@ uint8_t pca9685_get_respond_subaddress_1(pca9685_handle_t *handle, pca9685_bool_
 
 /**
  * @brief     enable or disable respond sub address 2
- * @param[in] *handle points to a pca9685 handle structure
- * @param[in] enable is a bool value
+ * @param[in] *handle pointer to a pca9685 handle structure
+ * @param[in] enable bool value
  * @return    status code
  *            - 0 success
  *            - 1 set respond sub address 2 failed
@@ -706,8 +706,8 @@ uint8_t pca9685_set_respond_subaddress_2(pca9685_handle_t *handle, pca9685_bool_
 
 /**
  * @brief      get the respond sub address 2 status
- * @param[in]  *handle points to a pca9685 handle structure
- * @param[out] *enable points to a bool value buffer
+ * @param[in]  *handle pointer to a pca9685 handle structure
+ * @param[out] *enable pointer to a bool value buffer
  * @return     status code
  *             - 0 success
  *             - 1 get respond sub address 2 failed
@@ -719,8 +719,8 @@ uint8_t pca9685_get_respond_subaddress_2(pca9685_handle_t *handle, pca9685_bool_
 
 /**
  * @brief     enable or disable respond sub address 3
- * @param[in] *handle points to a pca9685 handle structure
- * @param[in] enable is a bool value
+ * @param[in] *handle pointer to a pca9685 handle structure
+ * @param[in] enable bool value
  * @return    status code
  *            - 0 success
  *            - 1 set respond sub address 3 failed
@@ -732,8 +732,8 @@ uint8_t pca9685_set_respond_subaddress_3(pca9685_handle_t *handle, pca9685_bool_
 
 /**
  * @brief      get the respond sub address 3 status
- * @param[in]  *handle points to a pca9685 handle structure
- * @param[out] *enable points to a bool value buffer
+ * @param[in]  *handle pointer to a pca9685 handle structure
+ * @param[out] *enable pointer to a bool value buffer
  * @return     status code
  *             - 0 success
  *             - 1 get respond sub address 3 failed
@@ -745,8 +745,8 @@ uint8_t pca9685_get_respond_subaddress_3(pca9685_handle_t *handle, pca9685_bool_
 
 /**
  * @brief     enable or disable respond all call
- * @param[in] *handle points to a pca9685 handle structure
- * @param[in] enable is a bool value
+ * @param[in] *handle pointer to a pca9685 handle structure
+ * @param[in] enable bool value
  * @return    status code
  *            - 0 success
  *            - 1 set respond all call failed
@@ -758,8 +758,8 @@ uint8_t pca9685_set_respond_all_call(pca9685_handle_t *handle, pca9685_bool_t en
 
 /**
  * @brief      get the respond all call status
- * @param[in]  *handle points to a pca9685 handle structure
- * @param[out] *enable points to a bool value buffer
+ * @param[in]  *handle pointer to a pca9685 handle structure
+ * @param[out] *enable pointer to a bool value buffer
  * @return     status code
  *             - 0 success
  *             - 1 get respond all call failed
@@ -771,8 +771,8 @@ uint8_t pca9685_get_respond_all_call(pca9685_handle_t *handle, pca9685_bool_t *e
 
 /**
  * @brief     enable or disable output invert
- * @param[in] *handle points to a pca9685 handle structure
- * @param[in] enable is a bool value
+ * @param[in] *handle pointer to a pca9685 handle structure
+ * @param[in] enable bool value
  * @return    status code
  *            - 0 success
  *            - 1 set output invert failed
@@ -784,8 +784,8 @@ uint8_t pca9685_set_output_invert(pca9685_handle_t *handle, pca9685_bool_t enabl
 
 /**
  * @brief      get the output invert status
- * @param[in]  *handle points to a pca9685 handle structure
- * @param[out] *enable points to a bool value buffer
+ * @param[in]  *handle pointer to a pca9685 handle structure
+ * @param[out] *enable pointer to a bool value buffer
  * @return     status code
  *             - 0 success
  *             - 1 get output invert failed
@@ -797,8 +797,8 @@ uint8_t pca9685_get_output_invert(pca9685_handle_t *handle, pca9685_bool_t *enab
 
 /**
  * @brief     set the output change type
- * @param[in] *handle points to a pca9685 handle structure
- * @param[in] change is the output change type
+ * @param[in] *handle pointer to a pca9685 handle structure
+ * @param[in] change output change type
  * @return    status code
  *            - 0 success
  *            - 1 set output change failed
@@ -810,8 +810,8 @@ uint8_t pca9685_set_output_change(pca9685_handle_t *handle, pca9685_output_chang
 
 /**
  * @brief      get the output change type
- * @param[in]  *handle points to a pca9685 handle structure
- * @param[out] *change points to an output change type buffer
+ * @param[in]  *handle pointer to a pca9685 handle structure
+ * @param[out] *change pointer to an output change type buffer
  * @return     status code
  *             - 0 success
  *             - 1 get output change failed
@@ -823,8 +823,8 @@ uint8_t pca9685_get_output_change(pca9685_handle_t *handle, pca9685_output_chang
 
 /**
  * @brief     set the output driver type
- * @param[in] *handle points to a pca9685 handle structure
- * @param[in] driver is the output driver type
+ * @param[in] *handle pointer to a pca9685 handle structure
+ * @param[in] driver output driver type
  * @return    status code
  *            - 0 success
  *            - 1 set output driver failed
@@ -836,8 +836,8 @@ uint8_t pca9685_set_output_driver(pca9685_handle_t *handle, pca9685_output_drive
 
 /**
  * @brief      get the output driver type
- * @param[in]  *handle points to a pca9685 handle structure
- * @param[out] *driver points to an output driver type buffer
+ * @param[in]  *handle pointer to a pca9685 handle structure
+ * @param[out] *driver pointer to an output driver type buffer
  * @return     status code
  *             - 0 success
  *             - 1 get output driver failed
@@ -849,8 +849,8 @@ uint8_t pca9685_get_output_driver(pca9685_handle_t *handle, pca9685_output_drive
 
 /**
  * @brief     set the output disable type
- * @param[in] *handle points to a pca9685 handle structure
- * @param[in] type is the output disable type
+ * @param[in] *handle pointer to a pca9685 handle structure
+ * @param[in] type output disable type
  * @return    status code
  *            - 0 success
  *            - 1 set output disable type failed
@@ -862,8 +862,8 @@ uint8_t pca9685_set_output_disable_type(pca9685_handle_t *handle, pca9685_output
 
 /**
  * @brief      get the output disable type
- * @param[in]  *handle points to a pca9685 handle structure
- * @param[out] *type points to an output disable type buffer
+ * @param[in]  *handle pointer to a pca9685 handle structure
+ * @param[out] *type pointer to an output disable type buffer
  * @return     status code
  *             - 0 success
  *             - 1 get output disable type failed
@@ -875,8 +875,8 @@ uint8_t pca9685_get_output_disable_type(pca9685_handle_t *handle, pca9685_output
 
 /**
  * @brief     set the sub address 1
- * @param[in] *handle points to a pca9685 handle structure
- * @param[in] addr is the sub address 1
+ * @param[in] *handle pointer to a pca9685 handle structure
+ * @param[in] addr sub address 1
  * @return    status code
  *            - 0 success
  *            - 1 set sub address 1 failed
@@ -888,8 +888,8 @@ uint8_t pca9685_set_subaddress_1(pca9685_handle_t *handle, uint8_t addr);
 
 /**
  * @brief      get the sub address 1
- * @param[in]  *handle points to a pca9685 handle structure
- * @param[out] *addr points to a sub address 1 buffer
+ * @param[in]  *handle pointer to a pca9685 handle structure
+ * @param[out] *addr pointer to a sub address 1 buffer
  * @return     status code
  *             - 0 success
  *             - 1 get sub address 1 failed
@@ -901,8 +901,8 @@ uint8_t pca9685_get_subaddress_1(pca9685_handle_t *handle, uint8_t *addr);
 
 /**
  * @brief     set the sub address 2
- * @param[in] *handle points to a pca9685 handle structure
- * @param[in] addr is the sub address 2
+ * @param[in] *handle pointer to a pca9685 handle structure
+ * @param[in] addr sub address 2
  * @return    status code
  *            - 0 success
  *            - 1 set sub address 2 failed
@@ -914,8 +914,8 @@ uint8_t pca9685_set_subaddress_2(pca9685_handle_t *handle, uint8_t addr);
 
 /**
  * @brief      get the sub address 2
- * @param[in]  *handle points to a pca9685 handle structure
- * @param[out] *addr points to a sub address 2 buffer
+ * @param[in]  *handle pointer to a pca9685 handle structure
+ * @param[out] *addr pointer to a sub address 2 buffer
  * @return     status code
  *             - 0 success
  *             - 1 get sub address 2 failed
@@ -927,8 +927,8 @@ uint8_t pca9685_get_subaddress_2(pca9685_handle_t *handle, uint8_t *addr);
 
 /**
  * @brief     set the sub address 3
- * @param[in] *handle points to a pca9685 handle structure
- * @param[in] addr is the sub address 3
+ * @param[in] *handle pointer to a pca9685 handle structure
+ * @param[in] addr sub address 3
  * @return    status code
  *            - 0 success
  *            - 1 set sub address 3 failed
@@ -940,8 +940,8 @@ uint8_t pca9685_set_subaddress_3(pca9685_handle_t *handle, uint8_t addr);
 
 /**
  * @brief      get the sub address 3
- * @param[in]  *handle points to a pca9685 handle structure
- * @param[out] *addr points to a sub address 3 buffer
+ * @param[in]  *handle pointer to a pca9685 handle structure
+ * @param[out] *addr pointer to a sub address 3 buffer
  * @return     status code
  *             - 0 success
  *             - 1 get sub address 3 failed
@@ -953,8 +953,8 @@ uint8_t pca9685_get_subaddress_3(pca9685_handle_t *handle, uint8_t *addr);
 
 /**
  * @brief     set the all call address
- * @param[in] *handle points to a pca9685 handle structure
- * @param[in] addr is the all call address
+ * @param[in] *handle pointer to a pca9685 handle structure
+ * @param[in] addr all call address
  * @return    status code
  *            - 0 success
  *            - 1 set all call address failed
@@ -966,8 +966,8 @@ uint8_t pca9685_set_all_call_address(pca9685_handle_t *handle, uint8_t addr);
 
 /**
  * @brief      set the all call address
- * @param[in]  *handle points to a pca9685 handle structure
- * @param[out] *addr points to an all call address buffer
+ * @param[in]  *handle pointer to a pca9685 handle structure
+ * @param[out] *addr pointer to an all call address buffer
  * @return     status code
  *             - 0 success
  *             - 1 get all call address failed
@@ -990,10 +990,10 @@ uint8_t pca9685_get_all_call_address(pca9685_handle_t *handle, uint8_t *addr);
 
 /**
  * @brief     set the chip register
- * @param[in] *handle points to a pca9685 handle structure
- * @param[in] reg is the iic register address
- * @param[in] *buf points to a data buffer
- * @param[in] len is the data buffer length
+ * @param[in] *handle pointer to a pca9685 handle structure
+ * @param[in] reg iic register address
+ * @param[in] *buf pointer to a data buffer
+ * @param[in] len data buffer length
  * @return    status code
  *            - 0 success
  *            - 1 write failed
@@ -1005,10 +1005,10 @@ uint8_t pca9685_set_reg(pca9685_handle_t *handle, uint8_t reg, uint8_t *buf, uin
 
 /**
  * @brief      get the chip register
- * @param[in]  *handle points to a pca9685 handle structure
- * @param[in]  reg is the iic register address
- * @param[out] *buf points to a data buffer
- * @param[in]  len is the data buffer length
+ * @param[in]  *handle pointer to a pca9685 handle structure
+ * @param[in]  reg iic register address
+ * @param[out] *buf pointer to a data buffer
+ * @param[in]  len data buffer length
  * @return     status code
  *             - 0 success
  *             - 1 read failed

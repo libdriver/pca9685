@@ -40,8 +40,8 @@ static pca9685_handle_t gs_handle;        /**< pca9685 handle */
 
 /**
  * @brief     basic example init
- * @param[in] addr is the iic device address
- * @param[in] hz is the output frequency
+ * @param[in] addr iic device address
+ * @param[in] hz output frequency
  * @return    status code
  *            - 0 success
  *            - 1 init failed
@@ -317,9 +317,9 @@ uint8_t pca9685_basic_deinit(void)
 
 /**
  * @brief     basic example write
- * @param[in] channel is the pwm channel
- * @param[in] delay_percent is the start delay percent
- * @param[in] high_duty_cycle_percent is the pwm high duty cycle percent
+ * @param[in] channel pwm channel
+ * @param[in] delay_percent start delay percent
+ * @param[in] high_duty_cycle_percent pwm high duty cycle percent
  * @return    status code
  *            - 0 success
  *            - 1 write failed
