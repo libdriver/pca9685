@@ -11,7 +11,7 @@
 The PCA9685 is an I2C-bus controlled 16-channel LED controller optimized for Red/Green/Blue/Amber (RGBA) color backlighting applications. Each LED output has its own 12-bit resolution (4096 steps) fixed frequency individual PWM controller that operates
 at a programmable frequency from a typical of 24 Hz to 1526 Hz with a duty cycle that is adjustable from 0 % to 100 % to allow the LED to be set to a specific brightness value.All outputs are set to the same PWM frequency.Each LED output can be off or on (no PWM control), or set at its individual PWM controller value. The LED output driver is programmed to be either open-drain with a 25 mA current sink capability at 5 V or totem pole with a 25 mA sink, 10 mA source capability at 5 V. The PCA9685 operates with a supply voltage range of 2.3 V to 5.5 V and the inputs and outputs are 5.5 V tolerant. LEDs can be directly connected to the LED output (up to 25 mA, 5.5 V) or controlled with external drivers and a minimum amount of discrete components for larger current or higher voltage LEDs.It can be used in RGB or RGBA LED drivers, LED status information, LED displays, LCD backlights, Keypad backlights for cellular phones or handheld devices and so on.
 
-LibDriver PCA9685 is the full function driver of PCA9685 launched by LibDriver.PCA9685 provides pwm output and other functions. LibDriver is MISRA compliant.
+LibDriver PCA9685 is a full-featured driver of PCA9685 launched by LibDriver.PCA9685 provides pwm output and other functions. LibDriver is MISRA compliant.
 
 ### Table of Contents
 
