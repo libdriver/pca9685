@@ -7,7 +7,7 @@ var group__pca9685__example__driver =
     [ "PCA9685_BASIC_DEFAULT_OUTPUT_INVERT", "group__pca9685__example__driver.html#ga69fb96a7b91921c46bb8681893e9692e", null ],
     [ "PCA9685_BASIC_DEFAULT_RESPOND_ALL_CALL", "group__pca9685__example__driver.html#ga1d299d3efebba9208780dea5f85bc90a", null ],
     [ "PCA9685_BASIC_DEFAULT_RESPOND_SUBADDRESS_1", "group__pca9685__example__driver.html#ga6371c0b27c9f6ac8f1ce7d5dd14fb78b", null ],
-    [ "PCA9685_BASIC_DEFAULT_RESPOND_SUBADDRESS_2", "group__pca9685__example__driver.html#gafe0b811ba2eace2133f1b23901654e08", null ],
+    [ "PCA9685_BASIC_DEFAULT_RESPOND_SUBADDRESS_2", "group__pca9685__example__driver.html#ga8b4b3e118a550283a52ed74c613bbd09", null ],
     [ "PCA9685_BASIC_DEFAULT_RESPOND_SUBADDRESS_2", "group__pca9685__example__driver.html#gafe0b811ba2eace2133f1b23901654e08", null ],
     [ "PCA9685_BASIC_DEFAULT_SUBADDRESS_1", "group__pca9685__example__driver.html#ga04570896066246357e72e9530d8d2787", null ],
     [ "PCA9685_BASIC_DEFAULT_SUBADDRESS_2", "group__pca9685__example__driver.html#ga913f75a17e76ee66bb7288f94d89be51", null ],
