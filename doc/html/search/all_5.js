@@ -1,6 +1,11 @@
 var searchData=
 [
-  ['oe_5fgpio_5fdeinit_39',['oe_gpio_deinit',['../structpca9685__handle__s.html#acebea25eb92c37977c26ff93417cbbc4',1,'pca9685_handle_s']]],
-  ['oe_5fgpio_5finit_40',['oe_gpio_init',['../structpca9685__handle__s.html#a5b1dc92e4696be54ec674f74687cad95',1,'pca9685_handle_s']]],
-  ['oe_5fgpio_5fwrite_41',['oe_gpio_write',['../structpca9685__handle__s.html#aced1999518e2ad7e4631f458f1670780',1,'pca9685_handle_s']]]
+  ['iic_5faddr_0',['iic_addr',['../structpca9685__handle__s.html#ae4fb63dc1b166464d5da3aa753b0805a',1,'pca9685_handle_s']]],
+  ['iic_5fdeinit_1',['iic_deinit',['../structpca9685__handle__s.html#af6963bbad902ca6e43942b48c07986c3',1,'pca9685_handle_s']]],
+  ['iic_5finit_2',['iic_init',['../structpca9685__handle__s.html#a8826dd07625f8d90859ce9bd09628d61',1,'pca9685_handle_s']]],
+  ['iic_5fread_3',['iic_read',['../structpca9685__handle__s.html#af4ef726288b88f51a846483803a1249b',1,'pca9685_handle_s']]],
+  ['iic_5fwrite_4',['iic_write',['../structpca9685__handle__s.html#adca3ee7a793bbf510d5267daf0fcf1c5',1,'pca9685_handle_s']]],
+  ['inited_5',['inited',['../structpca9685__handle__s.html#a19bedf28d2b9748f6a62d9ae93f4e68f',1,'pca9685_handle_s']]],
+  ['interface_6',['interface',['../structpca9685__info__s.html#aebaa6c28dd4f2c3dc27566fcb910fd28',1,'pca9685_info_s']]],
+  ['interface_20driver_20function_7',['pca9685 interface driver function',['../group__pca9685__interface__driver.html',1,'']]]
 ];
