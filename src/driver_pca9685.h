@@ -278,7 +278,7 @@ typedef struct pca9685_info_s
  * @param[in] FUC pointer to an iic_write function address
  * @note      none
  */
-#define DRIVER_PCA9685_LINK_IIC_WEITE(HANDLE, FUC)          (HANDLE)->iic_write = FUC
+#define DRIVER_PCA9685_LINK_IIC_WRITE(HANDLE, FUC)          (HANDLE)->iic_write = FUC
 
 /**
  * @brief     link oe_gpio_init function
@@ -487,8 +487,8 @@ uint8_t pca9685_pwm_convert_to_register(pca9685_handle_t *handle, float delay_pe
  *             - 0 success
  *             - 2 handle is NULL
  *             - 3 handle is not initialized
- *             - 4 on_count or off_count is over 4096
- * @note       on_count <= 4096 && off_count <= 4096
+ *             - 4 on_count or off_count is over 4095
+ * @note       on_count <= 4095 && off_count <= 4095
  */
 uint8_t pca9685_pwm_convert_to_data(pca9685_handle_t *handle, uint16_t on_count, uint16_t off_count,
                                     float *delay_percent, float *high_duty_cycle_percent);
