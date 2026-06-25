@@ -72,7 +72,7 @@ uint8_t pca9685_register_test(pca9685_address_t addr)
     DRIVER_PCA9685_LINK_IIC_INIT(&gs_handle, pca9685_interface_iic_init);
     DRIVER_PCA9685_LINK_IIC_DEINIT(&gs_handle, pca9685_interface_iic_deinit);
     DRIVER_PCA9685_LINK_IIC_READ(&gs_handle, pca9685_interface_iic_read);
-    DRIVER_PCA9685_LINK_IIC_WEITE(&gs_handle, pca9685_interface_iic_write);
+    DRIVER_PCA9685_LINK_IIC_WRITE(&gs_handle, pca9685_interface_iic_write);
     DRIVER_PCA9685_LINK_OE_GPIO_INIT(&gs_handle, pca9685_interface_oe_init);
     DRIVER_PCA9685_LINK_OE_GPIO_DEINIT(&gs_handle, pca9685_interface_oe_deinit);
     DRIVER_PCA9685_LINK_OE_GPIO_WRITE(&gs_handle, pca9685_interface_oe_write);
