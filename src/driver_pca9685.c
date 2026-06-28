@@ -1749,7 +1749,7 @@ uint8_t pca9685_pwm_convert_to_register(pca9685_handle_t *handle, float delay_pe
     {
         return 3;                                                                                              /* return error */
     }
-    if (delay_percent + high_duty_cycle_percent >=100.0f)                                                      /* check result */
+    if (delay_percent + high_duty_cycle_percent > 100.0f)                                                      /* check result */
     {
         handle->debug_print("pca9685: delay_percent + high_duty_cycle_percent can't be over 100.0.\n");        /* delay_percent + high_duty_cycle_percent can't be over 100.0 */
 

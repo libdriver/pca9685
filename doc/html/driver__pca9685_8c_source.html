@@ -1392,7 +1392,7 @@ $(function(){initNavTree('driver__pca9685_8c_source.html','',''); });
 <div class="line"><a id="l01749" name="l01749"></a><span class="lineno"> 1749</span>    {</div>
 <div class="line"><a id="l01750" name="l01750"></a><span class="lineno"> 1750</span>        <span class="keywordflow">return</span> 3;                                                                                              <span class="comment">/* return error */</span></div>
 <div class="line"><a id="l01751" name="l01751"></a><span class="lineno"> 1751</span>    }</div>
-<div class="line"><a id="l01752" name="l01752"></a><span class="lineno"> 1752</span>    <span class="keywordflow">if</span> (delay_percent + high_duty_cycle_percent &gt;=100.0f)                                                      <span class="comment">/* check result */</span></div>
+<div class="line"><a id="l01752" name="l01752"></a><span class="lineno"> 1752</span>    <span class="keywordflow">if</span> (delay_percent + high_duty_cycle_percent &gt; 100.0f)                                                      <span class="comment">/* check result */</span></div>
 <div class="line"><a id="l01753" name="l01753"></a><span class="lineno"> 1753</span>    {</div>
 <div class="line"><a id="l01754" name="l01754"></a><span class="lineno"> 1754</span>        handle-&gt;<a class="code hl_variable" href="structpca9685__handle__s.html#a769d5b3a6c14790a0e126e8fe70b384b">debug_print</a>(<span class="stringliteral">&quot;pca9685: delay_percent + high_duty_cycle_percent can&#39;t be over 100.0.\n&quot;</span>);        <span class="comment">/* delay_percent + high_duty_cycle_percent can&#39;t be over 100.0 */</span></div>
 <div class="line"><a id="l01755" name="l01755"></a><span class="lineno"> 1755</span> </div>
