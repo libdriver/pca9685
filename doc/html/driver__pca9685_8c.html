@@ -98,11 +98,12 @@ $(function(){initNavTree('driver__pca9685_8c.html','',''); });
 <p>driver pca9685 source file  
 <a href="#details">More...</a></p>
 <div class="textblock"><code>#include &quot;<a class="el" href="driver__pca9685_8h_source.html">driver_pca9685.h</a>&quot;</code><br />
+<code>#include &lt;float.h&gt;</code><br />
 <code>#include &lt;math.h&gt;</code><br />
 </div><div class="textblock"><div class="dynheader">
 Include dependency graph for driver_pca9685.c:</div>
 <div class="dyncontent">
-<div class="center"><iframe scrolling="no" loading="lazy" frameborder="0" src="driver__pca9685_8c__incl.svg" width="274" height="187"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+<div class="center"><iframe scrolling="no" loading="lazy" frameborder="0" src="driver__pca9685_8c__incl.svg" width="356" height="187"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
 </div>
 </div>
 <p><a href="driver__pca9685_8c_source.html">Go to the source code of this file.</a></p>
@@ -210,7 +211,7 @@ Functions</h2></td></tr>
 <tr class="memitem:gafe205693750e35373b4bb6083523ac1b" id="r_gafe205693750e35373b4bb6083523ac1b"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__pca9685__base__driver.html#gafe205693750e35373b4bb6083523ac1b">pca9685_set_all_call_address</a> (<a class="el" href="group__pca9685__base__driver.html#ga2292ef7c3ce8617bcd6e2ffe94f495b4">pca9685_handle_t</a> *handle, uint8_t addr)</td></tr>
 <tr class="memdesc:gafe205693750e35373b4bb6083523ac1b"><td class="mdescLeft">&#160;</td><td class="mdescRight">set the all call address  <br /></td></tr>
 <tr class="memitem:ga4d567be14bda8c5e44a633e6743b54cb" id="r_ga4d567be14bda8c5e44a633e6743b54cb"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__pca9685__base__driver.html#ga4d567be14bda8c5e44a633e6743b54cb">pca9685_get_all_call_address</a> (<a class="el" href="group__pca9685__base__driver.html#ga2292ef7c3ce8617bcd6e2ffe94f495b4">pca9685_handle_t</a> *handle, uint8_t *addr)</td></tr>
-<tr class="memdesc:ga4d567be14bda8c5e44a633e6743b54cb"><td class="mdescLeft">&#160;</td><td class="mdescRight">set the all call address  <br /></td></tr>
+<tr class="memdesc:ga4d567be14bda8c5e44a633e6743b54cb"><td class="mdescLeft">&#160;</td><td class="mdescRight">get the all call address  <br /></td></tr>
 <tr class="memitem:ga075e19d832199135dad43db034df3da3" id="r_ga075e19d832199135dad43db034df3da3"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__pca9685__base__driver.html#ga075e19d832199135dad43db034df3da3">pca9685_write_channel</a> (<a class="el" href="group__pca9685__base__driver.html#ga2292ef7c3ce8617bcd6e2ffe94f495b4">pca9685_handle_t</a> *handle, <a class="el" href="group__pca9685__base__driver.html#gab2422a1507d8ad709c5a7dd83fcf526c">pca9685_channel_t</a> channel, uint16_t on_count, uint16_t off_count)</td></tr>
 <tr class="memdesc:ga075e19d832199135dad43db034df3da3"><td class="mdescLeft">&#160;</td><td class="mdescRight">write led channels  <br /></td></tr>
 <tr class="memitem:ga8f4ef2ce5e370fb689ccc8b00a4bb25e" id="r_ga8f4ef2ce5e370fb689ccc8b00a4bb25e"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__pca9685__base__driver.html#ga8f4ef2ce5e370fb689ccc8b00a4bb25e">pca9685_read_channel</a> (<a class="el" href="group__pca9685__base__driver.html#ga2292ef7c3ce8617bcd6e2ffe94f495b4">pca9685_handle_t</a> *handle, <a class="el" href="group__pca9685__base__driver.html#gab2422a1507d8ad709c5a7dd83fcf526c">pca9685_channel_t</a> channel, uint16_t *on_count, uint16_t *off_count)</td></tr>
@@ -275,7 +276,7 @@ Functions</h2></td></tr>
 <p>chip information definition </p>
 <p>chip name </p>
 
-<p class="definition">Definition at line <a class="el" href="driver__pca9685_8c_source.html#l00043">43</a> of file <a class="el" href="driver__pca9685_8c_source.html">driver_pca9685.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="driver__pca9685_8c_source.html#l00044">44</a> of file <a class="el" href="driver__pca9685_8c_source.html">driver_pca9685.c</a>.</p>
 
 </div>
 </div>
@@ -292,7 +293,7 @@ Functions</h2></td></tr>
 </div><div class="memdoc">
 <p>driver version </p>
 
-<p class="definition">Definition at line <a class="el" href="driver__pca9685_8c_source.html#l00050">50</a> of file <a class="el" href="driver__pca9685_8c_source.html">driver_pca9685.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="driver__pca9685_8c_source.html#l00051">51</a> of file <a class="el" href="driver__pca9685_8c_source.html">driver_pca9685.c</a>.</p>
 
 </div>
 </div>
@@ -309,7 +310,7 @@ Functions</h2></td></tr>
 </div><div class="memdoc">
 <p>manufacturer name </p>
 
-<p class="definition">Definition at line <a class="el" href="driver__pca9685_8c_source.html#l00044">44</a> of file <a class="el" href="driver__pca9685_8c_source.html">driver_pca9685.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="driver__pca9685_8c_source.html#l00045">45</a> of file <a class="el" href="driver__pca9685_8c_source.html">driver_pca9685.c</a>.</p>
 
 </div>
 </div>
@@ -326,7 +327,7 @@ Functions</h2></td></tr>
 </div><div class="memdoc">
 <p>chip max current </p>
 
-<p class="definition">Definition at line <a class="el" href="driver__pca9685_8c_source.html#l00047">47</a> of file <a class="el" href="driver__pca9685_8c_source.html">driver_pca9685.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="driver__pca9685_8c_source.html#l00048">48</a> of file <a class="el" href="driver__pca9685_8c_source.html">driver_pca9685.c</a>.</p>
 
 </div>
 </div>
@@ -343,7 +344,7 @@ Functions</h2></td></tr>
 </div><div class="memdoc">
 <p>load all the led_off registers byte 1 </p>
 
-<p class="definition">Definition at line <a class="el" href="driver__pca9685_8c_source.html#l00068">68</a> of file <a class="el" href="driver__pca9685_8c_source.html">driver_pca9685.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="driver__pca9685_8c_source.html#l00069">69</a> of file <a class="el" href="driver__pca9685_8c_source.html">driver_pca9685.c</a>.</p>
 
 </div>
 </div>
@@ -360,7 +361,7 @@ Functions</h2></td></tr>
 </div><div class="memdoc">
 <p>load all the led_off registers byte 0 </p>
 
-<p class="definition">Definition at line <a class="el" href="driver__pca9685_8c_source.html#l00067">67</a> of file <a class="el" href="driver__pca9685_8c_source.html">driver_pca9685.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="driver__pca9685_8c_source.html#l00068">68</a> of file <a class="el" href="driver__pca9685_8c_source.html">driver_pca9685.c</a>.</p>
 
 </div>
 </div>
@@ -377,7 +378,7 @@ Functions</h2></td></tr>
 </div><div class="memdoc">
 <p>load all the led_on registers byte 1 </p>
 
-<p class="definition">Definition at line <a class="el" href="driver__pca9685_8c_source.html#l00066">66</a> of file <a class="el" href="driver__pca9685_8c_source.html">driver_pca9685.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="driver__pca9685_8c_source.html#l00067">67</a> of file <a class="el" href="driver__pca9685_8c_source.html">driver_pca9685.c</a>.</p>
 
 </div>
 </div>
@@ -394,7 +395,7 @@ Functions</h2></td></tr>
 </div><div class="memdoc">
 <p>load all the led_on registers byte 0 </p>
 
-<p class="definition">Definition at line <a class="el" href="driver__pca9685_8c_source.html#l00065">65</a> of file <a class="el" href="driver__pca9685_8c_source.html">driver_pca9685.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="driver__pca9685_8c_source.html#l00066">66</a> of file <a class="el" href="driver__pca9685_8c_source.html">driver_pca9685.c</a>.</p>
 
 </div>
 </div>
@@ -411,7 +412,7 @@ Functions</h2></td></tr>
 </div><div class="memdoc">
 <p>led all call iic bus address </p>
 
-<p class="definition">Definition at line <a class="el" href="driver__pca9685_8c_source.html#l00060">60</a> of file <a class="el" href="driver__pca9685_8c_source.html">driver_pca9685.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="driver__pca9685_8c_source.html#l00061">61</a> of file <a class="el" href="driver__pca9685_8c_source.html">driver_pca9685.c</a>.</p>
 
 </div>
 </div>
@@ -428,7 +429,7 @@ Functions</h2></td></tr>
 </div><div class="memdoc">
 <p>led0 output and brightness control byte 3 </p>
 
-<p class="definition">Definition at line <a class="el" href="driver__pca9685_8c_source.html#l00064">64</a> of file <a class="el" href="driver__pca9685_8c_source.html">driver_pca9685.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="driver__pca9685_8c_source.html#l00065">65</a> of file <a class="el" href="driver__pca9685_8c_source.html">driver_pca9685.c</a>.</p>
 
 </div>
 </div>
@@ -445,7 +446,7 @@ Functions</h2></td></tr>
 </div><div class="memdoc">
 <p>led0 output and brightness control byte 2 </p>
 
-<p class="definition">Definition at line <a class="el" href="driver__pca9685_8c_source.html#l00063">63</a> of file <a class="el" href="driver__pca9685_8c_source.html">driver_pca9685.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="driver__pca9685_8c_source.html#l00064">64</a> of file <a class="el" href="driver__pca9685_8c_source.html">driver_pca9685.c</a>.</p>
 
 </div>
 </div>
@@ -462,7 +463,7 @@ Functions</h2></td></tr>
 </div><div class="memdoc">
 <p>led0 output and brightness control byte 1 </p>
 
-<p class="definition">Definition at line <a class="el" href="driver__pca9685_8c_source.html#l00062">62</a> of file <a class="el" href="driver__pca9685_8c_source.html">driver_pca9685.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="driver__pca9685_8c_source.html#l00063">63</a> of file <a class="el" href="driver__pca9685_8c_source.html">driver_pca9685.c</a>.</p>
 
 </div>
 </div>
@@ -479,7 +480,7 @@ Functions</h2></td></tr>
 </div><div class="memdoc">
 <p>led0 output and brightness control byte 0 </p>
 
-<p class="definition">Definition at line <a class="el" href="driver__pca9685_8c_source.html#l00061">61</a> of file <a class="el" href="driver__pca9685_8c_source.html">driver_pca9685.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="driver__pca9685_8c_source.html#l00062">62</a> of file <a class="el" href="driver__pca9685_8c_source.html">driver_pca9685.c</a>.</p>
 
 </div>
 </div>
@@ -498,7 +499,7 @@ Functions</h2></td></tr>
 <p>chip register definition </p>
 <p>mode register 1 </p>
 
-<p class="definition">Definition at line <a class="el" href="driver__pca9685_8c_source.html#l00055">55</a> of file <a class="el" href="driver__pca9685_8c_source.html">driver_pca9685.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="driver__pca9685_8c_source.html#l00056">56</a> of file <a class="el" href="driver__pca9685_8c_source.html">driver_pca9685.c</a>.</p>
 
 </div>
 </div>
@@ -515,7 +516,7 @@ Functions</h2></td></tr>
 </div><div class="memdoc">
 <p>mode register 2 </p>
 
-<p class="definition">Definition at line <a class="el" href="driver__pca9685_8c_source.html#l00056">56</a> of file <a class="el" href="driver__pca9685_8c_source.html">driver_pca9685.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="driver__pca9685_8c_source.html#l00057">57</a> of file <a class="el" href="driver__pca9685_8c_source.html">driver_pca9685.c</a>.</p>
 
 </div>
 </div>
@@ -532,7 +533,7 @@ Functions</h2></td></tr>
 </div><div class="memdoc">
 <p>pre scale for pwm output frequency </p>
 
-<p class="definition">Definition at line <a class="el" href="driver__pca9685_8c_source.html#l00069">69</a> of file <a class="el" href="driver__pca9685_8c_source.html">driver_pca9685.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="driver__pca9685_8c_source.html#l00070">70</a> of file <a class="el" href="driver__pca9685_8c_source.html">driver_pca9685.c</a>.</p>
 
 </div>
 </div>
@@ -549,7 +550,7 @@ Functions</h2></td></tr>
 </div><div class="memdoc">
 <p>iic bus sub address 1 </p>
 
-<p class="definition">Definition at line <a class="el" href="driver__pca9685_8c_source.html#l00057">57</a> of file <a class="el" href="driver__pca9685_8c_source.html">driver_pca9685.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="driver__pca9685_8c_source.html#l00058">58</a> of file <a class="el" href="driver__pca9685_8c_source.html">driver_pca9685.c</a>.</p>
 
 </div>
 </div>
@@ -566,7 +567,7 @@ Functions</h2></td></tr>
 </div><div class="memdoc">
 <p>iic bus sub address 2 </p>
 
-<p class="definition">Definition at line <a class="el" href="driver__pca9685_8c_source.html#l00058">58</a> of file <a class="el" href="driver__pca9685_8c_source.html">driver_pca9685.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="driver__pca9685_8c_source.html#l00059">59</a> of file <a class="el" href="driver__pca9685_8c_source.html">driver_pca9685.c</a>.</p>
 
 </div>
 </div>
@@ -583,7 +584,7 @@ Functions</h2></td></tr>
 </div><div class="memdoc">
 <p>iic bus sub address 3 </p>
 
-<p class="definition">Definition at line <a class="el" href="driver__pca9685_8c_source.html#l00059">59</a> of file <a class="el" href="driver__pca9685_8c_source.html">driver_pca9685.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="driver__pca9685_8c_source.html#l00060">60</a> of file <a class="el" href="driver__pca9685_8c_source.html">driver_pca9685.c</a>.</p>
 
 </div>
 </div>
@@ -600,7 +601,7 @@ Functions</h2></td></tr>
 </div><div class="memdoc">
 <p>chip max supply voltage </p>
 
-<p class="definition">Definition at line <a class="el" href="driver__pca9685_8c_source.html#l00046">46</a> of file <a class="el" href="driver__pca9685_8c_source.html">driver_pca9685.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="driver__pca9685_8c_source.html#l00047">47</a> of file <a class="el" href="driver__pca9685_8c_source.html">driver_pca9685.c</a>.</p>
 
 </div>
 </div>
@@ -617,7 +618,7 @@ Functions</h2></td></tr>
 </div><div class="memdoc">
 <p>chip min supply voltage </p>
 
-<p class="definition">Definition at line <a class="el" href="driver__pca9685_8c_source.html#l00045">45</a> of file <a class="el" href="driver__pca9685_8c_source.html">driver_pca9685.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="driver__pca9685_8c_source.html#l00046">46</a> of file <a class="el" href="driver__pca9685_8c_source.html">driver_pca9685.c</a>.</p>
 
 </div>
 </div>
@@ -634,7 +635,7 @@ Functions</h2></td></tr>
 </div><div class="memdoc">
 <p>chip max operating temperature </p>
 
-<p class="definition">Definition at line <a class="el" href="driver__pca9685_8c_source.html#l00049">49</a> of file <a class="el" href="driver__pca9685_8c_source.html">driver_pca9685.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="driver__pca9685_8c_source.html#l00050">50</a> of file <a class="el" href="driver__pca9685_8c_source.html">driver_pca9685.c</a>.</p>
 
 </div>
 </div>
@@ -651,7 +652,7 @@ Functions</h2></td></tr>
 </div><div class="memdoc">
 <p>chip min operating temperature </p>
 
-<p class="definition">Definition at line <a class="el" href="driver__pca9685_8c_source.html#l00048">48</a> of file <a class="el" href="driver__pca9685_8c_source.html">driver_pca9685.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="driver__pca9685_8c_source.html#l00049">49</a> of file <a class="el" href="driver__pca9685_8c_source.html">driver_pca9685.c</a>.</p>
 
 </div>
 </div>

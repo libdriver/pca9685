@@ -35,6 +35,7 @@
  */
 
 #include "driver_pca9685.h"
+#include <float.h>
 #include <math.h>
 
 /**
@@ -1415,7 +1416,7 @@ uint8_t pca9685_set_all_call_address(pca9685_handle_t *handle, uint8_t addr)
 }
 
 /**
- * @brief      set the all call address
+ * @brief      get the all call address
  * @param[in]  *handle pointer to a pca9685 handle structure
  * @param[out] *addr pointer to an all call address buffer
  * @return     status code
@@ -1755,10 +1756,24 @@ uint8_t pca9685_pwm_convert_to_register(pca9685_handle_t *handle, float delay_pe
 
         return 4;                                                                                              /* return error */
     }
-
-    *on_count = (uint16_t)(roundf(delay_percent / 100.0f * 4095.0f));                                          /* set on count */
-    *off_count = (uint16_t)(roundf((delay_percent + high_duty_cycle_percent) / 100.0f * 4095.0f));             /* set off count */
-
+    
+    if (delay_percent < FLT_MIN)                                                                               /* 0.0 */
+    {
+        *on_count = 0;                                                                                         /* set 0 */
+    }
+    else
+    {
+        *on_count = (uint16_t)(roundf(delay_percent / 100.0f * 4096.0f)) - 1;                                  /* set on count */
+    }
+    if (high_duty_cycle_percent < FLT_MIN)                                                                     /* 0.0 */
+    {
+        *off_count = 0;                                                                                        /* set 0*/
+    }
+    else
+    {
+        *off_count = (uint16_t)(roundf((delay_percent + high_duty_cycle_percent) / 100.0f * 4096.0f)) - 1;     /* set off count */
+    }
+    
     return 0;                                                                                                  /* success return 0 */
 }
 
@@ -1773,8 +1788,8 @@ uint8_t pca9685_pwm_convert_to_register(pca9685_handle_t *handle, float delay_pe
  *             - 0 success
  *             - 2 handle is NULL
  *             - 3 handle is not initialized
- *             - 4 on_count or off_count is over 4095
- * @note       on_count <= 4095 && off_count <= 4095
+ *             - 4 on_count or off_count is over 4096
+ * @note       on_count <= 4096 && off_count <= 4096
  */
 uint8_t pca9685_pwm_convert_to_data(pca9685_handle_t *handle, uint16_t on_count, uint16_t off_count,
                                     float *delay_percent, float *high_duty_cycle_percent)
@@ -1787,15 +1802,29 @@ uint8_t pca9685_pwm_convert_to_data(pca9685_handle_t *handle, uint16_t on_count,
     {
         return 3;                                                                       /* return error */
     }
-    if ((on_count > 4095) || (off_count > 4095))                                        /* check result */
+    if ((on_count > 4096) || (off_count > 4096))                                        /* check result */
     {
-        handle->debug_print("pca9685: on_count or off_count is over 4095.\n");          /* on_count or off_count is over 4095 */
+        handle->debug_print("pca9685: on_count or off_count is over 4096.\n");          /* on_count or off_count is over 4096 */
 
         return 4;                                                                       /* return error */
     }
-
-    *delay_percent = (float)(on_count) / 4095.0f * 100.0f;                              /* set the delay_percent */
-    *high_duty_cycle_percent = (float)(off_count - on_count) / 4095.0f * 100.0f;        /* set the high_duty_cycle_percent */
+    
+    if (on_count != 0)                                                                  /* not 0 */
+    {
+        *delay_percent = (float)(on_count + 1) / 4096.0f * 100.0f;                      /* set the delay_percent */
+    }
+    else                                                                                /* 0 */
+    {
+        *delay_percent = 0.0f;                                                          /* set 0.0 */
+    }
+    if (off_count != 0)                                                                 /* not 0 */
+    {
+        *high_duty_cycle_percent = (float)(off_count - on_count) / 4096.0f * 100.0f;    /* set the high_duty_cycle_percent */
+    }
+    else                                                                                /* 0 */
+    {
+        *high_duty_cycle_percent = 0.0f;                                                /* set 0.0 */
+    }
 
     return 0;                                                                           /* success return 0 */
 }
