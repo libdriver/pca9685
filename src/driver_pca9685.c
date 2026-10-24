@@ -473,7 +473,11 @@ uint8_t pca9685_set_sleep_mode(pca9685_handle_t *handle, pca9685_bool_t enable)
 
         return 1;                                                                            /* return error */
     }
-
+    if (enable == PCA9685_BOOL_FALSE)                                                        /* false */
+    {
+        handle->delay_ms(1);                                                                 /* wait max 500 us for oscillator stable */
+    }
+    
     return 0;                                                                                /* success return 0 */
 }
 
@@ -1484,7 +1488,7 @@ uint8_t pca9685_write_channel(pca9685_handle_t *handle, pca9685_channel_t channe
         return 4;                                                                                             /* return error */
     }
 
-    buf[0] = (on_count >> 0) & 0xFF;                                                                          /* set off count lsb */
+    buf[0] = (on_count >> 0) & 0xFF;                                                                          /* set on count lsb */
     buf[1] = (on_count >> 8) & 0x1F;                                                                          /* set on count msb */
     buf[2] = (off_count >> 0) & 0xFF;                                                                         /* set off count lsb */
     buf[3] = (off_count >> 8) & 0x1F;                                                                         /* set off count msb */
@@ -1575,7 +1579,7 @@ uint8_t pca9685_write_all_channel(pca9685_handle_t *handle, uint16_t on_count, u
         return 4;                                                                                  /* return error */
     }
 
-    buf[0] = (on_count >> 0) & 0xFF;                                                               /* set off count lsb */
+    buf[0] = (on_count >> 0) & 0xFF;                                                               /* set on count lsb */
     buf[1] = (on_count >> 8) & 0x1F;                                                               /* set on count msb */
     buf[2] = (off_count >> 0) & 0xFF;                                                              /* set off count lsb */
     buf[3] = (off_count >> 8) & 0x1F;                                                              /* set off count msb */
@@ -1605,6 +1609,8 @@ uint8_t pca9685_write_all_channel(pca9685_handle_t *handle, uint16_t on_count, u
 uint8_t pca9685_set_prescaler(pca9685_handle_t *handle, uint8_t prescaler)
 {
     uint8_t res;
+    uint8_t oldmode;
+    uint8_t newmode;
 
     if (handle == NULL)                                                                                /* check handle */
     {
@@ -1620,11 +1626,43 @@ uint8_t pca9685_set_prescaler(pca9685_handle_t *handle, uint8_t prescaler)
 
         return 4;                                                                                      /* return error */
     }
+    
+    res = handle->iic_read(handle->iic_addr, PCA9685_REG_MODE1, (uint8_t *)&oldmode, 1);               /* read mode 1 register */
+    if (res != 0)                                                                                      /* check result */
+    {
+        handle->debug_print("pca9685: read mode 1 register failed.\n");                                /* read mode 1 register failed */
 
+        return 1;                                                                                      /* return error */
+    }
+    newmode = (uint8_t)((oldmode & (uint8_t)(~(1 << 7))) | (1 << 4));                                  /* clear restart bit, set sleep bit */
+    res = handle->iic_write(handle->iic_addr, PCA9685_REG_MODE1, (uint8_t *)&newmode, 1);              /* write mode 1 register, enter sleep */
+    if (res != 0)                                                                                      /* check result */
+    {
+        handle->debug_print("pca9685: write mode 1 register failed.\n");                               /* write mode 1 register failed */
+
+        return 1;                                                                                      /* return error */
+    }
     res = handle->iic_write(handle->iic_addr, PCA9685_REG_PRE_SCALE, (uint8_t *)&prescaler, 1);        /* write pre scale register */
     if (res != 0)                                                                                      /* check result */
     {
         handle->debug_print("pca9685: write pre scale register failed.\n");                            /* write pre scale register failed */
+
+        return 1;                                                                                      /* return error */
+    }
+    newmode = (uint8_t)((oldmode & (uint8_t)(~(1 << 7))) & (uint8_t)(~(1 << 4)));                      /* clear restart bit, clear sleep bit */
+    res = handle->iic_write(handle->iic_addr, PCA9685_REG_MODE1, (uint8_t *)&newmode, 1);              /* write mode 1 register, wake up */
+    if (res != 0)                                                                                      /* check result */
+    {
+        handle->debug_print("pca9685: write mode 1 register failed.\n");                               /* write mode 1 register failed */
+
+        return 1;                                                                                      /* return error */
+    }
+    handle->delay_ms(1);                                                                               /* wait max 500 us for oscillator stable */
+    newmode |= (1 << 7);                                                                               /* set restart bit */
+    res = handle->iic_write(handle->iic_addr, PCA9685_REG_MODE1, (uint8_t *)&newmode, 1);              /* write mode 1 register, restart pwm */
+    if (res != 0)                                                                                      /* check result */
+    {
+        handle->debug_print("pca9685: write mode 1 register failed.\n");                               /* write mode 1 register failed */
 
         return 1;                                                                                      /* return error */
     }
@@ -1681,18 +1719,30 @@ uint8_t pca9685_get_prescaler(pca9685_handle_t *handle, uint8_t *prescaler)
  */
 uint8_t pca9685_output_frequency_convert_to_register(pca9685_handle_t *handle, uint32_t oscillator, uint16_t output_freq, uint8_t *reg)
 {
-    if (handle == NULL)                                                                      /* check handle */
+    int32_t raw;
+    
+    if (handle == NULL)                                                                     /* check handle */
     {
-        return 2;                                                                            /* return error */
+        return 2;                                                                           /* return error */
     }
-    if (handle->inited != 1)                                                                 /* check handle initialization */
+    if (handle->inited != 1)                                                                /* check handle initialization */
     {
-        return 3;                                                                            /* return error */
+        return 3;                                                                           /* return error */
     }
 
-    *reg = (uint8_t)(round((double)oscillator / ((double)output_freq * 4096.0))) - 1;        /* convert real data to register data */
+    raw = (int32_t)(round((double)oscillator / ((double)output_freq * 4096.0))) - 1;        /* prescale value */
 
-    return 0;                                                                                /* success return 0 */
+    if (raw < 3)                                                                            /* hardware minimum is 3 */
+    {
+        raw = 3;                                                                            /* clamp to 3 */
+    }
+    if (raw > 255)                                                                          /* register is 8 bits */
+    {
+        raw = 255;                                                                          /* clamp to 255 */
+    }
+    *reg = (uint8_t)raw;                                                                    /* convert real data to register data */
+
+    return 0;                                                                               /* success return 0 */
 }
 
 /**
@@ -1750,30 +1800,38 @@ uint8_t pca9685_pwm_convert_to_register(pca9685_handle_t *handle, float delay_pe
     {
         return 3;                                                                                              /* return error */
     }
-    if (delay_percent + high_duty_cycle_percent > 100.0f)                                                      /* check result */
+    if ((delay_percent < 0.0f) || (high_duty_cycle_percent < 0.0f) ||
+        (delay_percent > 100.0f) || (high_duty_cycle_percent > 100.0f) ||
+        (delay_percent + high_duty_cycle_percent > 100.0f))                                                    /* check result */
     {
-        handle->debug_print("pca9685: delay_percent + high_duty_cycle_percent can't be over 100.0.\n");        /* delay_percent + high_duty_cycle_percent can't be over 100.0 */
+        handle->debug_print("pca9685: delay_percent + high_duty_cycle_percent can't be over 100.0.\n");        /* return error */
 
         return 4;                                                                                              /* return error */
     }
-    
-    if (delay_percent < FLT_MIN)                                                                               /* 0.0 */
+
+    if (high_duty_cycle_percent < FLT_MIN)                                                                     /* 0.0 high duty */
     {
-        *on_count = 0;                                                                                         /* set 0 */
+        *on_count = 0;                                                                                         /* set on count */
+        *off_count = 4096;                                                                                     /* full off */
+    }
+    else if ((delay_percent < FLT_MIN) && (high_duty_cycle_percent >= 100.0f))                                 /* 0.0 delay, full duty */
+    {
+        *on_count = 4096;                                                                                      /* full on */
+        *off_count = 0;                                                                                        /* set off count */
     }
     else
     {
-        *on_count = (uint16_t)(roundf(delay_percent / 100.0f * 4096.0f)) - 1;                                  /* set on count */
-    }
-    if (high_duty_cycle_percent < FLT_MIN)                                                                     /* 0.0 */
-    {
-        *off_count = 0;                                                                                        /* set 0*/
-    }
-    else
-    {
+        if (delay_percent < FLT_MIN)                                                                           /* 0.0 */
+        {
+            *on_count = 0;                                                                                     /* set on count */
+        }
+        else
+        {
+            *on_count = (uint16_t)(roundf(delay_percent / 100.0f * 4096.0f)) - 1;                              /* set on count */
+        }
         *off_count = (uint16_t)(roundf((delay_percent + high_duty_cycle_percent) / 100.0f * 4096.0f)) - 1;     /* set off count */
     }
-    
+
     return 0;                                                                                                  /* success return 0 */
 }
 
@@ -1808,22 +1866,29 @@ uint8_t pca9685_pwm_convert_to_data(pca9685_handle_t *handle, uint16_t on_count,
 
         return 4;                                                                       /* return error */
     }
-    
-    if (on_count != 0)                                                                  /* not 0 */
+
+    if (off_count >= 4096)                                                              /* full off */
     {
-        *delay_percent = (float)(on_count + 1) / 4096.0f * 100.0f;                      /* set the delay_percent */
+        *delay_percent = 0.0f;                                                          /* no delay */
+        *high_duty_cycle_percent = 0.0f;                                                /* zero duty cycle */
     }
-    else                                                                                /* 0 */
+    else if (on_count >= 4096)                                                          /* full on */
     {
-        *delay_percent = 0.0f;                                                          /* set 0.0 */
+        *delay_percent = 0.0f;                                                          /* no delay */
+        *high_duty_cycle_percent = 100.0f;                                              /* full duty cycle */
     }
-    if (off_count != 0)                                                                 /* not 0 */
+    else
     {
-        *high_duty_cycle_percent = (float)(off_count - on_count) / 4096.0f * 100.0f;    /* set the high_duty_cycle_percent */
-    }
-    else                                                                                /* 0 */
-    {
-        *high_duty_cycle_percent = 0.0f;                                                /* set 0.0 */
+        if (on_count != 0)                                                              /* not 0 */
+        {
+            *delay_percent = (float)(on_count + 1) / 4096.0f * 100.0f;                  /* set the delay_percent */
+        }
+        else                                                                            /* 0 */
+        {
+            *delay_percent = 0.0f;                                                      /* set 0.0 */
+        }
+        *high_duty_cycle_percent = (float)((int32_t)off_count - 
+                                           (int32_t)on_count) / 4096.0f * 100.0f;       /* set the high_duty_cycle_percent */
     }
 
     return 0;                                                                           /* success return 0 */
@@ -1894,7 +1959,13 @@ uint8_t pca9685_init(pca9685_handle_t *handle)
 
         return 3;                                                                                 /* return error */
     }
+    if (handle->delay_ms == NULL)                                                                 /* check delay_ms */
+    {
+        handle->debug_print("pca9685: delay_ms is null.\n");                                      /* delay_ms is null */
 
+        return 3;                                                                                 /* return error */
+    }
+    
     if (handle->iic_init() != 0)                                                                  /* iic init */
     {
         handle->debug_print("pca9685: iic init failed.\n");                                       /* iic init failed */
@@ -1908,7 +1979,15 @@ uint8_t pca9685_init(pca9685_handle_t *handle)
 
         return 1;                                                                                 /* return error */
     }
+    
+    if (handle->oe_gpio_write(1) != 0)                                                            /* oe high, disable all outputs */
+    {
+        handle->debug_print("pca9685: gpio write failed.\n");                                     /* gpio write failed */
+        (void)handle->oe_gpio_deinit();                                                           /* oe gpio deinit */
+        (void)handle->iic_deinit();                                                               /* iic deinit */
 
+        return 1;                                                                                 /* return error */
+    }
     res = handle->iic_read(handle->iic_addr, PCA9685_REG_MODE1, (uint8_t *)&prev, 1);             /* read mode 1 register */
     if (res != 0)                                                                                 /* check result */
     {
@@ -1920,8 +1999,9 @@ uint8_t pca9685_init(pca9685_handle_t *handle)
     }
     if ((prev & 0x80) != 0)                                                                       /* check reset bit */
     {
+        prev &= ~(1 << 7);                                                                        /* clear restart bit */
         prev &= ~(1 << 4);                                                                        /* clear sleep bit */
-        res = handle->iic_write(handle->iic_addr, PCA9685_REG_MODE1, (uint8_t *)&prev, 1);        /* write mode 1 register */
+        res = handle->iic_write(handle->iic_addr, PCA9685_REG_MODE1, (uint8_t *)&prev, 1);        /* write mode 1 register, wake up */
         if (res != 0)                                                                             /* check result */
         {
             handle->debug_print("pca9685: write mode 1 register failed.\n");                      /* write mode 1 register failed */
@@ -1930,9 +2010,18 @@ uint8_t pca9685_init(pca9685_handle_t *handle)
 
             return 4;                                                                             /* return error */
         }
-        handle->delay_ms(2);                                                                      /* delay 2 ms */
+        handle->delay_ms(2);                                                                      /* sleep must be 0 for at least 500 us */
+        res = handle->iic_read(handle->iic_addr, PCA9685_REG_MODE1, (uint8_t *)&prev, 1);         /* read mode 1 register again */
+        if (res != 0)                                                                             /* check result */
+        {
+            handle->debug_print("pca9685: read mode 1 register failed.\n");                       /* read mode 1 register failed */
+            (void)handle->oe_gpio_deinit();                                                       /* oe gpio deinit */
+            (void)handle->iic_deinit();                                                           /* iic deinit */
+
+            return 4;                                                                             /* return error */
+        }
+        prev |= (1 << 7);                                                                         /* write logic 1, restart all pwm channels */
     }
-    prev |= (1 << 7);                                                                             /* set reset bit */
     prev |= (1 << 5);                                                                             /* enable auto increment */
     prev &= ~(1 << 6);                                                                            /* clear extern clock bit */
     prev &= ~(1 << 4);                                                                            /* clear sleep bit */
